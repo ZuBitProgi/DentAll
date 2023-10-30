@@ -13,9 +13,13 @@
 			
 			\begin{packed_enum}
 				
-				\item Dionik 1
-				\item Dionik 2				
-				\item ...
+				\item Dentalne klinike
+				\item Vlasnici smještaja			
+				\item Prijevoznici
+				\item Administratori koji koriste aplikaciju
+				\item Klijenti tj. pacijenti
+				\item Razvojni tim
+				
 				
 			\end{packed_enum}
 			
@@ -23,30 +27,60 @@
 			
 			
 			\begin{packed_enum}
-				\item  \underbar{Aktor 1 (inicijator) može:}
+				\item  \underbar{Smještajni administrator (inicijator) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
-					\begin{packed_enum}
-						
-						\item  podfunkcionalnost 1 
-						\item  podfunkcionalnost 2
+					\item Pregledavati podatke o smještajima (tip, ocjena, adresa, period dostupnosti)
+					\item Dodavati nove korisnike (ne klijente nego korisnike sustava)
+					\item Korisnicima dodavati nove uloge
+					\item Dodati, izmjenjivati i brisati podatke o smještaju
+					\item Vidjeti prikaz smještaja na karti
+					
+				\end{packed_enum}
+				\eject
 				
-					\end{packed_enum}
-					\item  funkcionalnost 3
+					\item  \underbar{Prijevoznički administrator (inicijator) može:}
+				
+				\begin{packed_enum}
+					
+					\item Pregledavati podatke o prijevoznicima
+					\item Dodati osnovne osobne podatke prijevoznika
+					\item Dodati kontaktne podatke i podatke o vrsti i kapacitetu vozila
+					\item Izmjenjivati neosnovne podatke (kontakt, vrsta i kapacitet vozila)
+					\item Izbrisati prijevoznika
+
+				\end{packed_enum}
+				
+					\item  \underbar{Korisnički administrator (inicijator) može:}
+				
+				\begin{packed_enum}
+					
+					\item Dodati podatke o klijentima (osobni podatci, kontakt, preferencije o smještaju)
 					
 				\end{packed_enum}
 			
-				\item  \underbar{Aktor 2 (sudionik) može:}
+				\item  \underbar{Baza podataka (sudionik) može:}
 				
 				\begin{packed_enum}
 					
-					\item funkcionalnost 1
-					\item funkcionalnost 2
+					\item Pohranjuje sve podatke o prijevoznicima
+					\item Pohranjuje sve podatke o smještaju
+					\item Pohranjuje ne medicinske podatke o klijentima
 					
 				\end{packed_enum}
+				
+				\item  \underbar{Aplikacija (sudionik) može:}
+				
+				\begin{packed_enum}
+					
+					\item Dohvatiti medicinske podatke s vanjskog sučelja
+					\item Poslati poruku elektroničke pošte klijentima i 
+					\item Pohranjuje ne medicinske podatke o klijentima
+					
+				\end{packed_enum}
+				
+					
 			\end{packed_enum}
 			
 			\eject 
@@ -95,7 +129,420 @@
 							
 						\end{packed_item}
 					\end{packed_item}
+					
+					\noindent \underbar{\textbf{UC1 - Prijava smještajnog administratora}}
+					\begin{packed_item}
+						
+						\item \textbf{Glavni sudionik: }Smještajni administrator
+						\item  \textbf{Cilj:} Prijaviti se u sustav kao smještajni administrator
+						\item  \textbf{Sudionici:} Baza podataka
+						\item  \textbf{Preduvjet:} Registracija?
+						\item  \textbf{Opis osnovnog tijeka:}
+						
+						\item[] \begin{packed_enum}
+							
+							\item Unos korisničkog imena i lozinke te odabir uloge smještajnog administratora
+							\item Potvrda o postojanju računa i ispravnosti podataka
+							\item Pristup funkcijama smještajnog administratora
+						\end{packed_enum}
+						
+						\item  \textbf{Opis mogućih odstupanja:}
+						
+						\item[] \begin{packed_item}
+							
+							\item[2.a] Uneseni podatci nisu u točnom formatu
+							\item[] \begin{packed_enum}
+								
+								\item Obavijestiti korisnika koji podatci nisu u točnom formatu
+								\item Korisnik mijenja potrebne podatke i pokušava opet
+								
+							\end{packed_enum}
+							\item[2.b] Korisnički račun ne postoji, lozinka nije točna ili korisničko ime nije točno
+							\item[] \begin{packed_enum}
+								
+								\item Obavijestiti korisnika da su korisničko ime ili lozinka netočni
+								\item Korisnik mijenja potrebne podatke i pokušava opet
+								
+							\end{packed_enum}
+
+							
+						\end{packed_item}
+					\end{packed_item}
 				
+				\noindent \underbar{\textbf{UC2 - Prijava prijevoznog administratora}}
+				\begin{packed_item}
+					
+					\item \textbf{Glavni sudionik: }Prijevozni administrator
+					\item  \textbf{Cilj:} Prijaviti se u sustav kao prijevozni administrator
+					\item  \textbf{Sudionici:} Baza podataka
+					\item  \textbf{Preduvjet:} Registracija?
+					\item  \textbf{Opis osnovnog tijeka:}
+					
+					\item[] \begin{packed_enum}
+						
+						\item Unos korisničkog imena i lozinke te odabir uloge prijevoznog administratora
+						\item Potvrda o postojanju računa i ispravnosti podataka
+						\item Pristup funkcijama prijevoznog administratora
+					\end{packed_enum}
+					
+					\item  \textbf{Opis mogućih odstupanja:}
+					
+					\item[] \begin{packed_item}
+						
+						\item[2.a] Uneseni podatci nisu u točnom formatu
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti korisnika koji podatci nisu u točnom formatu
+							\item Korisnik mijenja potrebne podatke i pokušava opet
+							
+						\end{packed_enum}
+						\item[2.b] Korisnički račun ne postoji, lozinka nije točna ili korisničko ime nije točno
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti korisnika da su korisničko ime ili lozinka netočni
+							\item Korisnik mijenja potrebne podatke i pokušava opet
+							
+						\end{packed_enum}
+						
+						
+					\end{packed_item}
+				\end{packed_item}
+				
+				\noindent \underbar{\textbf{UC3 - Prijava korisničkog administratora}}
+				\begin{packed_item}
+					
+					\item \textbf{Glavni sudionik: }Korisnički administrator
+					\item  \textbf{Cilj:} Prijaviti se u sustav kao korisnički administrator
+					\item  \textbf{Sudionici:} Baza podataka
+					\item  \textbf{Preduvjet:} Registracija?
+					\item  \textbf{Opis osnovnog tijeka:}
+					
+					\item[] \begin{packed_enum}
+						
+						\item Unos korisničkog imena i lozinke te odabir uloge korisničkog administratora
+						\item Potvrda o postojanju računa i ispravnosti podataka
+						\item Pristup funkcijama korisničkog administratora
+					\end{packed_enum}
+					
+					\item  \textbf{Opis mogućih odstupanja:}
+					
+					\item[] \begin{packed_item}
+						
+						\item[2.a] Uneseni podatci nisu u točnom formatu
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti korisnika koji podatci nisu u točnom formatu
+							\item Korisnik mijenja potrebne podatke i pokušava opet
+							
+						\end{packed_enum}
+						\item[2.b] Korisnički račun ne postoji, lozinka nije točna ili korisničko ime nije točno
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti korisnika da su korisničko ime ili lozinka netočni
+							\item Korisnik mijenja potrebne podatke i pokušava opet
+							
+						\end{packed_enum}
+						
+						
+					\end{packed_item}
+				\end{packed_item}
+				
+				\noindent \underbar{\textbf{UC4 - Dodavanje novog korisnika}}
+				\begin{packed_item}
+					
+					\item \textbf{Glavni sudionik: }Smještajni administrator
+					\item  \textbf{Cilj:} Dodati novog korisnika sustava
+					\item  \textbf{Sudionici:} Baza podataka
+					\item  \textbf{Preduvjet:} Prijava smještajnog administratora
+					\item  \textbf{Opis osnovnog tijeka:}
+					
+					\item[] \begin{packed_enum}
+						
+						\item Unos korisničkog imena i lozinke novog korisnika te odabir svih uloga koje će korisnik imati
+						\item Provjera postoji li već korisnik s takvim imenom
+						\item Upis novog korisnika u bazu podataka
+					\end{packed_enum}
+					
+					\item  \textbf{Opis mogućih odstupanja:}
+					
+					\item[] \begin{packed_item}
+						
+						\item[2.a] Polja korisničko ime i/ili lozinka su prazni
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti korisnika koji podatci su prazni
+							\item Korisnik mijenja potrebne podatke i pokušava opet
+							
+						\end{packed_enum}
+						\item[2.b] Postoji korisnički račun s tim imenom
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti korisnika da postoji račun s tim imenom
+							\item Korisnik mijenja korisničko ime i pokušava opet
+							
+						\end{packed_enum}
+						\item[2.c] Nije odabrana niti jedna uloga
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti korisnika da račun mora imati neku ulogu
+							\item Korisnik dodaje jednu ili više uloga i pokušava opet
+							
+						\end{packed_enum}
+						
+					\end{packed_item}
+				\end{packed_item}
+				
+				\noindent \underbar{\textbf{UC5 - Pregled postojećih smještaja}}
+				\begin{packed_item}
+					
+					\item \textbf{Glavni sudionik: }Smještajni administrator
+					\item  \textbf{Cilj:} Pregledati postojeće smještaje
+					\item  \textbf{Sudionici:} Baza podataka
+					\item  \textbf{Preduvjet:} Prijava smještajnog administratora
+					\item  \textbf{Opis osnovnog tijeka:}
+					
+					\item[] \begin{packed_enum}
+						
+						\item Smještajni administrator odabire opcije "Postojeći smještaji"
+						\item Aplikacija prikazuje kao listu sve postojeće smještaje
+					\end{packed_enum}
+
+				\end{packed_item}
+				
+				\noindent \underbar{\textbf{UC6 - Dodavanje novog smještaja}}
+				\begin{packed_item}
+					
+					\item \textbf{Glavni sudionik: }Smještajni administrator
+					\item  \textbf{Cilj:} Dodati novi smještaj
+					\item  \textbf{Sudionici:} Baza podataka
+					\item  \textbf{Preduvjet:} Prijava smještajnog administratora
+					\item  \textbf{Opis osnovnog tijeka:}
+					
+					\item[] \begin{packed_enum}
+						
+						\item Unos potrebnih podataka za dodavanje novog smještaja
+						\item Provjera jesu li uneseni svi podatci
+						\item Upis novog smještaja u bazu podataka
+					\end{packed_enum}
+					
+					\item  \textbf{Opis mogućih odstupanja:}
+					
+					\item[] \begin{packed_item}
+						
+						\item[2.a] Neki od podataka nije unesen
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti korisnika koji podatci su prazni
+							\item Korisnik mijenja potrebne podatke i pokušava opet
+							
+						\end{packed_enum}
+						
+					\end{packed_item}
+				\end{packed_item}
+				
+				\noindent \underbar{\textbf{UC7 - Promjena podataka smještaja}}
+				\begin{packed_item}
+					
+					\item \textbf{Glavni sudionik: }Smještajni administrator
+					\item  \textbf{Cilj:} Promijeniti podatke smještaja
+					\item  \textbf{Sudionici:} Baza podataka
+					\item  \textbf{Preduvjet:} Prijava smještajnog administratora
+					\item  \textbf{Opis osnovnog tijeka:}
+					
+					\item[] \begin{packed_enum}
+						
+						\item Smještajni administrator odabire "Promijeni" opciju na smještaju
+						\item Smještajni administrator mijenja podatke o smještaju
+						\item Smještajni administrator sprema promijene
+						\item Pregledava se ispravnost podataka
+						\item Mijenjaju se podatci u bazi podataka
+					\end{packed_enum}
+					
+					\item  \textbf{Opis mogućih odstupanja:}
+					
+					\item[] \begin{packed_item}
+						
+						\item[3.a] Smještajni administrator izađe bez spremanja
+						\item[] \begin{packed_enum}
+							
+							\item Podatci se ne spremaju u bazu podataka
+							
+						\end{packed_enum}
+						
+						\item[4.a] Neki od podataka nije unesen
+						\item[] \begin{packed_enum}
+							
+							\item Obavijestiti smještajnog administratora koji podatci su prazni
+							\item Smještajni administrator mijenja potrebne podatke i pokušava opet
+							
+						\end{packed_enum}
+						
+					\end{packed_item}
+				\end{packed_item}
+				
+				\noindent \underbar{\textbf{UC8 - Brisanje smještaja}}
+				\begin{packed_item}
+					
+					\item \textbf{Glavni sudionik: }Smještajni administrator
+					\item  \textbf{Cilj:} Promijeniti podatke smještaja
+					\item  \textbf{Sudionici:} Baza podataka
+					\item  \textbf{Preduvjet:} Prijava smještajnog administratora
+					\item  \textbf{Opis osnovnog tijeka:}
+					
+					\item[] \begin{packed_enum}
+						
+						\item Smještajni administrator odabire "Izbriši" opciju na smještaju
+						\item Aplikacija pokazuje upit smještajnom administratoru je li siguran
+						\item Ako je smještaj se briše iz baze u protivnom se ništa ne desi
+					\end{packed_enum}
+
+				\end{packed_item}
+				
+			\noindent \underbar{\textbf{UC9 - Pregled postojećih prijevoznika}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: }Prijevozni administrator
+				\item  \textbf{Cilj:} Pregledati postojeće prijevoznike
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Prijava prijevoznog administratora
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Prijevozni administrator odabire opcije "Postojeći prijevoznici"
+					\item Aplikacija prikazuje kao listu sve postojeće prijevoznike
+				\end{packed_enum}
+				
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC10 - Dodavanje novog prijevoznika}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: }Prijevozni administrator
+				\item  \textbf{Cilj:} Dodati novog prijevoznika
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Prijava prijevoznog administratora
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Unos potrebnih podataka za dodavanje novog prijevoznika
+					\item Provjera jesu li uneseni svi podatci
+					\item Upis novog prijevoznika u bazu podataka
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.a] Neki od podataka nije unesen
+					\item[] \begin{packed_enum}
+						
+						\item Obavijestiti prijevoznog administratora koji podatci su prazni
+						\item Prijevozni administrator mijenja potrebne podatke i pokušava opet
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC11 - Promjena podataka smještaja}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: }Prijevozni administrator
+				\item  \textbf{Cilj:} Promijeniti podatke o prijevozniku
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Prijava prijevoznog administratora
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Prijevozni administrator odabire "Promijeni" opciju na postojećem prijevozniku
+					\item Prijevozni administrator mijenja podatke o prijevozniku
+					\item Prijevozni administrator sprema promijene
+					\item Pregledava se ispravnost podataka
+					\item Mijenjaju se podatci u bazi podataka
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[3.a] Prijevozni administrator izađe bez spremanja
+					\item[] \begin{packed_enum}
+						
+						\item Podatci se ne spremaju u bazu podataka
+						
+					\end{packed_enum}
+					
+					\item[4.a] Neki od podataka nije unesen
+					\item[] \begin{packed_enum}
+						
+						\item Obavijestiti prijevoznog administratora koji podatci su prazni
+						\item Prijevozni administrator mijenja potrebne podatke i pokušava opet
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC12 - Brisanje prijevoznika}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: }Prijevozni administrator
+				\item  \textbf{Cilj:} Promijeniti podatke smještaja
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Prijava prijevoznog administratora
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Prijevozni administrator odabire "Izbriši" opciju na prijevozniku
+					\item Aplikacija pokazuje upit prijevoznom administratoru je li siguran
+					\item Ako je, prijevoznik se briše iz baze u protivnom se ništa ne desi
+				\end{packed_enum}
+				
+			\end{packed_item}
+			
+			\noindent \underbar{\textbf{UC13 - Dodavanje novog korisnika}}
+			\begin{packed_item}
+				
+				\item \textbf{Glavni sudionik: }Korisnički administrator
+				\item  \textbf{Cilj:} Dodati novog korisnika
+				\item  \textbf{Sudionici:} Baza podataka
+				\item  \textbf{Preduvjet:} Prijava korisničkog administratora
+				\item  \textbf{Opis osnovnog tijeka:}
+				
+				\item[] \begin{packed_enum}
+					
+					\item Unos potrebnih podataka za dodavanje novog korisnika
+					\item Dohvat medicinskih podataka o korisniku
+					\item Provjera jesu li uneseni svi podatci
+					\item Upis novog prijevoznika u bazu podataka
+				\end{packed_enum}
+				
+				\item  \textbf{Opis mogućih odstupanja:}
+				
+				\item[] \begin{packed_item}
+					
+					\item[2.b] Ne mogu se dohvatiti medicinski podatci
+					\item[] \begin{packed_enum}
+						
+						\item Aplikacija pokušava dohvatiti podatke opet
+						\item Ako je podatke nemoguće dohvatiti, nemoguće je unijeti novog korisnika
+						
+					\end{packed_enum}
+					
+					\item[3.a] Neki od podataka nije unesen
+					\item[] \begin{packed_enum}
+						
+						\item Obavijestiti korisničkog administratora koji podatci su prazni
+						\item Korisnički administrator mijenja potrebne podatke i pokušava opet
+						
+					\end{packed_enum}
+					
+				\end{packed_item}
+			\end{packed_item}
 					
 				\subsubsection{Dijagrami obrazaca uporabe}
 					
