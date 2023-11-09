@@ -19,12 +19,55 @@
 			
 			\textbf{\textit{dio 1. revizije}}\\
 			
-		\textit{Potrebno je opisati koju vrstu i implementaciju baze podataka ste odabrali, glavne komponente od kojih se sastoji i slično.}
+		U našem projektu odabrali smo PostgrSQL kao susatav za upravljanje bazama podataka. Implementacija naše PostgrSQL baze podataka obuhvaća nekoliko ključnih elemenata, uključujući organizaciju podataka u tablicama i uspostavljanje veza između tablica radi složenih upita. Baza podatka sastoji se od slijedećih entiteta: 
+		
+		\begin{packed_item}
+			\item KLINIKA
+			\item SMJEŠTAJ
+			\item PRIJEVOZNIK
+			\item VOZILO
+			\item KORISNIK
+			\item PUTOVANJE
+		\end{packed_item}
 		
 			\subsection{Opis tablica}
 			
-
-				\textit{Svaku tablicu je potrebno opisati po zadanom predlošku. Lijevo se nalazi točno ime varijable u bazi podataka, u sredini se nalazi tip podataka, a desno se nalazi opis varijable. Svjetlozelenom bojom označite primarni ključ. Svjetlo plavom označite strani ključ}
+				\textbf{KLINIKA}\hspace{0.5cm}Entitet KLINIKA sadrži informacije o ID-u klinike, nazivu i adresi. Prema tome, entitet KLINIKA posjeduje sljedeće atribute: IDKlinika, naziv i adresa. Entitet KLINIKA u vezi je \textit{One-to-Many} s entitetom SMJEŠTAJ preko atributa IDKlinika i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDKlinika.
+				
+				\begin{longtblr}[
+					label=none,
+					entry=none
+					]{
+						width = \textwidth,
+						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						rowhead = 1,
+					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
+					\hline \SetCell[c=3]{c}{\textbf{KLINIKA}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}IDKlinika & INT	& Identifikacijski ključ klinike	\\ \hline
+					naziv	& VARCHAR & Naziv klinike\\ \hline 
+					adresa & VARCHAR & Adresa klinike\\ \hline 
+				\end{longtblr}
+				
+				\textbf{SMJEŠTAJ}\hspace{0.5cm}Entitet SMJEŠTAJ sadrži podatke o ID-u smještaja, tipu stana, kategoriji opremljenosti, adresi kao i vremenskom periodu dostupnosti za korištenje. Sukladno tome, entitet SMJEŠTAJ posjeduje sljedeće atribute: IDSmještaj, tip, kategorija, adresa i dostupnost. Entiet SMJEŠTAJ u vezi je  \textit{Many-to-One} s entitetom KLINIKA preko atributa IDKlinika i u vezi  \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPutovanje.
+				
+				\begin{longtblr}[
+					label=none,
+					entry=none
+					]{
+						width = \textwidth,
+						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						rowhead = 1,
+					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
+					\hline \SetCell[c=3]{c}{\textbf{SMJEŠTAJ}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}IDSmještaj & INT	&  Identifikacijski ključ smještaja	\\ \hline
+					tip	& VARCHAR &  Tip stana\\ \hline 
+					kategorija & VARCHAR & Kategorija opremljenosti  \\ \hline 
+					adresa & VARCHAR	&  Adresa smještaja\\ \hline 
+					dostupnost & TIMESTAMP	&  Vremenski period dostupnosti za korištenje\\ \hline 
+					\SetCell{LightBlue} IDKlinika & INT	&  Identifikacijski ključ klinike  	\\ \hline 
+				\end{longtblr}
+				
+				\textbf{PRIJEVOZNIK}\hspace{0.5cm}Entitet PRIJEVOZNIK sadrži informacije o ID-u prijevoznika, kontaktnim podacima i o radnom vremenu u kojem su raspoloživi. Prema tome, entitet PRIJEVOZNIK posjeduje sljedeće atribute: IDKPrijevoznik, kontakt i radnoVrijeme. Entitet PRIJEVOZNIK u vezi je \textit{One-to-Many} s entitetom VOZILO preko atributa IDPrijevoznik i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPrijevoznik.
 				
 				
 				\begin{longtblr}[
@@ -35,14 +78,68 @@
 						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
-					\hline \SetCell[c=3]{c}{\textbf{korisnik - ime tablice}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}IDKorisnik & INT	&  	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  	\\ \hline
-					korisnickoIme	& VARCHAR &   	\\ \hline 
-					email & VARCHAR &   \\ \hline 
-					ime & VARCHAR	&  		\\ \hline 
-					\SetCell{LightBlue} primjer	& VARCHAR &   	\\ \hline 
+					\hline \SetCell[c=3]{c}{\textbf{PRIJEVOZNIK}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}IDPrijevoznik & INT	& Identifikacijski ključ prijevoznika	\\ \hline
+					kontakt	& VARCHAR &  Kontaktni podatci prijevoznika	\\ \hline 
+					radnoVrijeme & TIME & Radno vrijeme u kojem su prijevoznici raspoloživi  \\ \hline 
 				\end{longtblr}
 				
+				\textbf{VOZILO}\hspace{0.5cm}Entitet VOZILO sadrži informacije o ID-u vozila, vrsti i kapacitet prijevoznog sredstva. Prema tome, entitet VOZILO posjeduje sljedeće atribute: IDVozilo, vrsta i kapacitet. Entitet VOZILO u vezi je \textit{Many-to-One} s entitetom PRIJEVOZNIK preko atributa IDPrijevoznik.
+				
+				\begin{longtblr}[
+					label=none,
+					entry=none
+					]{
+						width = \textwidth,
+						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						rowhead = 1,
+					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
+					\hline \SetCell[c=3]{c}{\textbf{VOZILO}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}IDVozilo & INT	&  Identifikacijski ključ vozila	\\ \hline
+					vrsta	& VARCHAR & Vrsta vozila\\ \hline 
+					kapacitet & VARCHAR & Kapacitet vozila\\ \hline 
+					\SetCell{LightBlue} IDPrijevoznik & INT	& Identifikacijski ključ prijevoznika   	\\ \hline 
+				\end{longtblr}
+				
+				\textbf{KORISNIK}\hspace{0.5cm}Entitet KORISNIK sadrži informacije o ID-u korisnika, imenu, prezimenu, kontaktnim podacima i preferencijama vezanim uz veličinu i kvalitetu smještaja. Prema tome, entitet KORISNIK posjeduje sljedeće atribute: IDKorisnik, ime, prezime, kontakt i preferencije. Entitet KORISNIK u vezi je \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDKorisnik.
+				
+				\begin{longtblr}[
+					label=none,
+					entry=none
+					]{
+						width = \textwidth,
+						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						rowhead = 1,
+					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
+					\hline \SetCell[c=3]{c}{\textbf{KORISNIK}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}IDKorisnik & INT	&  Identifikacijski ključ korisnika	\\ \hline
+					ime	& VARCHAR & Ime korisnika	\\ \hline 
+					prezime & VARCHAR & Prezime korisnika \\ \hline
+					kontakt & VARCHAR & Kontakt korisnika \\ \hline 
+					preferencije & VARCHAR	& Preferencije vezane uz veličinu i kvalitetu smještaja\\ \hline 
+				\end{longtblr}
+				
+				\textbf{PUTOVANJE}\hspace{0.5cm}Entitet PUTOVANJE sadrži informacije o ID-u putovanja, vremenu i smjeru putovanja. Prema tome, entitet PUTOVANJE posjeduje sljedeće atribute: IDPutovanje, vrijeme i smjer. Entitet PUTOVANJE u vezi je \textit{Many-to-One} s enitetom KLINIKA preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom SMJEŠTAJ preko atributa IDSmještaj, u vezi \textit{Many-to-One} s enitetom KORISNIK preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom PRIJEVOZNIK preko atributa IDPrijevoznik. Atributi adresa1 i adresa2 su atributi iz kojih saznajemo adresu polaska ili dolaska u ovisnosti o smjeru koji može biti 1 ili 0. Entitet PUTOVANJE u vezi je \textit{One-to-One} s enitetom KLINIKA preko atributa adresa, u vezi \textit{One-to-One} s enitetom SMJEŠTAJ preko atributa adresa.
+				
+				\begin{longtblr}[
+				label=none,
+				entry=none
+					]{
+						width = \textwidth,
+						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
+						rowhead = 1,
+					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
+					\hline \SetCell[c=3]{c}{\textbf{PUTOVANJE}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}IDPutovanje & INT	&  Identifikacijski ključ putovanja	\\ \hline
+					vrijeme	& TIME &  Vrijeme putovanja	\\ \hline 
+					smjer & INT &  Smjer u kojem se putovanje izvodi \\ \hline 
+					\SetCell{LightBlue} adresa1 & VARCHAR	&  Adresa klinike\\ \hline
+					\SetCell{LightBlue} adresa2 & VARCHAR	& Adresa smještaja\\ \hline 
+					\SetCell{LightBlue} IDKorisnik & INT	&  Identifikacijski ključ korisnika	\\ \hline 
+					\SetCell{LightBlue} IDKlinika & INT	& Identifikacijski ključ klinike	\\ \hline
+					\SetCell{LightBlue} IDPrijevoznik & INT	& Identifikacijski ključ prijevoznika	\\ \hline
+					\SetCell{LightBlue} IDSmještaj & INT	& Identifikacijski ključ smještaja	\\ \hline
+				\end{longtblr}
 				
 			
 			\subsection{Dijagram baze podataka}
