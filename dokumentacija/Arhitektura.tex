@@ -32,7 +32,7 @@
 		
 			\subsection{Opis tablica}
 			
-				\textbf{KLINIKA}\hspace{0.5cm}Entitet KLINIKA sadrži informacije o ID-u klinike, nazivu i adresi. Prema tome, entitet KLINIKA posjeduje sljedeće atribute: IDKlinika, naziv i adresa. Entitet KLINIKA u vezi je \textit{One-to-Many} s entitetom SMJEŠTAJ preko atributa IDKlinika i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDKlinika.
+				\textbf{KLINIKA}\hspace{0.5cm}Entitet KLINIKA sadrži informacije o ID-u klinike, nazivu i adresi. Prema tome, entitet KLINIKA posjeduje sljedeće atribute: IDKlinika, naziv i adresa. Entitet KLINIKA u vezi je \textit{One-to-Many} s entitetom SMJESTAJ preko atributa IDKlinika i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDKlinika. Također je u \textit{One-to-Many} vezi s enitetom PUTOVANJE preko atributa adresa.
 				
 				\begin{longtblr}[
 					label=none,
@@ -48,7 +48,7 @@
 					adresa & VARCHAR & Adresa klinike\\ \hline 
 				\end{longtblr}
 				
-				\textbf{SMJEŠTAJ}\hspace{0.5cm}Entitet SMJEŠTAJ sadrži podatke o ID-u smještaja, tipu stana, kategoriji opremljenosti, adresi kao i vremenskom periodu dostupnosti za korištenje. Sukladno tome, entitet SMJEŠTAJ posjeduje sljedeće atribute: IDSmještaj, tip, kategorija, adresa i dostupnost. Entiet SMJEŠTAJ u vezi je  \textit{Many-to-One} s entitetom KLINIKA preko atributa IDKlinika i u vezi  \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPutovanje.
+				\textbf{SMJESTAJ}\hspace{0.5cm}Entitet SMJESTAJ sadrži podatke o ID-u smještaja, tipu stana, kategoriji opremljenosti, adresi kao i vremenskom periodu dostupnosti za korištenje. Sukladno tome, entitet SMJESTAJ posjeduje sljedeće atribute: IDSmjestaj, tip, kategorija, adresa i dostupnost. Entiet SMJESTAJ u vezi je  \textit{Many-to-One} s entitetom KLINIKA preko atributa IDKlinika i u vezi  \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPutovanje. Također je u \textit{One-to-Many} vezi s enitetom PUTOVANJE preko atributa adresa.
 				
 				\begin{longtblr}[
 					label=none,
@@ -58,16 +58,16 @@
 						colspec={|X[6,l]|X[6, l]|X[20, l]|}, 
 						rowhead = 1,
 					} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
-					\hline \SetCell[c=3]{c}{\textbf{SMJEŠTAJ}}	 \\ \hline[3pt]
-					\SetCell{LightGreen}IDSmještaj & INT	&  Identifikacijski ključ smještaja	\\ \hline
+					\hline \SetCell[c=3]{c}{\textbf{SMJESTAJ}}	 \\ \hline[3pt]
+					\SetCell{LightGreen}IDSmjestaj & INT	&  Identifikacijski ključ smještaja	\\ \hline
 					tip	& VARCHAR &  Tip stana\\ \hline 
 					kategorija & VARCHAR & Kategorija opremljenosti  \\ \hline 
 					adresa & VARCHAR	&  Adresa smještaja\\ \hline 
-					dostupnost & TIMESTAMP	&  Vremenski period dostupnosti za korištenje\\ \hline 
+					dostupnost & INTERVAL	&  Vremenski period dostupnosti za korištenje\\ \hline 
 					\SetCell{LightBlue} IDKlinika & INT	&  Identifikacijski ključ klinike  	\\ \hline 
 				\end{longtblr}
 				
-				\textbf{PRIJEVOZNIK}\hspace{0.5cm}Entitet PRIJEVOZNIK sadrži informacije o ID-u prijevoznika, kontaktnim podacima i o radnom vremenu u kojem su raspoloživi. Prema tome, entitet PRIJEVOZNIK posjeduje sljedeće atribute: IDKPrijevoznik, kontakt i radnoVrijeme. Entitet PRIJEVOZNIK u vezi je \textit{One-to-Many} s entitetom VOZILO preko atributa IDPrijevoznik i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPrijevoznik.
+				\textbf{PRIJEVOZNIK}\hspace{0.5cm}Entitet PRIJEVOZNIK sadrži informacije o ID-u prijevoznika, kontaktnim podacima i o radnom vremenu u kojem je prijevoznik raspoloživ. Prema tome, entitet PRIJEVOZNIK posjeduje sljedeće atribute: IDPrijevoznik, kontakt i radnoVrijeme. Entitet PRIJEVOZNIK u vezi je \textit{One-to-Many} s entitetom VOZILO preko atributa IDPrijevoznik i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPrijevoznik.
 				
 				
 				\begin{longtblr}[
@@ -84,7 +84,7 @@
 					radnoVrijeme & TIME & Radno vrijeme u kojem su prijevoznici raspoloživi  \\ \hline 
 				\end{longtblr}
 				
-				\textbf{VOZILO}\hspace{0.5cm}Entitet VOZILO sadrži informacije o ID-u vozila, vrsti i kapacitet prijevoznog sredstva. Prema tome, entitet VOZILO posjeduje sljedeće atribute: IDVozilo, vrsta i kapacitet. Entitet VOZILO u vezi je \textit{Many-to-One} s entitetom PRIJEVOZNIK preko atributa IDPrijevoznik.
+				\textbf{VOZILO}\hspace{0.5cm}Entitet VOZILO sadrži informacije o ID-u vozila, vrsti i kapacitetu prijevoznog sredstva. Prema tome, entitet VOZILO posjeduje sljedeće atribute: IDVozilo, vrsta i kapacitet. Entitet VOZILO u vezi je \textit{Many-to-One} s entitetom PRIJEVOZNIK preko atributa IDPrijevoznik.
 				
 				\begin{longtblr}[
 					label=none,
@@ -119,7 +119,7 @@
 					preferencije & VARCHAR	& Preferencije vezane uz veličinu i kvalitetu smještaja\\ \hline 
 				\end{longtblr}
 				
-				\textbf{PUTOVANJE}\hspace{0.5cm}Entitet PUTOVANJE sadrži informacije o ID-u putovanja, vremenu i smjeru putovanja. Prema tome, entitet PUTOVANJE posjeduje sljedeće atribute: IDPutovanje, vrijeme i smjer. Entitet PUTOVANJE u vezi je \textit{Many-to-One} s enitetom KLINIKA preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom SMJEŠTAJ preko atributa IDSmještaj, u vezi \textit{Many-to-One} s enitetom KORISNIK preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom PRIJEVOZNIK preko atributa IDPrijevoznik. Atributi adresa1 i adresa2 su atributi iz kojih saznajemo adresu polaska ili dolaska u ovisnosti o smjeru koji može biti 1 ili 0. Entitet PUTOVANJE u vezi je \textit{One-to-One} s enitetom KLINIKA preko atributa adresa, u vezi \textit{One-to-One} s enitetom SMJEŠTAJ preko atributa adresa.
+				\textbf{PUTOVANJE}\hspace{0.5cm}Entitet PUTOVANJE sadrži informacije o ID-u putovanja, vremenu i smjeru putovanja. Prema tome, entitet PUTOVANJE posjeduje sljedeće atribute: IDPutovanje, vrijeme i smjer. Entitet PUTOVANJE u vezi je \textit{Many-to-One} s enitetom KLINIKA preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom SMJESTAJ preko atributa IDSmjestaj, u vezi \textit{Many-to-One} s enitetom KORISNIK preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom PRIJEVOZNIK preko atributa IDPrijevoznik. Atributi adresa1 i adresa2 su atributi iz kojih saznajemo adresu polaska ili dolaska u ovisnosti o smjeru koji može biti 1 ili 0. Entitet PUTOVANJE u vezi je \textit{Many-to-One} s enitetom KLINIKA preko atributa adresa1, u vezi \textit{Many-to-One} s enitetom SMJESTAJ preko atributa adresa2.
 				
 				\begin{longtblr}[
 				label=none,
@@ -138,12 +138,20 @@
 					\SetCell{LightBlue} IDKorisnik & INT	&  Identifikacijski ključ korisnika	\\ \hline 
 					\SetCell{LightBlue} IDKlinika & INT	& Identifikacijski ključ klinike	\\ \hline
 					\SetCell{LightBlue} IDPrijevoznik & INT	& Identifikacijski ključ prijevoznika	\\ \hline
-					\SetCell{LightBlue} IDSmještaj & INT	& Identifikacijski ključ smještaja	\\ \hline
+					\SetCell{LightBlue} IDSmjestaj & INT	& Identifikacijski ključ smještaja	\\ \hline
 				\end{longtblr}
 				
+			\eject
 			
 			\subsection{Dijagram baze podataka}
-				\textit{ U ovom potpoglavlju potrebno je umetnuti dijagram baze podataka. Primarni i strani ključevi moraju biti označeni, a tablice povezane. Bazu podataka je potrebno normalizirati. Podsjetite se kolegija "Baze podataka".}
+					
+				\begin{figure}[htbp]
+					\centering
+					\includegraphics[width=0.9\textwidth]{slike/bazaPodataka.png}
+					\caption{Relacijska shema baze podataka}
+					\label{fig:bazaPodataka}
+				\end{figure}
+				
 			
 			\eject
 			
