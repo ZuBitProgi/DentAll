@@ -70,16 +70,6 @@
 					
 				\end{packed_enum}
 				
-				\item  \underbar{Aplikacija (sudionik) može:}
-				
-				\begin{packed_enum}
-					
-					\item Dohvatiti medicinske podatke s vanjskog sučelja
-					\item Poslati poruku elektroničke pošte klijentima i 
-					\item Pohranjuje ne medicinske podatke o klijentima
-					
-				\end{packed_enum}
-				
 					
 			\end{packed_enum}
 			
@@ -446,7 +436,7 @@
 				\end{packed_item}
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC11 - Promjena podataka smještaja}}
+			\noindent \underbar{\textbf{UC11 - Promjena podataka o prijevozniku}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik: }Prijevozni administrator
@@ -504,7 +494,7 @@
 				
 			\end{packed_item}
 			
-			\noindent \underbar{\textbf{UC13 - Dodavanje novog korisnika}}
+			\noindent \underbar{\textbf{UC13 - Dodavanje novog klijenta}}
 			\begin{packed_item}
 				
 				\item \textbf{Glavni sudionik: }Korisnički administrator
@@ -518,7 +508,9 @@
 					\item Unos potrebnih podataka za dodavanje novog korisnika
 					\item Dohvat medicinskih podataka o korisniku
 					\item Provjera jesu li uneseni svi podatci
-					\item Upis novog prijevoznika u bazu podataka
+					\item Dodjela smještaja klijentu
+					\item Slanje poruke elektroničke pošte klijentu i prijevozniku o zaključenom planu 
+
 				\end{packed_enum}
 				
 				\item  \textbf{Opis mogućih odstupanja:}
@@ -543,6 +535,7 @@
 					
 				\end{packed_item}
 			\end{packed_item}
+			
 					
 				\subsubsection{Dijagrami obrazaca uporabe}
 					
@@ -550,6 +543,10 @@
 				\eject		
 				
 			\subsection{Sekvencijski dijagrami}
+			\textbf{Obrazac uporabe UC4: Dodavanje novog korisnika}
+			
+			Smještajni administrator odabire opciju dodaj novog korisnika. Web-aplikacija mu otvara obrazac za dodaju novog korisnika. Smještajni administrator upisuje korisničko ime, lozinku i odabire uloge koje će novi administrator imati i šalje zahtjev aplikaciji. Aplikacija radi provjeru ispravnosti tih podataka i ako su ispravni šalje ih bazi podataka. Baza podataka provjerava postoji li već administrator s tim korisničkim imenom i ako ne dodaje novog administratora. Smještajnom administratoru aplikacija javlja da je unos uspješno izvršen.
+			
 				
 				\textbf{\textit{dio 1. revizije}}\\
 				

@@ -1,3 +1,4 @@
+
 %definira klasu dokumenta 
 \documentclass[12pt]{report} 
 
@@ -20,11 +21,13 @@
 \usepackage[classicReIm]{kpfonts}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
 
 \usepackage{float}
 \usepackage{setspace}
 \restylefloat{table}
 
+\graphicspath{ {./images/} }
 
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{} %redefiniranje stila stranice u paketu fancyhdr
 
