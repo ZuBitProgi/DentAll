@@ -1,0 +1,113 @@
+.index {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .index .overlap-group-wrapper {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(180deg, rgb(135.94, 177.53, 239.9) 0%, rgba(245, 245, 245, 0) 100%);
+    left: 0;
+    position: fixed;
+    top: 0;
+
+  }
+
+
+  
+  .index .overlap-group {
+    background-color: #d9d9d9;
+    height: 650px;
+    left: 480px;
+    position: relative;
+    top: 113px;
+    width: 480px;
+    border-radius: 15px;
+    border-color: #000000;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+
+  
+    
+  }
+  
+  .index .overlap {
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 59px;
+    left: 62px;
+    position: absolute;
+    top: 152px;
+    width: 356px;
+  }
+  
+  .index .input {
+    background-color: transparent;
+    border: 0;
+    border-color: white;
+    color: black;
+    font-family: "Inter", Helvetica;
+    font-size: 26px;
+    font-weight: 300;
+    height: 31px;
+    left: 22px;
+    letter-spacing: 0;
+    line-height: normal;
+    padding: 0;
+    position: relative;
+    top: 13px;
+    width: 317px;
+  }
+  
+  .index .password-wrapper {
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 59px;
+    left: 62px;
+    position: absolute;
+    top: 239px;
+    width: 356px;
+  }
+  
+  .index .text-wrapper {
+    color: #000000;
+    font-family: "Inter", Helvetica;
+    font-size: 36px;
+    font-weight: 600;
+    left: 148px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 56px;
+  }
+  
+  .index .btn{
+
+    height: 67px;
+    left: 127px;
+    position: absolute;
+    top: 425px;
+    /*transition: all 0.2s ease;*/
+    width: 225px;
+    background-color: #297bf6;
+    font-family: "Inter",Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    border-radius: 35px;
+    color: white;
+    font-weight: 600;
+    border: 0;
+    
+  }
+
+ button.btn:hover, button.btn:active{
+  background-color: #6192dc;
+  transform: scale(1.1);
+ }
+
+  ::placeholder{
+    color: #b1aeae;
+  }
+  
