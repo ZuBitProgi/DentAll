@@ -1,5 +1,6 @@
-package com.dental.klinika;
+package com.dental.dao;
 
+import com.dental.models.Prijevoznik;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
@@ -7,15 +8,15 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class KlinikaDao {
+public class PrijevoznikDao {
     @PersistenceContext
     private EntityManager em;
 
-    public void persist(Klinika klinika){
-        em.persist(klinika);
+    public void persist(Prijevoznik prijevoznik){
+        em.persist(prijevoznik);
     }
 
     public List findAll(){
-        return em.createQuery("SELECT k FROM Klinika k").getResultList();
+        return em.createQuery("SELECT p FROM Prijevoznik p").getResultList();
     }
 }

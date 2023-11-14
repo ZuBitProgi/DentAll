@@ -1,4 +1,4 @@
-package com.dental.korisnik;
+package com.dental.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

@@ -1,5 +1,7 @@
-package com.dental.korisnik;
+package com.dental.service;
 
+import com.dental.dao.KorisnikDao;
+import com.dental.models.Korisnik;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

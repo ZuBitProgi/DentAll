@@ -1,5 +1,7 @@
-package com.dental.klinika;
+package com.dental.service;
 
+import com.dental.dao.KlinikaDao;
+import com.dental.models.Klinika;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

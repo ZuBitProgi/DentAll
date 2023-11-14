@@ -1,5 +1,7 @@
-package com.dental.vozilo;
+package com.dental.service;
 
+import com.dental.dao.VoziloDao;
+import com.dental.models.Vozilo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

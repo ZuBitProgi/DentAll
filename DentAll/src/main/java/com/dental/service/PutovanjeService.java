@@ -1,5 +1,7 @@
-package com.dental.putovanje;
+package com.dental.service;
 
+import com.dental.dao.PutovanjeDao;
+import com.dental.models.Putovanje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
