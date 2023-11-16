@@ -26,7 +26,7 @@ export const Index = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     
-    const response = await fetch("http://192.168.235.76:8080/auth/login", {
+    const response = await fetch("https://agile-ridge-09195-1f7638144d91.herokuapp.com/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
