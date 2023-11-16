@@ -1,1 +1,1 @@
-export {Index} from "./Filee"
+export {Index} from "./Index"

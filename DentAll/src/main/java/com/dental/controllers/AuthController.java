@@ -60,7 +60,7 @@ public class AuthController {
 
    }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
 
         Authentication authentication = authenticationManager.authenticate(
