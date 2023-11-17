@@ -2,12 +2,6 @@
 		
 	\section{Funkcionalni zahtjevi}
 			
-			\textbf{\textit{dio 1. revizije}}\\
-			
-			\textit{Navesti \textbf{dionike} koji imaju \textbf{interes u ovom sustavu} ili  \textbf{su nositelji odgovornosti}. To su prije svega korisnici, ali i administratori sustava, naručitelji, razvojni tim.}\\
-				
-			\textit{Navesti \textbf{aktore} koji izravno \textbf{koriste} ili \textbf{komuniciraju sa sustavom}. Oni mogu imati inicijatorsku ulogu, tj. započinju određene procese u sustavu ili samo sudioničku ulogu, tj. obavljaju određeni posao. Za svakog aktora navesti funkcionalne zahtjeve koji se na njega odnose.}\\
-			
 			
 			\noindent \textbf{Dionici:}
 			
@@ -75,50 +69,7 @@
 			
 			\eject 
 			
-			
-				
-			\subsection{Obrasci uporabe}
-				
-				\textbf{\textit{dio 1. revizije}}
-				
-				\subsubsection{Opis obrazaca uporabe}
-					\textit{Funkcionalne zahtjeve razraditi u obliku obrazaca uporabe. Svaki obrazac je potrebno razraditi prema donjem predlošku. Ukoliko u nekom koraku može doći do odstupanja, potrebno je to odstupanje opisati i po mogućnosti ponuditi rješenje kojim bi se tijek obrasca vratio na osnovni tijek.}\\
-					
 
-					\noindent \underbar{\textbf{UC$<$broj obrasca$>$ -$<$ime obrasca$>$}}
-					\begin{packed_item}
-	
-						\item \textbf{Glavni sudionik: }$<$sudionik$>$
-						\item  \textbf{Cilj:} $<$cilj$>$
-						\item  \textbf{Sudionici:} $<$sudionici$>$
-						\item  \textbf{Preduvjet:} $<$preduvjet$>$
-						\item  \textbf{Opis osnovnog tijeka:}
-						
-						\item[] \begin{packed_enum}
-	
-							\item $<$opis korak jedan$>$
-							\item $<$opis korak dva$>$
-							\item $<$opis korak tri$>$
-							\item $<$opis korak četiri$>$
-							\item $<$opis korak pet$>$
-						\end{packed_enum}
-						
-						\item  \textbf{Opis mogućih odstupanja:}
-						
-						\item[] \begin{packed_item}
-	
-							\item[2.a] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[] \begin{packed_enum}
-								
-								\item $<$opis rješenja mogućeg scenarija korak 1$>$
-								\item $<$opis rješenja mogućeg scenarija korak 2$>$
-								
-							\end{packed_enum}
-							\item[2.b] $<$opis mogućeg scenarija odstupanja u koraku 2$>$
-							\item[3.a] $<$opis mogućeg scenarija odstupanja  u koraku 3$>$
-							
-						\end{packed_item}
-					\end{packed_item}
 					
 					\noindent \underbar{\textbf{UC1 - Prijava smještajnog administratora}}
 					\begin{packed_item}
@@ -126,7 +77,6 @@
 						\item \textbf{Glavni sudionik: }Smještajni administrator
 						\item  \textbf{Cilj:} Prijaviti se u sustav kao smještajni administrator
 						\item  \textbf{Sudionici:} Baza podataka
-						\item  \textbf{Preduvjet:} Registracija?
 						\item  \textbf{Opis osnovnog tijeka:}
 						
 						\item[] \begin{packed_enum}
@@ -165,7 +115,6 @@
 					\item \textbf{Glavni sudionik: }Prijevozni administrator
 					\item  \textbf{Cilj:} Prijaviti se u sustav kao prijevozni administrator
 					\item  \textbf{Sudionici:} Baza podataka
-					\item  \textbf{Preduvjet:} Registracija?
 					\item  \textbf{Opis osnovnog tijeka:}
 					
 					\item[] \begin{packed_enum}
@@ -204,7 +153,6 @@
 					\item \textbf{Glavni sudionik: }Korisnički administrator
 					\item  \textbf{Cilj:} Prijaviti se u sustav kao korisnički administrator
 					\item  \textbf{Sudionici:} Baza podataka
-					\item  \textbf{Preduvjet:} Registracija?
 					\item  \textbf{Opis osnovnog tijeka:}
 					
 					\item[] \begin{packed_enum}
@@ -294,7 +242,7 @@
 					\item[] \begin{packed_enum}
 						
 						\item Smještajni administrator odabire opcije "Postojeći smještaji"
-						\item Aplikacija prikazuje kao listu sve postojeće smještaje
+						\item Aplikacija prikazuje kao listu sve postojeće smještaje i prikazuje kartu s njihovim adresama
 					\end{packed_enum}
 
 				\end{packed_item}
@@ -539,25 +487,61 @@
 					
 				\subsubsection{Dijagrami obrazaca uporabe}
 					
-					\textit{Prikazati odnos aktora i obrazaca uporabe odgovarajućim UML dijagramom. Nije nužno nacrtati sve na jednom dijagramu. Modelirati po razinama apstrakcije i skupovima srodnih funkcionalnosti.}
+					\includegraphics[scale=0.37]{./dijagrami/fun_house}
+					\eject
+					\includegraphics[scale=0.33]{./dijagrami/fun_trans}
+					\eject
+					\includegraphics[scale=0.3]{./dijagrami/fun_kor}
 				\eject		
 				
 			\subsection{Sekvencijski dijagrami}
 			\textbf{Obrazac uporabe UC4: Dodavanje novog korisnika}
 			
-			Smještajni administrator odabire opciju dodaj novog korisnika. Web-aplikacija mu otvara obrazac za dodaju novog korisnika. Smještajni administrator upisuje korisničko ime, lozinku i odabire uloge koje će novi administrator imati i šalje zahtjev aplikaciji. Aplikacija radi provjeru ispravnosti tih podataka i ako su ispravni šalje ih bazi podataka. Baza podataka provjerava postoji li već administrator s tim korisničkim imenom i ako ne dodaje novog administratora. Smještajnom administratoru aplikacija javlja da je unos uspješno izvršen.
+			Smještajni administrator odabire opciju dodaj novog korisnika. Web-aplikacija mu otvara obrazac za dodavanje novog korisnika. Smještajni administrator upisuje korisničko ime, lozinku i odabire uloge koje će novi administrator imati i šalje zahtjev aplikaciji. Aplikacija radi provjeru ispravnosti tih podataka i ako su ispravni šalje ih bazi podataka. Baza podataka provjerava postoji li već administrator s tim korisničkim imenom i ako ne dodaje novog administratora. Smještajnom administratoru aplikacija javlja da je unos uspješno izvršen.
+			{
+			\begin{center} 
+			\includegraphics[scale=0.33]{./dijagrami/sec_uc4}
+			\end{center}
+			}
+			\eject
+			
+			
+			\textbf{Obrazac uporabe UC6: Dodavanje novog smještaja}
+			
+			Smještajni administrator odabire opciju dodaj novi smještaj. Web-aplikacija mu otvara obrazac za dodavanje novog smještaja. Smještajni administrator upisuje sve potrebne informacije za dodavanje smještaja. Ako su svi potrebni podatci ispunjeni aplikacija šalje podatke bazi podataka. Baza podataka registrira novi smještaj i vraća informaciju da je smještaj ispravno unesen.
+			{
+			\begin{center} 
+			\includegraphics[scale=0.32]{./dijagrami/sec_uc6}
+			\end{center}
+			}
+			\eject
+			
+						
+			\textbf{Obrazac uporabe UC13: Dodavanje novog klijenta}
+			
+			Korisnički administrator odabire opciju dodaj novog korisnika. Aplikacija mu pokazuje obrazac za dodavanje novog klijenta. Nakon što upiše sve potrebne podatke aplikacija pokušava dohvatiti podatke od klijenta iz API-a klinike. Ako prvi put ne uspije pokušava opet, a ako i drugi put ne uspije javlja administratoru da trenutno unos nije moguć. Ako je dohvat uspješan klijent se dodaje u bazu podataka i aplikacija šalje poruke elektroničke pošte klijentu i prijevozniku odgovornom za klijenta, a administratoru se javlja da je unos uspješan.
+			{
+			\begin{center}
+			\includegraphics[scale=0.35]{./dijagrami/sec_uc13}
+			\end{center}
+			}
+			\eject
 			
 				
-				\textbf{\textit{dio 1. revizije}}\\
-				
-				\textit{Nacrtati sekvencijske dijagrame koji modeliraju najvažnije dijelove sustava (max. 4 dijagrama). Ukoliko postoji nedoumica oko odabira, razjasniti s asistentom. Uz svaki dijagram napisati detaljni opis dijagrama.}
-				\eject
 	
 		\section{Ostali zahtjevi}
 		
-			\textbf{\textit{dio 1. revizije}}\\
-		 
-			 \textit{Nefunkcionalni zahtjevi i zahtjevi domene primjene dopunjuju funkcionalne zahtjeve. Oni opisuju \textbf{kako se sustav treba ponašati} i koja \textbf{ograničenja} treba poštivati (performanse, korisničko iskustvo, pouzdanost, standardi kvalitete, sigurnost...). Primjeri takvih zahtjeva u Vašem projektu mogu biti: podržani jezici korisničkog sučelja, vrijeme odziva, najveći mogući podržani broj korisnika, podržane web/mobilne platforme, razina zaštite (protokoli komunikacije, kriptiranje...)... Svaki takav zahtjev potrebno je navesti u jednoj ili dvije rečenice.}
+		\begin{packed_item}
+			\item Sustav treba omogućiti udaljeni pristup administratorima
+			\item Sustav treba omogućiti istovremeni rad više korisnika
+			\item Sve operacije s bazom podataka moraju biti sigurne, a lozinke zaštićene
+			\item Sustav bilo kakve greške treba dojaviti administratorima na pregledan način umjesto da sruši sustav
+			\item Sustav mora poslati pravilno formatirane poruke elektroničke pošte kako one ne bi završile u spam-u
+			\item Sustav mora biti dovoljno općenito implementiran kako bi bio lagano nadogradiv
+			\item Sustav mora biti izgrađen koristeći principe objektno orijentiranog programiranja
+			\item Sustav mora biti jednostavno izgrađen i svi obavezni podatci za unos moraju biti jasno naznačeni
+			\item Greška u unosi ne smije srušiti sustav
+		\end{packed_item}
 			 
 			 
 			 
