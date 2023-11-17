@@ -1,115 +1,55 @@
 \chapter{Opis projektnog zadatka}
 		
-		\textbf{\textit{dio 1. revizije}}\\
+		Ideja ovog projekta je napraviti aplikaciju koja olakšava dentalnim klinikama proces ponude potpunog plana liječenja koji uključuje medicinske podatke, smještaj u kojem će se pacijent nalaziti i prijevoz od klinike do smještaja i obratno. Ovo je važna aplikacija za klinike koje žele svoje usluge ponuditi pacijentima iz drugih gradova ili država, tzv. "dentalni turizam", zato što ih mogućnost takve ponude čini puno privlačnijima potencijalnim klijentima koji nisu upoznati s lokacijom na kojoj se klinika nalazi. Time se klijenti, a i klinike mogu fokusirati samo na posao, a naša aplikacija obavlja svu logistiku.
 		
-		\textit{Na osnovi projektnog zadatka detaljno opisati korisničke zahtjeve. Što jasnije opisati cilj projektnog zadatka, razraditi problematiku zadatka, dodati nove aspekte problema i potencijalnih rješenja. Očekuje se minimalno 3, a poželjno 4-5 stranica opisa.	Teme koje treba dodatno razraditi u ovom poglavlju su:}
-		\begin{packed_item}
-			\item \textit{potencijalna korist ovog projekta}
-			\item \textit{postojeća slična rješenja (istražiti i ukratko opisati razlike u odnosu na zadani zadatak). Dodajte slike koja predočavaju slična rješenja.}
-			\item \textit{skup korisnika koji bi mogao biti zainteresiran za ostvareno rješenje.}
-			\item \textit{mogućnost prilagodbe rješenja }
-			\item \textit{opseg projektnog zadatka}
-			\item \textit{moguće nadogradnje projektnog zadatka}
-		\end{packed_item}
+		Aplikaciju mogu koristiti sve dentalne klinike kojima je potrebna organizacija smještaja i prijevoza na relaciji smještaj-klinika. Posebice ciljamo na klinike koje žele proširiti posao oglašavanjem u inozemstvu i žele ponuditi potpuni paket potencijalnim klijentima kako bi se istaknule naspram konkurencije. Takvim klinikama je ovakva aplikacija jako potrebna zato što je jedan od glavnih razloga zašto dentalni turizam nije popularan koliko bi mogao biti činjenica da je potencijalnim klijentima težak zadatak samostalno organizirati ovakvo putovanje u stranu državu o kojoj možda ništa ne znaju.
 		
-		\textit{Za pomoć pogledati reference navedene u poglavlju „Popis literature“, a po potrebi konzultirati sadržaj na internetu koji nudi dobre smjernice u tom pogledu.}
-		\eject
-		
-		\section{Primjeri u \LaTeX u}
-		
-		\textit{Ovo potpoglavlje izbrisati.}\\
-
-		U nastavku se nalaze različiti primjeri kako koristiti osnovne funkcionalnosti \LaTeX a koje su potrebne za izradu dokumentacije. Za dodatnu pomoć obratiti se asistentu na projektu ili potražiti upute na sljedećim web sjedištima:
-		\begin{itemize}
-			\item Upute za izradu diplomskog rada u \LaTeX u - \url{https://www.fer.unizg.hr/_download/repository/LaTeX-upute.pdf}
-			\item \LaTeX\ projekt - \url{https://www.latex-project.org/help/}
-			\item StackExchange za Tex - \url{https://tex.stackexchange.com/}\\
-		
-		\end{itemize} 	
-
-
-		
-		\noindent \underbar{podcrtani tekst}, \textbf{podebljani tekst}, 	\textit{nagnuti tekst}\\
-		\noindent \normalsize primjer \large primjer \Large primjer \LARGE {primjer} \huge {primjer} \Huge primjer \normalsize
-				
-		\begin{packed_item}
-			
-			\item  primjer
-			\item  primjer
-			\item  primjer
-			\item[] \begin{packed_enum}
-				\item primjer
-				\item[] \begin{packed_enum}
-					\item[1.a] primjer
-					\item[b] primjer
-				\end{packed_enum}
-				\item primjer
-			\end{packed_enum}
-			
-		\end{packed_item}
-		
-		\noindent primjer url-a: \url{https://www.fer.unizg.hr/predmet/proinz/projekt}
-		
-		\noindent posebni znakovi: \# \$ \% \& \{ \} \_ 
-		$|$ $<$ $>$ 
-		\^{} 
-		\~{} 
-		$\backslash$ 
-		
-		
-		\begin{longtblr}[
-			label=none,
-			entry=none
-			]{
-				width = \textwidth,
-				colspec={|X[8,l]|X[8, l]|X[16, l]|}, 
-				rowhead = 1,
-			} %definicija širine tablice, širine stupaca, poravnanje i broja redaka naslova tablice
-			\hline \SetCell[c=3]{c}{\textbf{naslov unutar tablice}}	 \\ \hline[3pt]
-			\SetCell{LightGreen}IDKorisnik & INT	&  	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  	\\ \hline
-			korisnickoIme	& VARCHAR &   	\\ \hline 
-			email & VARCHAR &   \\ \hline 
-			ime & VARCHAR	&  		\\ \hline 
-			\SetCell{LightBlue} primjer	& VARCHAR &   	\\ \hline 
-		\end{longtblr}
-		
-
-		\begin{longtblr}[
-				caption = {Naslov s referencom izvan tablice},
-				entry = {Short Caption},
-			]{
-				width = \textwidth, 
-				colspec = {|X[8,l]|X[8,l]|X[16,l]|}, 
-				rowhead = 1,
-			}
-			\hline
-			\SetCell{LightGreen}IDKorisnik & INT	&  	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  	\\ \hline
-			korisnickoIme	& VARCHAR &   	\\ \hline 
-			email & VARCHAR &   \\ \hline 
-			ime & VARCHAR	&  		\\ \hline 
-			\SetCell{LightBlue} primjer	& VARCHAR &   	\\ \hline 
-		\end{longtblr}
-	
-
-
-		
-		
-		%unos slike
-		\begin{figure}[H]
-			\includegraphics[scale=0.4]{slike/aktivnost.PNG} %veličina slike u odnosu na originalnu datoteku i pozicija slike
-			\centering
-			\caption{Primjer slike s potpisom}
-			\label{fig:promjene}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\includegraphics[width=\textwidth]{slike/aktivnost.PNG} %veličina u odnosu na širinu linije
-			\caption{Primjer slike s potpisom 2}
-			\label{fig:promjene2} %label mora biti drugaciji za svaku sliku
-		\end{figure}
-		
-		Referenciranje slike \ref{fig:promjene2} u tekstu.
+		U trenutnom obliku aplikacija cilja dentalne klinike jer su zahvati koje dentalne klinike nude relativno jednostavni za definirati u smislu termina i jer taj sektor medicine ima veliki potencijal za privući ljude iz stranih država zbog značajno jeftinije usluge. Ukoliko je potrebno aplikacija se jednostavno može promijeniti i nadograditi kako bi uslugu mogla pružati cijelom medicinskom sektoru ili bilo kakvoj djelatnosti koja želi ponuditi takav potpuni paket smještaja, prijevoza i usluge.
 		
 		\eject
 		
+		Aplikacija se može koristiti iz perspektive tri administratora koji predstavljaju tri dijela paketa koje aplikacija spaja, a to su smještajni administrator, prijevozni administrator i korisnički administrator. Krajnji korisnik, tj. pacijent klinike, nema interakciju s aplikacijom nego samo na račun elektroničke pošte koji mu je definiran od strane korisničkog administratora prima informaciju o cijelom paketu smještaja, prijevoza, kliničkih usluga i datuma kada treba stići u državu.
+		
+		
+		\underline{Smještajni administrator} ima najveće ovlasti u sustavu i može dodavati nove korisnike i dodjeljivati im uloge. Glavna uloga smještajnog administratora je dodavanje u sustav novih smještaja i popunjavanje osnovnih podataka o tim smještajima. Smještajnim administratorima je omogućen pregled lokacije stana na karti uz pomoć Google Maps API-a. Svi osnovni podatci se mogu mijenjati, a cijeli smještaj se može izbrisati. Osnovni podatci uključuju:
+		\begin{packed_item}
+			\item Tip stana (u vlasništvu klinike ili ne)
+			\item Veličina stana
+			\item Ocjena stana
+			\item Adresa
+			\item Vremenska dostupnost
+		\end{packed_item}
+
+		\underline{Prijevozni administrator} ima glavnu ulogu u unosu osnovnih podataka o prijevoznicima koji su dostupni u aplikaciji. Osnovni osobni podatci prijevoznika se ne mogu mijenjati, svi ostali se mogu, a cijeli prijevoznik se može izbrisati. Osnovni podatci uključuju:
+		\begin{packed_item}
+			\item Ime i prezime prijevoznika
+			\item Email 
+			\item Broj telefona
+			\item Tip prijevoznog sredstva
+			\item Kapacitet prijevoznog sredstva
+			\item Radno vrijeme
+		\end{packed_item}
+
+		\underline{Korisnički administrator} ima glavnu ulogu u unosu osnovnih podataka o pacijentima klinike. Detalje tretmana ne unose korisnički administratori već se oni dohvaćaju iz postojećeg sustava klinike. Moguće je mijenjati podatke o pacijentima i brisati pacijente. Osnovi podatci o pacijentima su:
+		\begin{packed_item}
+			\item Ime i prezime pacijenta
+			\item Email 
+			\item Broj telefona
+			\item Vrijeme dolaska u državu
+			\item Mjesto dolaska u državu
+			\item Preferencija o veličini i ocjeni stana 
+		\end{packed_item}
+		
+		
+		Svaki korisnički račun može imati više administratorskih uloga. Svaki administrator ima web sučelje unutar kojeg može obavljati potrebne operacije dodavanja, izmjenjivanja i brisanja podataka. Takvo jednostavno web sučelje olakšava posao administratora kada moraju raditi potrebne izmjene. 
+		
+		Kada korisnički administrator unese novog korisnika aplikacija mora provjeriti postoji li dostupan smještaj u danom terminu. Kada se pronađe termin u kojem postoji slobodan smještaj čeka se potvrda od interne aplikacije klinike da je zaključan plan tretmana. Kada se plan tretmana zaključa aplikacija automatski šalje poruku elektroničke pošte klijentu sa cijelim paketom i šalje dostupnim prijevoznicima informacije o klijentu i smještaju.
+		
+		Aplikacija ne prati podatke o tretmanu pacijenta već podatke mora pratiti interna aplikacija klinike te se tada oni uključuju u kompletan plan iz spomenute aplikacije. Također,  aplikacija ne dozvoljava nikakav pristup ili pregled neregistriranim korisnicima s obzirom da je zamišljena za internu uporabu unutra klinike, a ne za vanjsku uporabu od strane korisnika. Sva komunikacija s vanjskim korisnicima kao što su pacijenti ili prijevoznici odvija se automatski putem elektroničke pošte.
+		
+		S obzirom na to da je glavna funkcionalnost aplikacije smanjenje mentalnog napora vezanog za logistiku, moguća proširenja aplikacije većinom su vezana za dodatno olakšanje logistike. Moguća je implementacija povezanosti s internacionalnim prijevoznicima kako bi klijenti klinika morali učiniti što je manje moguće. Također je moguća integracija sa sustavima vlakova ili avioprijevoznika kako bi se klijentu pružio potpuno organizirani plan puta do destinacije. Druga vrsta mogućeg proširenja je automatsko izračunavanje troška ovakvog plana i automatsko uračunavanje tog troška u cjelokupni trošak tretmana. U taj trošak bili bi uključeni troškovi poput troškova prijevoza i troškova čišćenja stanova u kojima klijenti borave za vrijeme boravka u državi. Povezano s time, u aplikaciju se mogu uključiti i usluge čistača kojima se automatski šalje poruka kada određena smještajna jedinica treba čišćenje.
+		
+		\eject
+		
+		U našem kratkom istraživanju sličnih aplikacija nismo pronašli aplikaciju koja rješava isti problem. Većina se aplikacija u sektoru dentalnog turizma bavi prikazom tretmana pacijentima, ali ne zadiru u pitanja kako doći do neke klinike ili gdje stanovati za vrijeme obavljanja usluge. Mislimo da zato ova aplikacija ima dobru priliku iskoristiti nišu u tržištu koja trenutno nije jako zastupljena. Također je moguće da za ovakvu funkcionalnost klinike trenutno imaju interna rješenja, no naša aplikacija će omogućiti da svaka zainteresirana klinika ima ovakve mogućnosti uz jednostavan oblik pretplate.
 	
