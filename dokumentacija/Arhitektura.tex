@@ -3,10 +3,10 @@
 	Za arhitekturu sustava odabrali smo klasičan klijent-server pristup. \\
 	
 	\textbf{Klijent}\\
-	Strana klijenta je web stranica izgrađena u programskom jeziku JavaScript uz pomoć biblioteke React. Odabrali smo ovu tehnologiju jer je React danas najkorištenija biblioteka za razvoj web stranica i kao takva nudi najbolji ekosustav funkcionalnosti i podrške. Zadatak klijenta je raditi zahtjeve prema serveru koji zatim te zahtjeve obrađuje. Svi zahtjevi se šalju pomoći HTTP POST zahtjeva i šalju se u JSON formatu prema serveru.\\
+	Strana klijenta je web stranica izgrađena u programskom jeziku JavaScript uz pomoć biblioteke React. Odabrali smo ovu tehnologiju jer je React danas najkorištenija biblioteka za razvoj web stranica i kao takva nudi najbolji ekosustav funkcionalnosti i podrške. Korišteno razvojno okruženje je VScode. Zadatak klijenta je slanje zahtjeva prema serveru koji ih zatim obrađuje. Svi zahtjevi se šalju pomoću HTTP POST metode i šalju se u JSON formatu prema serveru.\\
 	
 	\textbf{Server}\\
-	Za server stranu odabrali smo jezik Javu i razvojno okruženje \textit{Spring Boot}. \textit{Spring Boot} smo odabrali jer je standardno razvojno okruženje za jezik Javu, a Javu smo odabrali kako bismo na prirodan način mogli sustav implementirati koristeći objektno orijentiranu paradigmu. \textit{Spring Boot} nam također nudi neke dodate pogodnosti kao što je proširenje \textit{Spring Security} koje znatno olakšava proces implementacije sigurnog i točnog procesa prijave i registracije korisnika. Server prima zahtjeve od klijenta u JSON formatu i pretvara te zahtjeve u Java objekte nad kojima izvršava daljnje operacije. Kada server obradi zahtjev šalje natrag HTTP odgovor s odgovarajućim statusnim kodom kako bi klijent znao je li operacija uspjela ili nije.
+	Za server stranu odabrali smo programski jezik Javu i razvojno okruženje \textit{Spring Boot}. \textit{Spring Boot} smo odabrali jer je standardno razvojno okruženje za jezik Javu, a Javu smo odabrali kako bismo na prirodan način mogli sustav implementirati koristeći objektno orijentiranu paradigmu. Za razvoj serverskog koda korišten je alata Intellij IDEA. \textit{Spring Boot} nam također nudi neke dodate pogodnosti kao što je proširenje \textit{Spring Security} koje znatno olakšava proces implementacije sigurnog i točnog procesa prijave i registracije korisnika. Server prima zahtjeve od klijenta u JSON formatu i pretvara te zahtjeve u Java objekte nad kojima izvršava daljnje operacije. Kada server obradi zahtjev šalje natrag HTTP odgovor s odgovarajućim statusnim kodom kako bi klijent znao je li operacija uspjela ili nije.
 		
 
 		
@@ -14,7 +14,7 @@
 				
 		\section{Baza podataka}
 			
-		U našem projektu odabrali smo PostgreSQL kao sustav za upravljanje bazama podataka. Implementacija naše PostgreSQL baze podataka obuhvaća nekoliko ključnih elemenata, uključujući organizaciju podataka u tablicama i uspostavljanje veza između tablica radi složenih upita. Baza podatka sastoji se od slijedećih entiteta: 
+		 Kao sustav za upravljanje bazama podataka odabrali smo PostgreSQL. Implementacija naše PostgreSQL baze podataka obuhvaća nekoliko ključnih elemenata, uključujući organizaciju podataka u tablicama i uspostavljanje veza između tablica radi složenih upita. Baza podatka sastoji se od slijedećih entiteta: 
 		
 		\begin{packed_item}
 			\item KLINIKA
@@ -27,7 +27,7 @@
 		
 			\subsection{Opis tablica}
 			
-				\textbf{KLINIKA}\hspace{0.5cm}Entitet KLINIKA sadrži informacije o ID-u klinike, nazivu i adresi. Prema tome, entitet KLINIKA posjeduje sljedeće atribute: IDKlinika, naziv i adresa. Entitet KLINIKA u vezi je \textit{One-to-Many} s entitetom SMJESTAJ preko atributa IDKlinika i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDKlinika. Također je u \textit{One-to-Many} vezi s enitetom PUTOVANJE preko atributa adresa.
+				\textbf{KLINIKA}\hspace{0.5cm}Entitet KLINIKA sadrži informacije o ID-u klinike, nazivu i adresi. Prema tome, entitet KLINIKA posjeduje sljedeće atribute: IDKlinika, naziv i adresa. Entitet KLINIKA je u vezi \textit{One-to-Many} s entitetom SMJESTAJ preko atributa IDKlinika i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDKlinika. Također je u \textit{One-to-Many} vezi s enitetom PUTOVANJE preko atributa adresa.
 				
 				\begin{longtblr}[
 					label=none,
@@ -43,7 +43,7 @@
 					adresa & VARCHAR & Adresa klinike\\ \hline 
 				\end{longtblr}
 				
-				\textbf{SMJESTAJ}\hspace{0.5cm}Entitet SMJESTAJ sadrži podatke o ID-u smještaja, tipu stana, kategoriji opremljenosti, adresi kao i vremenskom periodu dostupnosti za korištenje. Sukladno tome, entitet SMJESTAJ posjeduje sljedeće atribute: IDSmjestaj, tip, kategorija, adresa i dostupnost. Entiet SMJESTAJ u vezi je  \textit{Many-to-One} s entitetom KLINIKA preko atributa IDKlinika i u vezi  \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPutovanje. Također je u \textit{One-to-Many} vezi s enitetom PUTOVANJE preko atributa adresa.
+				\textbf{SMJESTAJ}\hspace{0.5cm}Entitet SMJESTAJ sadrži podatke o ID-u smještaja, tipu stana, kategoriji opremljenosti, adresi kao i vremenskom periodu dostupnosti za korištenje. Sukladno tome, entitet SMJESTAJ posjeduje sljedeće atribute: IDSmjestaj, tip, kategorija, adresa i dostupnost. Entiet SMJESTAJ je u vezi  \textit{Many-to-One} s entitetom KLINIKA preko atributa IDKlinika i u vezi  \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPutovanje. Također je u \textit{One-to-Many} vezi s enitetom PUTOVANJE preko atributa adresa.
 				
 				\begin{longtblr}[
 					label=none,
@@ -62,7 +62,7 @@
 					\SetCell{LightBlue} IDKlinika & INT	&  Identifikacijski ključ klinike  	\\ \hline 
 				\end{longtblr}
 				
-				\textbf{PRIJEVOZNIK}\hspace{0.5cm}Entitet PRIJEVOZNIK sadrži informacije o ID-u prijevoznika, kontaktnim podacima i o radnom vremenu u kojem je prijevoznik raspoloživ. Prema tome, entitet PRIJEVOZNIK posjeduje sljedeće atribute: IDPrijevoznik, kontakt i radnoVrijeme. Entitet PRIJEVOZNIK u vezi je \textit{One-to-Many} s entitetom VOZILO preko atributa IDPrijevoznik i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPrijevoznik.
+				\textbf{PRIJEVOZNIK}\hspace{0.5cm}Entitet PRIJEVOZNIK sadrži informacije o ID-u prijevoznika, kontaktnim podacima i o radnom vremenu u kojem je prijevoznik raspoloživ. Prema tome, entitet PRIJEVOZNIK posjeduje sljedeće atribute: IDPrijevoznik, kontakt i radnoVrijeme. Entitet PRIJEVOZNIK je u vezi \textit{One-to-Many} s entitetom VOZILO preko atributa IDPrijevoznik i u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDPrijevoznik.
 				
 				
 				\begin{longtblr}[
@@ -79,7 +79,7 @@
 					radnoVrijeme & TIME & Radno vrijeme u kojem su prijevoznici raspoloživi  \\ \hline 
 				\end{longtblr}
 				
-				\textbf{VOZILO}\hspace{0.5cm}Entitet VOZILO sadrži informacije o ID-u vozila, vrsti i kapacitetu prijevoznog sredstva. Prema tome, entitet VOZILO posjeduje sljedeće atribute: IDVozilo, vrsta i kapacitet. Entitet VOZILO u vezi je \textit{Many-to-One} s entitetom PRIJEVOZNIK preko atributa IDPrijevoznik.
+				\textbf{VOZILO}\hspace{0.5cm}Entitet VOZILO sadrži informacije o ID-u vozila, vrsti i kapacitetu prijevoznog sredstva. Prema tome, entitet VOZILO posjeduje sljedeće atribute: IDVozilo, vrsta i kapacitet. Entitet VOZILO je u vezi \textit{Many-to-One} s entitetom PRIJEVOZNIK preko atributa IDPrijevoznik.
 				
 				\begin{longtblr}[
 					label=none,
@@ -96,7 +96,7 @@
 					\SetCell{LightBlue} IDPrijevoznik & INT	& Identifikacijski ključ prijevoznika   	\\ \hline 
 				\end{longtblr}
 				
-				\textbf{KORISNIK}\hspace{0.5cm}Entitet KORISNIK sadrži informacije o ID-u korisnika, imenu, prezimenu, kontaktnim podacima i preferencijama vezanim uz veličinu i kvalitetu smještaja. Prema tome, entitet KORISNIK posjeduje sljedeće atribute: IDKorisnik, ime, prezime, kontakt i preferencije. Entitet KORISNIK u vezi je \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDKorisnik.
+				\textbf{KORISNIK}\hspace{0.5cm}Entitet KORISNIK sadrži informacije o ID-u korisnika, imenu, prezimenu, kontaktnim podacima i preferencijama vezanim uz veličinu i kvalitetu smještaja. Prema tome, entitet KORISNIK posjeduje sljedeće atribute: IDKorisnik, ime, prezime, kontakt i preferencije. Entitet KORISNIK je u vezi \textit{One-to-Many} s enitetom PUTOVANJE preko atributa IDKorisnik.
 				
 				\begin{longtblr}[
 					label=none,
@@ -114,7 +114,7 @@
 					preferencije & VARCHAR	& Preferencije vezane uz veličinu i kvalitetu smještaja\\ \hline 
 				\end{longtblr}
 				
-				\textbf{PUTOVANJE}\hspace{0.5cm}Entitet PUTOVANJE sadrži informacije o ID-u putovanja, vremenu i smjeru putovanja. Prema tome, entitet PUTOVANJE posjeduje sljedeće atribute: IDPutovanje, vrijeme i smjer. Entitet PUTOVANJE u vezi je \textit{Many-to-One} s enitetom KLINIKA preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom SMJESTAJ preko atributa IDSmjestaj, u vezi \textit{Many-to-One} s enitetom KORISNIK preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom PRIJEVOZNIK preko atributa IDPrijevoznik. Atributi adresa1 i adresa2 su atributi iz kojih saznajemo adresu polaska ili dolaska u ovisnosti o smjeru koji može biti 1 ili 0. Entitet PUTOVANJE u vezi je \textit{Many-to-One} s enitetom KLINIKA preko atributa adresa1, u vezi \textit{Many-to-One} s enitetom SMJESTAJ preko atributa adresa2.
+				\textbf{PUTOVANJE}\hspace{0.5cm}Entitet PUTOVANJE sadrži informacije o ID-u putovanja, vremenu i smjeru putovanja. Prema tome, entitet PUTOVANJE posjeduje sljedeće atribute: IDPutovanje, vrijeme i smjer. Entitet PUTOVANJE j u vezi \textit{Many-to-One} s enitetom KLINIKA preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom SMJESTAJ preko atributa IDSmjestaj, u vezi \textit{Many-to-One} s enitetom KORISNIK preko atributa IDKorisnik, u vezi \textit{Many-to-One} s enitetom PRIJEVOZNIK preko atributa IDPrijevoznik. Atributi adresa1 i adresa2 su atributi iz kojih saznajemo adresu polaska ili dolaska u ovisnosti o smjeru koji može biti 1 ili 0. Entitet PUTOVANJE u vezi je \textit{Many-to-One} s enitetom KLINIKA preko atributa adresa1, u vezi \textit{Many-to-One} s enitetom SMJESTAJ preko atributa adresa2.
 				
 				\begin{longtblr}[
 				label=none,
@@ -153,15 +153,42 @@
 			
 		\section{Dijagram razreda}
 		
-			\textit{Potrebno je priložiti dijagram razreda s pripadajućim opisom. Zbog preglednosti je moguće dijagram razlomiti na više njih, ali moraju biti grupirani prema sličnim razinama apstrakcije i srodnim funkcionalnostima.}\\
+
+			Na slikama 4.2, 4.3, 4.4 i 4.5 prikazani su razredi za implementaciju funkcionalnosti prijave i registracije korisnika. Na slici 4.2 prikazan je razred \textit{AuthController} koji služi prihvaćanju HTTP zahtjeva od strane klijenta i to specifično za URL \textit{/auth/**}. Metode \textit{login()} i \textit{register()} služe kao URL-ovi \textit{/auth/login} i \textit{/auth/register} na koje se šalju JSON objekti za prijavu administratora i registraciju novog administratora.
 			
-			\textbf{\textit{dio 1. revizije}}\\
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[width=0.9\textwidth]{slike/controllersUML}
+				\caption{UML dijagram paketa \textit{Controllers}}
+				\label{fig:controllersUML}
+			\end{figure}
 			
-			\textit{Prilikom prve predaje projekta, potrebno je priložiti potpuno razrađen dijagram razreda vezan uz \textbf{generičku funkcionalnost} sustava. Ostale funkcionalnosti trebaju biti idejno razrađene u dijagramu sa sljedećim komponentama: nazivi razreda, nazivi metoda i vrste pristupa metodama (npr. javni, zaštićeni), nazivi atributa razreda, veze i odnosi između razreda.}\\
+			Slika 4.3 prikazuje paket DTO koji služi za pretvaranje JSON objekata koji stižu na određenu rutu i Java objekt i za pretvaranje Java objekata u JSON odgovore koje klijent razumije.
 			
-			\textbf{\textit{dio 2. revizije}}\\			
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[width=0.9\textwidth]{slike/dtoUML}
+				\caption{UML dijagram paketa \textit{DTO}}
+				\label{fig:dtoUML}
+			\end{figure}
 			
-			\textit{Prilikom druge predaje projekta dijagram razreda i opisi moraju odgovarati stvarnom stanju implementacije}
+			Slika 4.4 prikazuje paket \textit{Repository} koji preko JPA-a (\textit{Java Persistance API}) pristupa bazi podataka. Za stvaranje SQL upita koristi se \textit{Spring Data} koji omogućava kreirane metoda s posebnim imenima i iz njih stvara SQL upite. Primjerice \textit{findByUsername()} \textit{Spring Data} pretvara u SQL upit koji pretražuje tablicu \textit{Users} za određeno korisničko ime.
+			
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[width=0.9\textwidth]{slike/repoUML}
+				\caption{UML dijagram paketa \textit{Repository}}
+				\label{fig:repoUML}
+			\end{figure}
+			
+			Slika 4.5 prikazuje paket \textit{Security} koji je zadužen za obradu svakog zahtjeva koji stiže na server i prosuditi ima li trenutni korisnik pravo pristupa. Glavna klasa za to je klasa \textit{SecurityConfig} koja preko metode \textit{filterChain()} primjenjuje filtre na svaki zahtjev da odredi pravo pristupa. Također klasa \textit{SecurityConfig} pomoću klasa \textit{JWTGenerator, JWTAuthenticationFilter i JwtAuthEntryPoint} za svaku uspješnu prijavu generira JWT token koji se zatim u svim zahtjevima tog korisnika koristi za autentifikaciju tog korisnika.
+			
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[width=0.9\textwidth]{slike/securityUML}
+				\caption{UML dijagram paketa \textit{Security}}
+				\label{fig:securityUML}
+			\end{figure}
 			
 			
 			
