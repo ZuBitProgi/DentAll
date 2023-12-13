@@ -16,7 +16,7 @@ public class KorisnikDao {
         em.persist(korisnik);
     }
 
-    public List findAll(){
+    public List<Korisnik> findAll(){
         return em.createQuery("SELECT k FROM Korisnik k").getResultList();
     }
 }

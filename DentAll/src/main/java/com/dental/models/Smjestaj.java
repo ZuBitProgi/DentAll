@@ -1,11 +1,13 @@
 package com.dental.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class Smjestaj {
     @Id
+    @GeneratedValue
     private Integer id;
     private String tip;
     private String kategorija;
@@ -61,5 +63,10 @@ public class Smjestaj {
 
     public void setDostupnost(Boolean dostupnost) {
         this.dostupnost = dostupnost;
+    }
+
+    @Override
+    public String toString(){
+        return "AccomodationEntity{" + "id=" + id + ", tip=" + tip + ", kategorija=" + kategorija + ", adresa=" + adresa + ", dostupnost=" + dostupnost + "}";
     }
 }

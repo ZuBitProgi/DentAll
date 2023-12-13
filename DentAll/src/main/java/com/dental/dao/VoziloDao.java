@@ -16,7 +16,7 @@ public class VoziloDao {
         em.persist(vozilo);
     }
 
-    public List findAll(){
+    public List<Vozilo> findAll(){
         return em.createQuery("SELECT  v FROM Vozilo v").getResultList();
     }
 }

@@ -16,7 +16,7 @@ public class PrijevoznikDao {
         em.persist(prijevoznik);
     }
 
-    public List findAll(){
+    public List<Prijevoznik> findAll(){
         return em.createQuery("SELECT p FROM Prijevoznik p").getResultList();
     }
 }

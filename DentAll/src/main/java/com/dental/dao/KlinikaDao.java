@@ -16,7 +16,7 @@ public class KlinikaDao {
         em.persist(klinika);
     }
 
-    public List findAll(){
+    public List<Klinika> findAll(){
         return em.createQuery("SELECT k FROM Klinika k").getResultList();
     }
 }
