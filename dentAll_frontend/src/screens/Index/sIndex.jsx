@@ -55,14 +55,14 @@ export const Index = () => {
         <div className="overlap-group">
           <form onSubmit={(e) => handleSubmit(e, role)} >
 
+            <div className="text-wrapper">Login here</div>
+            <p id="error-text" className="error-text hidden">Invalid username, password or role</p>
             <div className="overlap">
               <input id="username" className="input" placeholder="Username..." type="username" required/>
             </div>
             <div className="password-wrapper">
               <input id="password" className="input" placeholder="Password..." type="password" required/>
             </div>
-            <div className="text-wrapper">Login here</div>
-            <p id="error-text" className="error-text hidden">Invalid username, password or role</p>
             <div className="radio">
               <div>
                 <label htmlFor="user_admin">Korisnički Admin</label>
@@ -77,7 +77,7 @@ export const Index = () => {
                 <input type="radio" name="transport_admin" id="transport_admin" checked={role === "transport_admin"} onChange={() => setRole("transport_admin")}/>
               </div>
             </div>
-            <div><button type="submit" className="btn">Login</button></div>
+            <div className="buttonContainer"><button type="submit" className="btn">Login</button></div>
           </form>
           
         </div>
