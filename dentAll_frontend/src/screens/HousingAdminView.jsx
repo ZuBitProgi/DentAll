@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import HoteliLista from './Index/HoteliLista'
 
 function HousingAdminView(props) {
     const location = useLocation()
@@ -8,6 +9,7 @@ function HousingAdminView(props) {
     <div>
         <p>Dobrodošli {username}</p>
         <p>Vaša uloga je Smještajni administrator</p>
+        <HoteliLista hoteli={hoteli}/>
     </div>
   )
 }

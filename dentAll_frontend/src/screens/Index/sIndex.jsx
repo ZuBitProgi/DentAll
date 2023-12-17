@@ -1,15 +1,29 @@
 import React from "react";
 import "./style.css";
+import HoteliLista from "./HoteliLista";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 let shouldNavigate = false
 
-
-
-
-
 export const Index = () => {
+
+  const [hoteli, setHoteli] = useState([
+    {
+      id: 1,
+      name: 'Hotel Esplanade'
+    },
+    {
+      id: 2,
+      name: 'Hotel Sheraton'
+    },
+    {
+      id: 3,
+      name: 'Hotel Westin'
+    },
+
+  ])
+
   let navigate = useNavigate()
   const [role, setRole] = useState("")
 
@@ -82,6 +96,7 @@ export const Index = () => {
           
         </div>
       </div>
+      {/*<HoteliLista hoteli={hoteli}/>*/}
     </div>
   );
 };
