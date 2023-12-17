@@ -1,21 +1,24 @@
 package com.dental.service;
 
-import com.dental.dao.PrijevoznikDao;
+import com.dental.dao.PrijevoznikDaoImpl;
 import com.dental.models.Prijevoznik;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
 @Component
 public class PrijevoznikService {
     @Autowired
-    private PrijevoznikDao prijevoznikDao;
+    private PrijevoznikDaoImpl prijevoznikDao;
 
     @Transactional
     public Prijevoznik createPrijevoznik(Prijevoznik prijevoznik){
-        return prijevoznikDao.persist(prijevoznik);
+        Assert.notNull(prijevoznik, "Pogresno unesen prijevoznik");
+        Assert.isNull(prijevoznik.getId(), "Id mora biti null");
+        return prijevoznikDao.create(prijevoznik);
     }
 
     @Transactional

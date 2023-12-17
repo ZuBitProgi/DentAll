@@ -1,39 +1,12 @@
 package com.dental.dao;
 
 import com.dental.models.Prijevoznik;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
-public class PrijevoznikDao {
-    @PersistenceContext
-    private EntityManager em;
-
-    public Prijevoznik persist(Prijevoznik prijevoznik){
-        em.persist(prijevoznik);
-        return prijevoznik;
-    }
-
-    public void deletePrijevoznik(Integer id){
-        Prijevoznik entityToRemove = em.find(Prijevoznik.class, id);
-        if (entityToRemove != null) {
-            em.remove(entityToRemove);
-        }
-    }
-    @Transactional(readOnly = true)
-    public List<Prijevoznik> findAll(){
-        return em.createQuery("SELECT p FROM Prijevoznik p",Prijevoznik.class)
-                .getResultList();
-    }
-
-    @Transactional(readOnly = true)
-    public Prijevoznik findPrijevoznikById(Integer id){
-        return em.createQuery("SELECT p FROM Prijevoznik p WHERE p.id = :id",Prijevoznik.class)
-                .setParameter("id",id)
-                .getSingleResult();
-    }
+public interface PrijevoznikDao {
+    public void deletePrijevoznik(Integer id);
+    public List<Prijevoznik> findAll();
+    public Prijevoznik findPrijevoznikById(Integer id);
+    public Prijevoznik create(Prijevoznik prijevoznik);
 }
