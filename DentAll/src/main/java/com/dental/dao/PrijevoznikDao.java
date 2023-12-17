@@ -5,8 +5,8 @@ import com.dental.models.Prijevoznik;
 import java.util.List;
 
 public interface PrijevoznikDao {
-    public void deletePrijevoznik(Integer id);
-    public List<Prijevoznik> findAll();
-    public Prijevoznik findPrijevoznikById(Integer id);
-    public Prijevoznik create(Prijevoznik prijevoznik);
+     void deletePrijevoznik(Integer id);
+     List<Prijevoznik> findAll();
+     Prijevoznik findPrijevoznikById(Integer id);
+     Prijevoznik create(Prijevoznik prijevoznik);
 }

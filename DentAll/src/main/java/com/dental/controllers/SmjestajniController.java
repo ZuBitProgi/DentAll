@@ -20,7 +20,7 @@ public class SmjestajniController {
     }
 
     @GetMapping("/Id")
-    public List<Smjestaj> getSmjestajById(@RequestBody Integer id){
+    public Smjestaj getSmjestajById(@RequestBody Integer id){
         return smjestajservis.findSmjestajById(id);
     }
 

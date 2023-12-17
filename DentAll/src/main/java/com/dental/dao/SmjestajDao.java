@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
-@Component
-public interface SmjestajDao extends JpaRepository<Smjestaj, Integer> {
+
+public interface SmjestajDao {
 
     List<Smjestaj> findAll();
 
-    List<Smjestaj> findAllById(Integer id);
-    Smjestaj save(Smjestaj smjestaj);
+    Smjestaj findSmjestajById(Integer id);
+    Smjestaj create(Smjestaj smjestaj);
 
-    void deleteById(Integer id);
+    void deleteSmjestaj(Integer id);
 }

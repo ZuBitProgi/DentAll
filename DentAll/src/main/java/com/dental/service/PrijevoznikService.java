@@ -1,5 +1,6 @@
 package com.dental.service;
 
+import com.dental.dao.PrijevoznikDao;
 import com.dental.dao.PrijevoznikDaoImpl;
 import com.dental.models.Prijevoznik;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 @Component
 public class PrijevoznikService {
     @Autowired
-    private PrijevoznikDaoImpl prijevoznikDao;
+    private PrijevoznikDao prijevoznikDao;
 
     @Transactional
     public Prijevoznik createPrijevoznik(Prijevoznik prijevoznik){

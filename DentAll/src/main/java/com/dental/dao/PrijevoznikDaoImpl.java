@@ -12,24 +12,25 @@ import java.util.List;
 public class PrijevoznikDaoImpl implements PrijevoznikDao{
     @PersistenceContext
     private EntityManager em;
-
+    @Override
     public Prijevoznik create(Prijevoznik prijevoznik){
         em.persist(prijevoznik);
         return prijevoznik;
     }
-
+    @Override
     public void deletePrijevoznik(Integer id){
         Prijevoznik entityToRemove = em.find(Prijevoznik.class, id);
         if (entityToRemove != null) {
             em.remove(entityToRemove);
         }
     }
+    @Override
     @Transactional(readOnly = true)
     public List<Prijevoznik> findAll(){
         return em.createQuery("SELECT p FROM Prijevoznik p",Prijevoznik.class)
                 .getResultList();
     }
-
+    @Override
     @Transactional(readOnly = true)
     public Prijevoznik findPrijevoznikById(Integer id){
         return em.createQuery("SELECT p FROM Prijevoznik p WHERE p.id = :id",Prijevoznik.class)
