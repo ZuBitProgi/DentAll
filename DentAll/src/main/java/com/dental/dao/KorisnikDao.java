@@ -3,20 +3,17 @@ package com.dental.dao;
 import com.dental.models.Korisnik;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class KorisnikDao {
-    @PersistenceContext
-    private EntityManager em;
+public interface KorisnikDao {
+    List<Korisnik> findAll();
 
-    public void persist(Korisnik korisnik){
-        em.persist(korisnik);
-    }
+    Korisnik findKorisnikById(Integer id);
 
-    public List<Korisnik> findAll(){
-        return em.createQuery("SELECT k FROM Korisnik k").getResultList();
-    }
+   Korisnik create(Korisnik korisnik);
+
+    void deleteKorisnik(Integer id);
 }
