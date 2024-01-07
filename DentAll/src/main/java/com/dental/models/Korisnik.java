@@ -62,4 +62,9 @@ public class Korisnik {
     public void setKontakt(String kontakt) {
         this.kontakt = kontakt;
     }
+
+    @Override
+    public String toString(){
+        return "UserEntity{" + "id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", preference=" + preference + ", kontakt=" + kontakt + "}";
+    }
 }
