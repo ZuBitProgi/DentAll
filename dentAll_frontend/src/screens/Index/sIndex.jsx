@@ -8,21 +8,7 @@ let shouldNavigate = false
 
 export const Index = () => {
 
-  const [hoteli, setHoteli] = useState([
-    {
-      id: 1,
-      name: 'Hotel Esplanade'
-    },
-    {
-      id: 2,
-      name: 'Hotel Sheraton'
-    },
-    {
-      id: 3,
-      name: 'Hotel Westin'
-    },
-
-  ])
+  
 
   let navigate = useNavigate()
   const [role, setRole] = useState("")
@@ -40,7 +26,7 @@ export const Index = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     
-    const response = await fetch("http://192.168.235.76:8080/auth/login", {
+    const response = await fetch("http://localhost:8080/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
