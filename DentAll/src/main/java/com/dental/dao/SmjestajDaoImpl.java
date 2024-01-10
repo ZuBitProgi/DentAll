@@ -35,6 +35,12 @@ public class SmjestajDaoImpl implements SmjestajDao{
     }
 
     @Override
+    public List<Smjestaj> findByPreference(String preference) {
+        return em.createQuery("SELECT s FROM Smjestaj WHERE...")
+                .getResultList();
+    }
+
+    @Override
     public void deleteSmjestaj(Integer id) {
         Smjestaj entityToRemove = em.find(Smjestaj.class, id);
         if (entityToRemove != null) {

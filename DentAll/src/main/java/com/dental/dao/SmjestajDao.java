@@ -15,5 +15,6 @@ public interface SmjestajDao {
     Smjestaj findSmjestajById(Integer id);
     Smjestaj create(Smjestaj smjestaj);
 
+    List<Smjestaj> findByPreference(String preference);
     void deleteSmjestaj(Integer id);
 }

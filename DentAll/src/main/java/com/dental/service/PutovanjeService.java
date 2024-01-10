@@ -1,6 +1,6 @@
 package com.dental.service;
 
-import com.dental.dao.PutovanjeDao;
+import com.dental.dao.PutovanjeDaoImpl;
 import com.dental.models.Putovanje;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,20 +12,22 @@ import java.util.List;
 @Component
 public class PutovanjeService {
     @Autowired
-    private PutovanjeDao putovanjeDao;
+    private PutovanjeDaoImpl putovanjeDaoImpl;
 
     @Transactional
-    public void add(Putovanje putovanje){
-        putovanjeDao.persist(putovanje);
+    public void create(Putovanje putovanje){
+        putovanjeDaoImpl.create(putovanje);
     }
 
     @Transactional
-    public void addAll(Collection<Putovanje> putovanje){
-        for(Putovanje p : putovanje) putovanjeDao.persist(p);
+    public void createAll(Collection<Putovanje> putovanje){
+        for(Putovanje p : putovanje) putovanjeDaoImpl.create(p);
     }
 
     @Transactional(readOnly = true)
     public List<Putovanje> listAll(){
-        return putovanjeDao.findAll();
+        return putovanjeDaoImpl.findAll();
     }
 }
+
+

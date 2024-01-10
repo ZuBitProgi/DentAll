@@ -2,6 +2,7 @@ package com.dental.controllers;
 
 import com.dental.models.Korisnik;
 import com.dental.service.KorisnikService;
+import com.dental.service.PutovanjeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,8 @@ public class KorisnikController {
 
     @Autowired
     private KorisnikService korisnikService;
+
+
 
     @GetMapping("")
     public List<Korisnik> listKorisnik(){
@@ -26,6 +29,7 @@ public class KorisnikController {
 
     @PostMapping("/create")
     public Korisnik createKorisnik(@RequestBody Korisnik korisnik){
+
         return korisnikService.createKorisnik(korisnik);
     }
 
