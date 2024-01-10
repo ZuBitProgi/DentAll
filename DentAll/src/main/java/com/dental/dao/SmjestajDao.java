@@ -13,8 +13,11 @@ public interface SmjestajDao {
     List<Smjestaj> findAll();
 
     Smjestaj findSmjestajById(Integer id);
+
+    Smjestaj findSmjestajByAdresa(String adresa);
+
+    Smjestaj findSmjestajByKategorijaTipDostupnost(String kategorija, String tip, Boolean dostupnost);
     Smjestaj create(Smjestaj smjestaj);
 
-    List<Smjestaj> findByPreference(String preference);
     void deleteSmjestaj(Integer id);
 }
