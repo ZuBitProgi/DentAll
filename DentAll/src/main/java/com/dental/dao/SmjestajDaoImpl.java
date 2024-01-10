@@ -29,15 +29,21 @@ public class SmjestajDaoImpl implements SmjestajDao{
     }
 
     @Override
-    public Smjestaj create(Smjestaj smjestaj) {
-        em.persist(smjestaj);
-        return smjestaj;
+    @Transactional(readOnly = true)
+    public Smjestaj findSmjestajByAdresa(String adresa){
+        return em.createQuery("SELECT s FROM Smjestaj s WHERE s.adresa = :adresa", Smjestaj.class).setParameter("adresa", adresa).getSingleResult();
     }
 
     @Override
-    public List<Smjestaj> findByPreference(String preference) {
-        return em.createQuery("SELECT s FROM Smjestaj WHERE...")
-                .getResultList();
+    @Transactional(readOnly = true)
+    public Smjestaj findSmjestajByKategorijaTipDostupnost(String kategorija, String tip, Boolean dostupnost){
+        return em.createQuery("SELECT s FROM Smjestaj s WHERE s.kategorija = :kategorija AND s.tip = :tip AND s.dostupnost = :dostupnost", Smjestaj.class).setParameter("kategorija", kategorija).setParameter("tip", tip).setParameter("dostupnost", dostupnost).getSingleResult();
+    }
+
+    @Override
+    public Smjestaj create(Smjestaj smjestaj) {
+        em.persist(smjestaj);
+        return smjestaj;
     }
 
     @Override
