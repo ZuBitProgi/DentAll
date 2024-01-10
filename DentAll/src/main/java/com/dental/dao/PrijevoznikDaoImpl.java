@@ -37,4 +37,12 @@ public class PrijevoznikDaoImpl implements PrijevoznikDao{
                 .setParameter("id",id)
                 .getSingleResult();
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public  Prijevoznik findPrijevoznikByVozilo(String kapacitet){
+        VoziloDao vozilo = new VoziloDao();
+        return em.createQuery("SELECT p FROM Prijevoznik p WHERE p.voziloID IN :vozila", Prijevoznik.class).setParameter("vozila", vozilo.findByKapacitet(kapacitet)).getSingleResult();
+    }
+
 }
