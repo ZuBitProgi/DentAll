@@ -25,6 +25,16 @@ public class SmjestajService {
         return smjestajDao.findSmjestajById(id);
     }
 
+    @Transactional(readOnly = true)
+    public Smjestaj findSmjestajByAdresa(String adresa) {
+        return smjestajDao.findSmjestajByAdresa(adresa);
+    }
+
+    @Transactional(readOnly = true)
+    public Smjestaj findSmjestajByKategorijaTipDostupnost(String kategorija, String tip, Boolean dostupnost) {
+        return smjestajDao.findSmjestajByKategorijaTipDostupnost(kategorija, tip, dostupnost);
+    }
+
     @Transactional
     public Smjestaj createSmjestaj(Smjestaj smjestaj){
         Assert.notNull(smjestaj, "Pogresno unesen smjestaj");
