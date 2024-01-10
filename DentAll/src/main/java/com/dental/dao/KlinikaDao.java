@@ -19,4 +19,6 @@ public class KlinikaDao {
     public List<Klinika> findAll(){
         return em.createQuery("SELECT k FROM Klinika k").getResultList();
     }
+
+    public Klinika findKlinikaByAdresa(String adresa) { return em.createQuery("SELECT k FROM Klinika k WHERE k.adresa = :adresa", Klinika.class).setParameter("adresa", adresa).getSingleResult(); }
 }
