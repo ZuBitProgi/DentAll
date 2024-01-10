@@ -19,4 +19,6 @@ public class VoziloDao {
     public List<Vozilo> findAll(){
         return em.createQuery("SELECT  v FROM Vozilo v").getResultList();
     }
+
+    public List<Vozilo> findByKapacitet(String kapacitet) {return em.createQuery("SELECT v FROM Vozilo v WHERE v.kapacitet = :kapacitet", Vozilo.class).setParameter("kapacitet", kapacitet).getResultList();}
 }
