@@ -31,6 +31,8 @@ public class KorisnikController {
     private SmjestajService smjestajService;
     @Autowired
     private PutovanjeService putovanjeService;
+    @Autowired
+    private EmailService emailService;
     @GetMapping("")
     public List<Korisnik> listKorisnik(){
         return korisnikService.listAll();
@@ -55,13 +57,27 @@ public class KorisnikController {
             else vrijeme = LocalTime.parse(p.split(":")[1]);
         }
         Putovanje putovanje = new Putovanje(Time.valueOf(vrijeme), klinikaService.findKlinikaByAdresa(adresa).getId(), prijevoznikService.findPrijevoznikByVozilo(kapacitet).getId(), smjestajService.findSmjestajByKategorijaTipDostupnost(kategorija, tip, dostupnost).getId(), korisnik.getId(), "tamo");
-        putovanjeService.create(putovanje);
-
+        Putovanje feedback=putovanjeService.create(putovanje);
+        if(feedback != null){
+            try {
+                String to = korisnik.getKontakt();
+                String subject = "Registracija";
+                String content = "Uspjesna autorizacija!";
+                emailService.sendEmail(to, subject, content);
+            } catch (Exception e) {
+                // Handle the exception (log it, throw a custom exception, etc.)
+                e.printStackTrace();
+            }
+        }
         //KlinikaDaoImpl klinika = new KlinikaDaoImpl();
         //PrijevoznikDaoImpl prijevoznik = new PrijevoznikDaoImpl();
         //SmjestajDaoImpl smjestaj = new SmjestajDaoImpl();
         return korisnikService.createKorisnik(korisnik);
         //return korisnikService.findKorisnikById(korisnik.getId());
+    }
+
+    private void sendMail(String kontakt) {
+
     }
 
     @PostMapping("/delete")
