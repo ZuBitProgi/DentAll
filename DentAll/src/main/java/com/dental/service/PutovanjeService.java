@@ -15,8 +15,8 @@ public class PutovanjeService {
     private PutovanjeDaoImpl putovanjeDaoImpl;
 
     @Transactional
-    public void create(Putovanje putovanje){
-        putovanjeDaoImpl.create(putovanje);
+    public Putovanje create(Putovanje putovanje){
+        return putovanjeDaoImpl.create(putovanje);
     }
 
     @Transactional

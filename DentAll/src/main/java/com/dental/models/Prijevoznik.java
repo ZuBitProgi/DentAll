@@ -1,11 +1,10 @@
 package com.dental.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Prijevoznik {
@@ -19,6 +18,8 @@ public class Prijevoznik {
     public Prijevoznik(){
 
     };
+    @OneToMany(mappedBy = "prijevoznik",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Vozilo> vozila=new ArrayList<>();
 
     public Prijevoznik(String kontakt, Time radnoVrijeme, Integer voziloId){
         this.kontakt = kontakt;

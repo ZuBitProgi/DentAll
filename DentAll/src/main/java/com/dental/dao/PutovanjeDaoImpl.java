@@ -4,6 +4,7 @@ import com.dental.models.Putovanje;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,9 +28,10 @@ public class PutovanjeDaoImpl implements PutovanjeDao{
     public Putovanje findPutovanjeById(Integer id) {
         return null;
     }
-
+    @Transactional
     @Override
     public Putovanje create(Putovanje putovanje) {
-        return null;
+        em.persist(putovanje);
+        return putovanje;
     }
 }
