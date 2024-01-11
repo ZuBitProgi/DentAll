@@ -1,6 +1,7 @@
 package com.dental.service;
 
 import com.dental.dao.KlinikaDao;
+import com.dental.dao.KlinikaDaoImpl;
 import com.dental.models.Klinika;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,17 +16,18 @@ public class KlinikaService {
     private KlinikaDao klinikaDao;
 
     @Transactional
-    public void add(Klinika klinika){
-        klinikaDao.persist(klinika);
+    public Klinika create(Klinika klinika){
+        return klinikaDao.create(klinika);
     }
 
-    @Transactional
-    public void addAll(Collection<Klinika> klinika){
-        for(Klinika k : klinika) klinikaDao.persist(k);
-    }
+
 
     @Transactional(readOnly = true)
     public List<Klinika> listAll(){
         return klinikaDao.findAll();
+    }
+
+    public Klinika findKlinikaByAdresa(String adresa) {
+        return klinikaDao.findKlinikaByAdresa(adresa);
     }
 }

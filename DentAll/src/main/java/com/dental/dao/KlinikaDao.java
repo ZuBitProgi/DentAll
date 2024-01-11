@@ -1,24 +1,18 @@
 package com.dental.dao;
 
 import com.dental.models.Klinika;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Component;
+import com.dental.models.Korisnik;
 
 import java.util.List;
 
-@Component
-public class KlinikaDao {
-    @PersistenceContext
-    private EntityManager em;
+public interface KlinikaDao {
+    List<Klinika> findAll();
 
-    public void persist(Klinika klinika){
-        em.persist(klinika);
-    }
+    Klinika findKlinikaById(Integer id);
 
-    public List<Klinika> findAll(){
-        return em.createQuery("SELECT k FROM Klinika k").getResultList();
-    }
+   Klinika create(Klinika Klinika);
 
-    public Klinika findKlinikaByAdresa(String adresa) { return em.createQuery("SELECT k FROM Klinika k WHERE k.adresa = :adresa", Klinika.class).setParameter("adresa", adresa).getSingleResult(); }
+    void deleteKlinika(Integer id);
+
+    public Klinika findKlinikaByAdresa(String adresa);
 }
