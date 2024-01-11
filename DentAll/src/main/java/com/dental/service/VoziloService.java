@@ -1,6 +1,6 @@
 package com.dental.service;
 
-import com.dental.dao.VoziloDao;
+import com.dental.dao.VoziloDaoImpl;
 import com.dental.models.Vozilo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public class VoziloService {
     @Autowired
-    private VoziloDao smjestajDao;
+    private VoziloDaoImpl smjestajDao;
 
     @Transactional
     public void add(Vozilo vozilo){

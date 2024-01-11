@@ -2,6 +2,7 @@ package com.dental.service;
 
 import com.dental.dao.PrijevoznikDao;
 import com.dental.dao.PrijevoznikDaoImpl;
+import com.dental.models.Klinika;
 import com.dental.models.Prijevoznik;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -33,5 +34,9 @@ public class PrijevoznikService {
     @Transactional(readOnly = true)
     public Prijevoznik findPrijevoznikById(Integer id){
         return prijevoznikDao.findPrijevoznikById(id);
+    }
+
+    public Prijevoznik findPrijevoznikByVozilo(String kapacitet) {
+        return prijevoznikDao.findPrijevoznikByVozilo(kapacitet);
     }
 }

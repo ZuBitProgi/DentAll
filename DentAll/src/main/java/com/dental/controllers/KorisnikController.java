@@ -5,9 +5,11 @@ import com.dental.dao.KlinikaDaoImpl;
 import com.dental.dao.PrijevoznikDaoImpl;
 import com.dental.dao.SmjestajDaoImpl;
 import com.dental.models.Korisnik;
+import com.dental.models.Prijevoznik;
 import com.dental.models.Putovanje;
 import com.dental.service.KlinikaService;
 import com.dental.service.KorisnikService;
+import com.dental.service.PrijevoznikService;
 import com.dental.service.PutovanjeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,8 @@ public class KorisnikController {
     @Autowired
     private KlinikaService klinikaService;
 
+    @Autowired
+    private PrijevoznikService prijevoznikService;
 
     @GetMapping("")
     public List<Korisnik> listKorisnik(){
@@ -51,9 +55,9 @@ public class KorisnikController {
         }
         PutovanjeService putovanje = new PutovanjeService();
         //KlinikaDaoImpl klinika = new KlinikaDaoImpl();
-        PrijevoznikDaoImpl prijevoznik = new PrijevoznikDaoImpl();
+        //PrijevoznikDaoImpl prijevoznik = new PrijevoznikDaoImpl();
         SmjestajDaoImpl smjestaj = new SmjestajDaoImpl();
-        putovanje.add(new Putovanje(Time.valueOf(vrijeme), klinikaService.findKlinikaByAdresa(adresa).getId(), prijevoznik.findPrijevoznikByVozilo(kapacitet).getId(), smjestaj.findSmjestajByKategorijaTipDostupnost(kategorija, tip, dostupnost).getId(), korisnik.getId(), "tamo"));
+        putovanje.add(new Putovanje(Time.valueOf(vrijeme), klinikaService.findKlinikaByAdresa(adresa).getId(), prijevoznikService.findPrijevoznikByVozilo(kapacitet).getId(), smjestaj.findSmjestajByKategorijaTipDostupnost(kategorija, tip, dostupnost).getId(), korisnik.getId(), "tamo");
         return korisnikService.findKorisnikById(korisnik.getId());
     }
 
