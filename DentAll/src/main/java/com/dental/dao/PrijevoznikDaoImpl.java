@@ -18,11 +18,13 @@ public class PrijevoznikDaoImpl implements PrijevoznikDao{
     private VoziloDaoImpl voziloDaoImpl;
 
     @Override
+    @Transactional
     public Prijevoznik create(Prijevoznik prijevoznik){
         em.persist(prijevoznik);
         return prijevoznik;
     }
     @Override
+    @Transactional
     public void deletePrijevoznik(Integer id){
         Prijevoznik entityToRemove = em.find(Prijevoznik.class, id);
         if (entityToRemove != null) {

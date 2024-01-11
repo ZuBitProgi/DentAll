@@ -46,12 +46,14 @@ public class SmjestajDaoImpl implements SmjestajDao{
     }
 
     @Override
+    @Transactional
     public Smjestaj create(Smjestaj smjestaj) {
         em.persist(smjestaj);
         return smjestaj;
     }
 
     @Override
+    @Transactional
     public void deleteSmjestaj(Integer id) {
         Smjestaj entityToRemove = em.find(Smjestaj.class, id);
         if (entityToRemove != null) {

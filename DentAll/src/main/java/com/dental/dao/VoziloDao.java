@@ -7,4 +7,5 @@ import java.util.List;
 public interface VoziloDao {
     public List<Vozilo> findAll();
     public List<Vozilo> findByKapacitet(String kapacitet);
+    public Vozilo create(Vozilo vozilo);
 }

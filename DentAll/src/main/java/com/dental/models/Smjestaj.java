@@ -24,7 +24,7 @@ public class Smjestaj {
 
     @OneToMany(mappedBy = "smjestaj",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Putovanje> putovanja=new ArrayList<>();
-    
+
     public Smjestaj(String tip, String kategorija, String adresa, Boolean dostupnost){
         this.tip = tip;
         this.kategorija = kategorija;
