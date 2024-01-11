@@ -1,25 +1,24 @@
 package com.dental.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmailService {
 
-    private final JavaMailSender javaMailSender;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
-    public EmailService(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
+    public EmailService(){}
 
-    public void sendEmail(String to, String subject, String content) throws MessagingException {
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, false, "utf-8");
-        helper.setTo(to);
-        helper.setSubject(subject);
-        helper.setText(content, true);
+    public void sendEmail(String to, String subject, String body) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(body);
 
-        javaMailSender.send(mimeMessage);
+        javaMailSender.send(message);
     }
 }
