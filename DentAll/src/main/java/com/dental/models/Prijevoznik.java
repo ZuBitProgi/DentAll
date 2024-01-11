@@ -21,6 +21,11 @@ public class Prijevoznik {
     @OneToMany(mappedBy = "prijevoznik",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Vozilo> vozila=new ArrayList<>();
 
+
+
+    @OneToMany(mappedBy = "prijevoznik",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Putovanje> putovanja=new ArrayList<>();
+
     public Prijevoznik(String kontakt, Time radnoVrijeme, Integer voziloId){
         this.kontakt = kontakt;
         this.radnoVrijeme = radnoVrijeme;

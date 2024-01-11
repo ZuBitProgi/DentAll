@@ -1,8 +1,9 @@
 package com.dental.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Smjestaj {
@@ -17,7 +18,13 @@ public class Smjestaj {
     public Smjestaj(){
 
     };
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="IDKlinika")
+    private Klinika klinika;
 
+    @OneToMany(mappedBy = "smjestaj",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Putovanje> putovanja=new ArrayList<>();
+    
     public Smjestaj(String tip, String kategorija, String adresa, Boolean dostupnost){
         this.tip = tip;
         this.kategorija = kategorija;

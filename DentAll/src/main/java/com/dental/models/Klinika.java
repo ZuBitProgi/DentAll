@@ -1,9 +1,9 @@
 package com.dental.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Klinika {
@@ -15,7 +15,11 @@ public class Klinika {
     public Klinika(){
 
     };
+    @OneToMany(mappedBy = "klinika",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Smjestaj> smjestaji= new ArrayList<>();
 
+    @OneToMany(mappedBy = "klinika",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Smjestaj> putovanja= new ArrayList<>();
     public Klinika(String adresa){
         this.adresa = adresa;
     }

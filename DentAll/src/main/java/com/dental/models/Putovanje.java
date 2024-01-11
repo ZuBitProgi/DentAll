@@ -1,9 +1,6 @@
 package com.dental.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Time;
 
@@ -22,6 +19,21 @@ public class Putovanje {
     public Putovanje(){
 
     };
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="IDPrijevoznik")
+    private Prijevoznik prijevoznik;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="IDKorisnik")
+    private Korisnik korisnik;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="IDKlinika")
+    private Klinika klinika;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="IDSmjestaj")
+    private Smjestaj smjestaj;
 
     public Putovanje(Time vrijeme, Integer klinika, Integer prijevoznik, Integer smjestaj, Integer korisnik, String smjer){
         this.vrijeme = vrijeme;
