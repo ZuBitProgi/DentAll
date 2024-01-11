@@ -47,7 +47,7 @@ public class PrijevoznikDaoImpl implements PrijevoznikDao{
     @Transactional(readOnly = true)
     public Prijevoznik findPrijevoznikByVozilo(String kapacitet){
         //VoziloDao vozilo = new VoziloDao();
-        return em.createQuery("SELECT vo FROM VehicleOwner vo JOIN vehicles v WHERE vo.IDPrijevoznik = v.IDPrijevoznik AND v.capacity >= :kapacitet GROUP BY vo HAVING COUNT(v) > 0", Prijevoznik.class)
+        return em.createQuery("SELECT pr FROM Prijevoznik pr JOIN Vozilo v WHERE pr.IDPrijevoznik = v.IDPrijevoznik AND v.kapacitet >= :kapacitet GROUP BY pr HAVING COUNT(v) > 0", Prijevoznik.class)
                 .setParameter("kapacitet",kapacitet)
                 .setMaxResults(1)
                 .getSingleResult();

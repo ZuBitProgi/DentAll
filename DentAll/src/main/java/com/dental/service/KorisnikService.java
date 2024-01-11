@@ -29,30 +29,6 @@ public class KorisnikService {
     public Korisnik createKorisnik(Korisnik korisnik){
         Assert.notNull(korisnik, "Pogresno unesen korisnik");
         Assert.isNull(korisnik.getId(), "Id mora biti null");
-
-        /*String preference=korisnik.getPreference();
-        String[] splittedStr=preference.split(",");
-        ArrayList<String[]> parovi=new ArrayList<>();
-
-        Putovanje putovanjeZaPredat=new Putovanje();
-
-        for (String s: splittedStr) {
-            String[] par=s.split(":");
-            if(par[0].equals("adresaSmjestaj"){
-                putovanjeZaPredat.setVrijeme();
-            }
-            parovi.add(par);
-        }
-        for (String[] par: parovi) {
-
-        }*/
-
-        List<Smjestaj> tempListaSmjestaj=smjestajDao.findByPreference("NEKE PREFERENCE ZA SMJESTAJ");
-        tempListaSmjestaj.get(0).getId();   //moze bilo koji od svih koji zadovoljavaju uvjet
-
-
-
-        putovanjeServis.create(new Putovanje());
         return korisnikDao.create(korisnik);
     }
 

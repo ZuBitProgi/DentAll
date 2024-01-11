@@ -37,7 +37,12 @@ public class SmjestajDaoImpl implements SmjestajDao{
     @Override
     @Transactional(readOnly = true)
     public Smjestaj findSmjestajByKategorijaTipDostupnost(String kategorija, String tip, Boolean dostupnost){
-        return em.createQuery("SELECT s FROM Smjestaj s WHERE s.kategorija = :kategorija AND s.tip = :tip AND s.dostupnost = :dostupnost", Smjestaj.class).setParameter("kategorija", kategorija).setParameter("tip", tip).setParameter("dostupnost", dostupnost).getSingleResult();
+        return em.createQuery("SELECT s FROM Smjestaj s WHERE s.kategorija = :kategorija AND s.tip = :tip AND s.dostupnost = :dostupnost", Smjestaj.class)
+                .setParameter("kategorija", kategorija)
+                .setParameter("tip", tip)
+                .setParameter("dostupnost", dostupnost)
+                .setMaxResults(1)
+                .getSingleResult();
     }
 
     @Override
