@@ -12,20 +12,20 @@ import java.util.List;
 @Component
 public class VoziloService {
     @Autowired
-    private VoziloDaoImpl smjestajDao;
+    private VoziloDaoImpl voziloDao;
 
     @Transactional
     public void add(Vozilo vozilo){
-        smjestajDao.persist(vozilo);
+        voziloDao.create(vozilo);
     }
 
     @Transactional
     public void addAll(Collection<Vozilo> vozilo){
-        for(Vozilo v : vozilo) smjestajDao.persist(v);
+        for(Vozilo v : vozilo) voziloDao.create(v);
     }
 
     @Transactional(readOnly = true)
     public List<Vozilo> listAll(){
-        return smjestajDao.findAll();
+        return voziloDao.findAll();
     }
 }

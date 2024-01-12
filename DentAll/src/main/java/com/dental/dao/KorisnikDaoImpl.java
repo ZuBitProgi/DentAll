@@ -17,22 +17,26 @@ public class KorisnikDaoImpl implements KorisnikDao{
     @Override
     @Transactional(readOnly = true)
     public List<Korisnik> findAll(){
-        return em.createQuery("SELECT k FROM Korisnik k", Korisnik.class).getResultList();
+        return em.createQuery("SELECT k FROM Korisnik k", Korisnik.class)
+                .getResultList();
     }
 
     @Override
     @Transactional(readOnly = true)
     public Korisnik findKorisnikById(Integer id){
-        return em.createQuery("SELECT k FROM Korisnik k WHERE k.id = :id", Korisnik.class).setParameter("id", id).getSingleResult();
+        return em.createQuery("SELECT k FROM Korisnik k WHERE k.id = :id", Korisnik.class)
+                .setParameter("id", id).getSingleResult();
     }
 
     @Override
+    @Transactional
     public Korisnik create(Korisnik korisnik){
         em.persist(korisnik);
         return korisnik;
     }
 
     @Override
+    @Transactional
     public void deleteKorisnik(Integer id){
         Korisnik entityToRemove = em.find(Korisnik.class, id);
         if(entityToRemove != null) em.remove(entityToRemove);
