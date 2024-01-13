@@ -3,12 +3,15 @@ import { baseUrl } from '..';
 import { useNavigate } from 'react-router-dom';
 import Smjestaj from './Smjestaj';
 import "../styles/List.css"
+import ModalForm from './ModalForm';
 
 
 const List = ({path}) => {
   let navigate = useNavigate()
 
   const [data, setData] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+
 
   const fetchData = async () => {
 
@@ -20,8 +23,6 @@ const List = ({path}) => {
         navigate("/");
         return;
       }
-
-      console.log(token)
       const response = await fetch(`${baseUrl}/api/${path}`, {
         method: "GET",
         headers: {
@@ -43,16 +44,41 @@ const List = ({path}) => {
     fetchData()
   }, [])
 
+  function handleAddClick() {
+    setShowForm(true);
+  }
+
+  async function handleDeleteClick(id) {
+
+    await fetch (`${baseUrl}/api/accomodation/delete`, 
+      {
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("token"),
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(id)
+      }
+    ) 
+
+    setData([...data.filter((smjestajObject) => smjestajObject.id !== id)]);
+
+  }
 
   return (
     <div>
       {<ul className='lista'>
       {data.map((smjestajObject, index) => (
-        <li key={smjestajObject.id}>
+        <li className="list-element" key={index}>
           <Smjestaj  {...smjestajObject}/>
+          <button onClick={() => handleDeleteClick(smjestajObject.id)}>Delete</button>
         </li>
       ))}
       </ul>}
+      <button onClick={handleAddClick}>Dodaj</button>
+      {showForm && (
+        <ModalForm data={data} setData={setData}/>
+      )}
     </div>
   );
 };
