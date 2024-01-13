@@ -14,7 +14,7 @@ function TransportAdminView(props) {
         setShowAdd(false)
       }
 return (
-    <div>
+    <div className='korisnik-overlay'>
         <p>Dobrodošli {username}</p>
         <p>Vaša uloga je Prijevozni administrator</p>
         <List path="transport"></List>

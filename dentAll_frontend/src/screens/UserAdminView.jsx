@@ -11,12 +11,13 @@ function UserAdminView(props) {
       setShowAdd(false)
     }
   return (
-    <div>
+    <div className='korisnik-overlay'>
         <p>Dobrodošli {username}</p>
         <p>Vaša uloga je Korisnički administrator</p>
+        
         {showAdd && <KorisnikAddForm onClose={closeForm}/>}
         {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)}>  dodaj </button> </div>}
-    </div>
+        </div>
   )
 }
 
