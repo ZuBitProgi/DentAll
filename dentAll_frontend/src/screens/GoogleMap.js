@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';      
+import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';   
+import HoteliLista from './Index/HoteliLista';  
 
 class GoogleMap extends Component{                                    
     render(){
         const mapStyles = {
-            width: '40%',
-            height: '240px',
+            width: '45%',
+            height: '400px',
 
         };
         return(
@@ -15,7 +16,13 @@ class GoogleMap extends Component{
                 style = {mapStyles}
                 initialCenter = {{lat: 37.7749, lng: -122.4194 }}              
                 >
-                    <Marker position={{ lat: 37.7749, lng: -122.4194 }} />
+                    {hotelLocations.map(location => (
+          <Marker
+            key={location.id}
+            position={{ lat: location.lat, lng: location.lng }}
+            label={location.name}
+          />
+        ))}
                 </Map>
         );
       
