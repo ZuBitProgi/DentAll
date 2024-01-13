@@ -1,0 +1,18 @@
+.housing-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.housing-map {
+    height: 70%;
+    width: 50%;
+}
+
+.housing-list-and-map {
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}

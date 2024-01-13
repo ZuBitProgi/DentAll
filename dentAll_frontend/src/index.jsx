@@ -6,6 +6,7 @@ import { Index } from "./screens/Index";
 import HousingAdminView from "./screens/HousingAdminView";
 import UserAdminView from "./screens/UserAdminView";
 import TransportAdminView from "./screens/TransportAdminView";
+import './styles/index.css'
 
 const router = createBrowserRouter([
     {

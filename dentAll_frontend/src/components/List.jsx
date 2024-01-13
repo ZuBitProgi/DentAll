@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { baseUrl } from '..';
 import { useNavigate } from 'react-router-dom';
+import Smjestaj from './Smjestaj';
+import "../styles/List.css"
+
 
 const List = ({path}) => {
   let navigate = useNavigate()
 
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
 
   const fetchData = async () => {
 
@@ -26,9 +29,9 @@ const List = ({path}) => {
         }
       });
 
-      console.log(response);
       if (response.ok) {
-        setData(await response.json());
+        let newData = await response.json();
+        setData(newData);
       }
 
     } catch (error) {
@@ -40,9 +43,16 @@ const List = ({path}) => {
     fetchData()
   }, [])
 
+
   return (
     <div>
-      <p>hey</p>
+      {<ul className='lista'>
+      {data.map((smjestajObject, index) => (
+        <li key={smjestajObject.id}>
+          <Smjestaj  {...smjestajObject}/>
+        </li>
+      ))}
+      </ul>}
     </div>
   );
 };
