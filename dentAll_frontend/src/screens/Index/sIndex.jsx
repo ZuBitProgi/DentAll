@@ -34,7 +34,14 @@ export const Index = () => {
       },
       body: JSON.stringify({"username": document.getElementById("username").value, "password": document.getElementById("password").value, "role": role})
     })
-  
+
+    let resData = await response.json();
+    let token = resData["accessToken"];
+    let prefix = resData["tokenType"];
+
+    localStorage.setItem("token", prefix + token);
+    console.log(token + prefix)
+    
     if (response.status !== 200) {
       document.getElementById("error-text").className = "error-text"
       clearForm()

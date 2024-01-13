@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -43,6 +44,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/auth/**").permitAll()
+                                .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
+                                .requestMatchers("/api/**").authenticated()
                 )
                 .exceptionHandling((exception) -> exception.authenticationEntryPoint(authEntryPoint))
                 .sessionManagement((sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)))

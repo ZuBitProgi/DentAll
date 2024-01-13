@@ -16,6 +16,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/user")
 public class KorisnikController {
 

@@ -1,14 +1,18 @@
 import React from 'react'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import List from '../components/List'
 
 function TransportAdminView(props) {
+
     const location = useLocation()
     const username = location.state.username  
+
 return (
     <div>
         <p>Dobrodošli {username}</p>
         <p>Vaša uloga je Prijevozni administrator</p>
+        <List path="transport"></List>
     </div>
   )
 }

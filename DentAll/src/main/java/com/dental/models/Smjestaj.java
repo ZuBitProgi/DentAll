@@ -10,10 +10,13 @@ public class Smjestaj {
     @Id
     @GeneratedValue
     private Integer id;
-    private String tip;
-    private String kategorija;
+
     private String adresa;
     private Boolean dostupnost;
+    private String kategorija;
+
+    private String tip;
+
 
     public Smjestaj(){
 

@@ -12,7 +12,9 @@ public class Prijevoznik {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String kontakt;
-    private Time radnoVrijeme;
+    private Time radnoVrijemeOd;
+    private Time radnoVrijemeDo;
+
     private Integer voziloId;
 
     public Prijevoznik(){
@@ -26,10 +28,11 @@ public class Prijevoznik {
     @OneToMany(mappedBy = "prijevoznik",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Putovanje> putovanja=new ArrayList<>();
 
-    public Prijevoznik(String kontakt, Time radnoVrijeme, Integer voziloId){
+    public Prijevoznik(String kontakt, Time radnoVrijemeOd, Time radnoVrijemeDo, Integer voziloId){
         this.kontakt = kontakt;
-        this.radnoVrijeme = radnoVrijeme;
+        this.radnoVrijemeOd = radnoVrijemeOd;
         this.voziloId = voziloId;
+        this.radnoVrijemeDo = radnoVrijemeDo;
     }
 
     public Integer getId() {
@@ -40,9 +43,11 @@ public class Prijevoznik {
         return kontakt;
     }
 
-    public Time getRadnoVrijeme() {
-        return radnoVrijeme;
+    public Time getRadnoVrijemeOd() {
+        return radnoVrijemeOd;
     }
+
+    public Time getRadnoVrijemeDo() {return radnoVrijemeDo;}
 
     public Integer getVoziloId() {
         return voziloId;
@@ -57,8 +62,10 @@ public class Prijevoznik {
     }
 
     public void setRadnoVrijeme(Time radnoVrijeme) {
-        this.radnoVrijeme = radnoVrijeme;
+        this.radnoVrijemeOd = radnoVrijemeOd;
     }
+
+    public void setRadnoVrijemeDo(Time radnoVrijemeDo) {this.radnoVrijemeDo = radnoVrijemeDo;}
 
     public void setVoziloId(Integer voziloId) {
         this.voziloId = voziloId;
