@@ -12,28 +12,9 @@ function HousingAdminView(props) {
 
   const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
-
-  const [hoteli, setHoteli] = useState([
-    {
-      id: 1,
-      name: 'Hotel Esplanade'
-    },
-    {
-      id: 2,
-      name: 'Hotel Sheraton'
-    },
-    {
-      id: 3,
-      name: 'Hotel Westin'
-    },
-
-  ])
   const location = useLocation()
   const username = location.state.username
-  const [showAdd, setShowAdd]= useState(false)
-  const closeForm = () => {
-    setShowAdd(false)
-  }
+
   return (
     <div className='housing-container'>
       <p>Dobrodošli {username}</p>
@@ -51,8 +32,6 @@ function HousingAdminView(props) {
           </APIProvider>
         </div>
       </div>
-      {showAdd && <SmjestajAddForm onClose={closeForm}/>}
-      {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)}>  dodaj </button> </div>}
     </div>
   )
 }

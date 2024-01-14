@@ -1,17 +1,16 @@
 import { FaTimes } from "react-icons/fa"
-
 import React from 'react'
 
-export default function SmjestajAddForm() {
+export default function SmjestajAddForm({onClose}) {
 
     async function handleSubmit(e){}
 
     return (
         <div className="index">
-            <div className="overlap-group-wrapper">
+            <div className="form-group-wrapper">
                 <div className="overlap-group">
                     <form className='add-form' onSubmit={(e) => handleSubmit(e, role)}>
-                        <header className='form-header'><FaTimes style={{ cursor: 'pointer' }} onClick={onClose} /></header>
+                        <div className='form-header'><FaTimes style={{ cursor: 'pointer' }} onClick={onClose} /></div>
                         <div className="text-wrapper"> dodaj nesto</div>
                         <div className='overlap'>
                             <label></label>
