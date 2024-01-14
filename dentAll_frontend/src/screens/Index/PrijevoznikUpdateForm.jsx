@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const UpdateFormDynamicList = ({ itemList }) => {
+/*const UpdateFormDynamicList = ({ itemList }) => {
   const [list, setList] = useState(itemList);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -41,9 +41,9 @@ const UpdateFormDynamicList = ({ itemList }) => {
       )}
     </div>
   );
-};
+};*/
 
-const UpdateForm = ({ initialData, onUpdate }) => {
+export default function PrijevoznikUpdateForm ({ initialData, onUpdate }){
   const [formData, setFormData] = useState(initialData);
 
   const handleChange = (e) => {
@@ -75,8 +75,15 @@ const UpdateForm = ({ initialData, onUpdate }) => {
         Radno vrijeme:
         <input
           type="text"
-          name="radnoVrijeme"
-          value={formData.radnoVrijeme}
+          name="radnoVrijemeOd"
+          value={formData.radnoVrijemeOd}
+          onChange={handleChange}
+        />
+
+        <input
+          type="text"
+          name="radnoVrijemeOd"
+          value={formData.radnoVrijemeDo}
           onChange={handleChange}
         />
       </label>
@@ -93,7 +100,5 @@ const UpdateForm = ({ initialData, onUpdate }) => {
 
       <button type="submit">Update</button>
     </form>
-  );
-};
-
-export default UpdateFormDynamicList;
+  )
+}
