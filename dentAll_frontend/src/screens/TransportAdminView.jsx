@@ -7,12 +7,12 @@ import PrijevoznikList from '../components/PrijevoznikList'
 
 function TransportAdminView(props) {
 
-    // const location = useLocation()
-    // const username = location.state.username  
+    const location = useLocation()
+    const username = location.state.username  
 
 return (
     <div className='korisnik-overlay'>
-        <p>Dobrodošli</p>
+        <p>Dobrodošli {username}</p>
         <p>Vaša uloga je Prijevozni administrator</p>
         <PrijevoznikList path="transport"></PrijevoznikList>
     </div>

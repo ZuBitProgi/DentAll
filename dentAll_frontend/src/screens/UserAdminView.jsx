@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import KorisnikAddForm from './Index/KorisnikAddForm'
+import UserList from "../components/UserList"
 
 function UserAdminView(props) {
     const location = useLocation()
@@ -14,10 +15,8 @@ function UserAdminView(props) {
     <div className='korisnik-overlay'>
         <p>Dobrodošli {username}</p>
         <p>Vaša uloga je Korisnički administrator</p>
-        
-        {showAdd && <KorisnikAddForm onClose={closeForm}/>}
-        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)}>  dodaj </button> </div>}
-        </div>
+        <UserList path="user"></UserList>
+    </div>
   )
 }
 

@@ -47,13 +47,19 @@ export default function SmjestajAddForm({onClose, data, setData}) {
                         </div>
                         <div className='overlap'>
                             <label></label>
-                            <input id="2" className="input" type="text" name="tip" placeholder="tip..." value={newHousingData.tip} onChange={handleFormChange} />                        </div>
+                            <input id="2" className="input" type="text" name="tip" placeholder="tip..." value={newHousingData.tip} onChange={handleFormChange} />
+                        </div>
                         <div className='overlap'>
                             <label></label>
-                            <input id="3" className="input" type="text" name="kategorija" placeholder="kategorija..." value={newHousingData.kategorija} onChange={handleFormChange} />                        </div>
+                            <input id="3" className="input" type="text" name="kategorija" placeholder="kategorija..." value={newHousingData.kategorija} onChange={handleFormChange} />
+                        </div>
                         <div className='overlap'>
-                            <label></label>
-                            <input id="4" className="input" type="text" name="dostupnost" placeholder="dostupnost..." value={newHousingData.dostupnost} onChange={handleFormChange} />                        </div>
+                            <label>Dostupno
+                                <input id="4" type="radio" name="dostupnost" value="true" onChange={handleFormChange} /> 
+                            </label>
+                            <label>Nedostupno
+                                <input id="5" type="radio" name="dostupnost" value="false" onChange={handleFormChange} /> 
+                            </label>                       </div>
                         <div className='buttonContainer'> <button type="submit" className="btn">dodaj</button> </div>
                     </form>
                 </div>
