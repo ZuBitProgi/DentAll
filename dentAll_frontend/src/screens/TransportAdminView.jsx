@@ -1,25 +1,20 @@
 import React from 'react'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import List from '../components/List'
+import List from '../components/SmjestajList'
 import PrijevoznikAddForm from './Index/PrijevoznikAddForm'
+import PrijevoznikList from '../components/PrijevoznikList'
 
 function TransportAdminView(props) {
 
-    const location = useLocation()
-    const username = location.state.username  
+    // const location = useLocation()
+    // const username = location.state.username  
 
-    const [showAdd, setShowAdd]= useState(false)
-    const closeForm = () => {
-        setShowAdd(false)
-      }
 return (
     <div className='korisnik-overlay'>
-        <p>Dobrodošli {username}</p>
+        <p>Dobrodošli</p>
         <p>Vaša uloga je Prijevozni administrator</p>
-        <List path="transport"></List>
-        {showAdd && <PrijevoznikAddForm onClose={closeForm}/>}
-        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)}>  dodaj </button> </div>}
+        <PrijevoznikList path="transport"></PrijevoznikList>
     </div>
   )
 }

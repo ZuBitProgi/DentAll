@@ -26,7 +26,6 @@ function ModalForm({ data, setData }) {
             },
             body: JSON.stringify(newHousingData)
         })
-        setShowForm(false);
         setNewHousingData({ adresa: '', tip: '', kategorija: '', dostupnost: '' });
       };
 

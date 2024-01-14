@@ -4,7 +4,7 @@ import HoteliLista from './Index/HoteliLista'
 import SmjestajAddForm from './Index/SmjestajAddForm'
 import { useLocation } from "react-router-dom"
 import {APIProvider, Map} from '@vis.gl/react-google-maps';
-import List from '../components/List'
+import List from '../components/SmjestajList'
 
 import '../styles/HousingAdminView.css'
 

@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { baseUrl } from '..';
 import { useNavigate } from 'react-router-dom';
-import Smjestaj from './Smjestaj';
 import "../styles/List.css"
-import ModalForm from './ModalForm';
+import PrijevoznikAddForm from '../screens/Index/PrijevoznikAddForm';
+import Prijevoznik from './Prijevoznik';
 
 
-const List = ({path}) => {
+const PrijevoznikList = ({path}) => {
   let navigate = useNavigate()
 
   const [data, setData] = useState([]);
-  const [showForm, setShowForm] = useState(false);
+
+  const [showAdd, setShowAdd]= useState(false)
+  const closeForm = () => {
+      setShowAdd(false)
+    }
 
 
   const fetchData = async () => {
@@ -32,6 +36,7 @@ const List = ({path}) => {
 
       if (response.ok) {
         let newData = await response.json();
+        console.log(newData)
         setData(newData);
       }
 
@@ -44,13 +49,9 @@ const List = ({path}) => {
     fetchData()
   }, [])
 
-  function handleAddClick() {
-    setShowForm(true);
-  }
-
   async function handleDeleteClick(id) {
 
-    await fetch (`${baseUrl}/api/accomodation/delete`, 
+    await fetch (`${baseUrl}/api/transport/delete`, 
       {
         method: "POST",
         headers: {
@@ -61,26 +62,23 @@ const List = ({path}) => {
       }
     ) 
 
-    setData([...data.filter((smjestajObject) => smjestajObject.id !== id)]);
-
+    setData([...data.filter((prijevoznikObject) => prijevoznikObject.id !== id)]);
   }
 
   return (
-    <div>
+    <div className='container'>
       {<ul className='lista'>
-      {data.map((smjestajObject, index) => (
+      {data.map((prijevoznikObject, index) => (
         <li className="list-element" key={index}>
-          <Smjestaj  {...smjestajObject}/>
-          <button onClick={() => handleDeleteClick(smjestajObject.id)}>Delete</button>
+          <Prijevoznik  {...prijevoznikObject}/>
+          <button onClick={() => handleDeleteClick(prijevoznikObject.id)}>Delete</button>
         </li>
       ))}
       </ul>}
-      <button onClick={handleAddClick}>Dodaj</button>
-      {showForm && (
-        <ModalForm data={data} setData={setData}/>
-      )}
+      {showAdd && <PrijevoznikAddForm onClose={closeForm} data={data} setData={setData}/>}
+        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)}>dodaj</button> </div>}
     </div>
   );
 };
 
-export default List
+export default PrijevoznikList

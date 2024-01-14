@@ -1,5 +1,6 @@
 package com.dental.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.sql.Time;
@@ -12,7 +13,9 @@ public class Prijevoznik {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String kontakt;
+    @JsonFormat(pattern = "HH:mm")
     private Time radnoVrijemeOd;
+    @JsonFormat(pattern = "HH:mm")
     private Time radnoVrijemeDo;
 
     private Integer voziloId;
