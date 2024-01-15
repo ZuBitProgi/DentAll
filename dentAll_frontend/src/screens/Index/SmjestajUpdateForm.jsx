@@ -94,7 +94,7 @@ export default function SmjestajUpdateForm({ onClose, initialData, onUpdate }) {
 
 
 
-            <button type="submit">Update</button>
+            <div className='buttonContainer'><button type="submit" className='btn'>ažuriraj</button></div>
           </form>
         </div>
       </div>

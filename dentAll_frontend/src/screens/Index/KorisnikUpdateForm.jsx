@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { FaTimes } from "react-icons/fa"
 
-const UpdateFormDynamicList = ({ itemList }) => {
+/*const UpdateFormDynamicList = ({ itemList }) => {
   const [list, setList] = useState(itemList);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -44,9 +45,9 @@ const UpdateFormDynamicList = ({ itemList }) => {
       )}
     </div>
   );
-};
+};*/
 
-const UpdateForm = ({ initialData, onUpdate }) => {
+export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
   const [formData, setFormData] = useState(initialData);
 
   const handleChange = (e) => {
@@ -63,70 +64,66 @@ const UpdateForm = ({ initialData, onUpdate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input
-          type="text"
-          name="ime"
-          value={formData.ime}
-          onChange={handleChange}
-        />
-      </label>
+    <div className="index">
+      <div className="form-group-wrapper">
+        <div className="overlap-group">
+          <div className='form-header'><FaTimes style={{ cursor: 'pointer' }} onClick={onClose} /></div>
+          <div className="text-wrapper"> ažuriraj korisnika</div>
+          <form onSubmit={handleSubmit}>
 
-      <label>
-        Surname:
-        <input
-          type="text"
-          name="prezime"
-          value={formData.prezime}
-          onChange={handleChange}
-        />
-      </label>
+            <div className='overlap'>
+              <label className='label-text'>
+                ime
+              </label>
+              <input type="text" name="ime" className='input' value={formData.ime} onChange={handleChange} />
 
-      <label>
-        Preference:
-        <input
-          type="text"
-          name="preference"
-          value={formData.preference}
-          onChange={handleChange}
-        />
-      </label>
+            </div>
 
-      <label>
-        Contact:
-        <input
-          type="text"
-          name="kontakt"
-          value={formData.kontakt}
-          onChange={handleChange}
-        />
-      </label>
+            <div className='overlap'>
+              <label className='label-text'>
+                prezime
+              </label>
+              <input type="text" name="prezime" className='input' value={formData.prezime} onChange={handleChange} />
 
-      <label>
-        Datum dolaska:
-        <input
-            type='text'
-            name='datum dolaska'
-            value={formData.datumDolaska}
-            onChange={handleChange}
-            />
-      </label>
+            </div>
 
-      <label>
-        Datum odlaska:
-        <input 
-            type='text'
-            name='datum odlaska'
-            value={formData.datumOdlaska}
-            onChange={handleChange}
-            />
-      </label>
+            <div className='overlap'>
+              <label className='label-text'>
+                preference
+              </label>
+              <input type="text" name="preference" className='input' value={formData.preference} onChange={handleChange} />
 
-      <button type="submit">Update</button>
-    </form>
+            </div>
+
+            <div className='overlap'>
+              <label className='label-text'>
+                kontakt
+              </label>
+              <input type="text" name="kontakt" className='input' value={formData.kontakt} onChange={handleChange} />
+
+            </div>
+
+            <div className='overlap'>
+              <label className='label-text'>
+                datum dolaska
+              </label>
+              <input type="date" name="datum dolaska" className='input' value={formData.datumDolaska} onChange={handleChange} />
+
+            </div>
+
+            <div className='overlap'>
+              <label className='label-text'>
+                datum odlaska
+              </label>
+              <input type="date" name="datum odlaska" className='input' value={formData.datumOdlaska} onChange={handleChange} />
+
+            </div>
+
+            <div className='buttonContainer'><button type="submit" className='btn'>ažuriraj</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default UpdateFormDynamicList;
