@@ -79,13 +79,18 @@ const PrijevoznikList = ({ path }) => {
 
   const handleUpdate = (updatedData) => {
     if (selectedItem) {
-      setList((prevList) =>
-        prevList.map((item) =>
-          item.id === selectedItem.id ? { ...item, ...updatedData } : item
-        )
-      );
       setSelectedItem(null);
     }
+
+    let newData = data;
+    for (let i = 0; i < data.length; i++) {
+      if (newData[i].id === updatedData.id) {
+        newData[i] = updatedData;
+        break;
+      }
+    }
+
+    setData([...newData])
   };
 
 
@@ -93,7 +98,7 @@ const PrijevoznikList = ({ path }) => {
     <div className='container'>
       {<ul className='lista'>
         {data.map((prijevoznikObject, index) => (
-          <li className="list-element" key={index} onDoubleClick={() => handleItemClick(prijevoznikObject)}>
+          <li className="list-element" key={index} onClick={() => handleItemClick(prijevoznikObject)}>
             <Prijevoznik  {...prijevoznikObject} />
             <button onClick={() => handleDeleteClick(prijevoznikObject.id)}>Delete</button>
           </li>
@@ -102,6 +107,7 @@ const PrijevoznikList = ({ path }) => {
       {selectedItem && (
         <PrijevoznikUpdateForm
           initialData={{
+            id: selectedItem.id,
             kontakt: selectedItem.kontakt,
             radnoVrijemeOd: selectedItem.radnoVrijemeOd,
             radnoVrijemeDo: selectedItem.radnoVrijemeDo,

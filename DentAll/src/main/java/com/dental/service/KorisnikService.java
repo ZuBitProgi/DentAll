@@ -32,6 +32,10 @@ public class KorisnikService {
         return korisnikDao.create(korisnik);
     }
 
+    public void updateKorisnik(Korisnik korisnik) {
+        korisnikDao.update(korisnik);
+    }
+
     @Transactional
     public List<Korisnik> listAll(){
         return korisnikDao.findAll();

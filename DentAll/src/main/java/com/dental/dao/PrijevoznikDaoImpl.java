@@ -31,6 +31,17 @@ public class PrijevoznikDaoImpl implements PrijevoznikDao{
             em.remove(entityToRemove);
         }
     }
+
+    @Override
+    @Transactional
+    public void updatePrijevoznik(Prijevoznik prijevoznik){
+        Prijevoznik p = (Prijevoznik) em.find(Prijevoznik.class, prijevoznik.getId());
+        p.setKontakt(prijevoznik.getKontakt());
+        p.setRadnoVrijemeDo(prijevoznik.getRadnoVrijemeDo());
+        p.setRadnoVrijemeOd(prijevoznik.getRadnoVrijemeOd());
+        p.setVoziloId(prijevoznik.getVoziloId());
+    }
+
     @Override
     @Transactional(readOnly = true)
     public List<Prijevoznik> findAll(){

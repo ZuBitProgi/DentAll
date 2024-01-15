@@ -39,4 +39,8 @@ public class PrijevoznikService {
     public Prijevoznik findPrijevoznikByVozilo(String kapacitet) {
         return prijevoznikDao.findPrijevoznikByVozilo(kapacitet);
     }
+
+    public void updatePrijevoznik(Prijevoznik prijevoznik) {
+        prijevoznikDao.updatePrijevoznik(prijevoznik);
+    }
 }

@@ -64,7 +64,7 @@ public class Prijevoznik {
         this.kontakt = kontakt;
     }
 
-    public void setRadnoVrijeme(Time radnoVrijeme) {
+    public void setRadnoVrijemeOd(Time radnoVrijemeOd) {
         this.radnoVrijemeOd = radnoVrijemeOd;
     }
 

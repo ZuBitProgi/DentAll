@@ -1,6 +1,7 @@
 package com.dental.service;
 
 import com.dental.dao.SmjestajDao;
+import com.dental.models.Prijevoznik;
 import com.dental.models.Smjestaj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,10 @@ public class SmjestajService {
         Assert.notNull(smjestaj, "Pogresno unesen smjestaj");
         Assert.isNull(smjestaj.getId(), "Id mora biti null");
         return smjestajDao.create(smjestaj);
+    }
+
+    public void updateSmjestaj(Smjestaj smjestaj) {
+        smjestajDao.update(smjestaj);
     }
 
     @Transactional

@@ -15,5 +15,7 @@ public interface KorisnikDao {
 
    Korisnik create(Korisnik korisnik);
 
+   void update (Korisnik korisnik);
+
     void deleteKorisnik(Integer id);
 }

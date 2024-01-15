@@ -81,6 +81,10 @@ public class KorisnikController {
 
     }
 
+    @PostMapping("/update")
+    public void updateKorisnik(@RequestBody Korisnik korisnik) {
+        korisnikService.updateKorisnik(korisnik);
+    }
     @PostMapping("/delete")
     public void deleteKorisnik(@RequestBody Integer id){
         korisnikService.deleteKorisnik(id);

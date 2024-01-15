@@ -59,7 +59,8 @@ export default function SmjestajAddForm({onClose, data, setData}) {
                             </label>
                             <label>Nedostupno
                                 <input id="5" type="radio" name="dostupnost" value="false" onChange={handleFormChange} /> 
-                            </label>                       </div>
+                            </label>
+                        </div>
                         <div className='buttonContainer'> <button type="submit" className="btn">dodaj</button> </div>
                     </form>
                 </div>

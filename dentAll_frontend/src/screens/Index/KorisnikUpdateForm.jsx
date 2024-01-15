@@ -58,8 +58,25 @@ export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    let token = localStorage.getItem("token");
+    if (token === null) {
+      navigate("/");
+      return;
+    }
+
+    await fetch(`${baseUrl}/api/user/update`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      },
+      body: JSON.stringify(formData)
+    })
+
+    onClose(true);
     onUpdate(formData);
   };
 
@@ -126,4 +143,3 @@ export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
     </div>
   );
 };
-

@@ -1,6 +1,6 @@
 package com.dental.dao;
 
-import com.dental.models.Prijevoznik;
+import com.dental.models.Smjestaj;
 import com.dental.models.Smjestaj;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -51,6 +51,18 @@ public class SmjestajDaoImpl implements SmjestajDao{
         em.persist(smjestaj);
         return smjestaj;
     }
+
+    @Override
+    @Transactional
+    public void update(Smjestaj smjestaj) {
+        Smjestaj p = (Smjestaj) em.find(Smjestaj.class, smjestaj.getId());
+        p.setAdresa(smjestaj.getAdresa());
+        p.setDostupnost(smjestaj.getDostupnost());
+        p.setKategorija(smjestaj.getKategorija());
+        p.setTip(smjestaj.getTip());
+    }
+    
+    
 
     @Override
     @Transactional

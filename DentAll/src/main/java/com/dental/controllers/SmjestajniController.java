@@ -2,6 +2,7 @@ package com.dental.controllers;
 
 import java.util.List;
 
+import com.dental.models.Prijevoznik;
 import com.dental.models.Smjestaj;
 import com.dental.service.SmjestajService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,11 @@ public class SmjestajniController {
     @PostMapping("/create")
     public Smjestaj createSmjestaj(@RequestBody Smjestaj smjestaj){
         return smjestajservis.createSmjestaj(smjestaj);
+    }
+
+    @PostMapping("/update")
+    public void updateSmjestaj(@RequestBody Smjestaj smjestaj) {
+        smjestajservis.updateSmjestaj(smjestaj);
     }
 
     @PostMapping("/delete")

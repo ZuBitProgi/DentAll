@@ -75,12 +75,14 @@ const List = ({path}) => {
 
   const handleUpdate = (updatedData) => {
     if (selectedItem) {
-      setList((prevList) =>
-        prevList.map((item) =>
-          item.id === selectedItem.id ? { ...item, ...updatedData } : item
-        )
-      );
       setSelectedItem(null);
+    }
+
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].id === updatedData.id) {
+        data[i] = updatedData;
+        break;
+      }
     }
   };
 
@@ -88,7 +90,7 @@ const List = ({path}) => {
     <div className='container'>
       {<ul className='lista'>
       {data.map((smjestajObject, index) => (
-        <li className="list-element" key={index} onDoubleClick={() => handleItemClick(smjestajObject)}>
+        <li className="list-element" key={index} onClick={() => handleItemClick(smjestajObject)}>
           <Smjestaj  {...smjestajObject}/>
           <button onClick={() => handleDeleteClick(smjestajObject.id)}>Delete</button>
         </li>
@@ -97,9 +99,11 @@ const List = ({path}) => {
       {selectedItem && (
         <SmjestajUpdateForm
           initialData={{
+            id: selectedItem.id,
             tip: selectedItem.tip,
             kategorija: selectedItem.kategorija,
             adresa: selectedItem.adresa,
+            dostupnost: selectedItem.dostupnost
           }}
           onUpdate={handleUpdate}
           onClose={updateCloseForm}

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FaTimes } from "react-icons/fa"
+import { baseUrl } from '../..';
+import { useNavigate } from 'react-router-dom';
 
 /*const UpdateFormDynamicList = ({ itemList }) => {
   const [list, setList] = useState(itemList);
@@ -47,7 +49,10 @@ import { FaTimes } from "react-icons/fa"
 export default function PrijevoznikUpdateForm({ onClose, initialData, onUpdate }) {
   const [formData, setFormData] = useState(initialData);
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
+
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -55,9 +60,26 @@ export default function PrijevoznikUpdateForm({ onClose, initialData, onUpdate }
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    let token = localStorage.getItem("token");
+    if (token === null) {
+      navigate("/");
+      return;
+    }
+
+    await fetch(`${baseUrl}/api/transport/update`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      },
+      body: JSON.stringify(formData)
+    })
+
     onUpdate(formData);
+    onClose(true);
   };
 
   return (
@@ -76,22 +98,21 @@ export default function PrijevoznikUpdateForm({ onClose, initialData, onUpdate }
             </div>
             <div className='overlap'>
               <label className='label-text'>
-                Radno vrijeme
+                Radno vrijeme od
+                <input type="text" name="radnoVrijemeOd" className='input' value={formData.radnoVrijemeOd} onChange={handleChange} />
               </label>
-              <div className='vrijeme-wrap'>
-              <input type="text" name="radnoVrijemeOd" className='input' value={formData.radnoVrijemeOd} onChange={handleChange} />
-              <input type="text" name="radnoVrijemeDo" className='input' value={formData.radnoVrijemeDo} onChange={handleChange} />
-              </div>
-
+            </div>
+            <div className='overlap'>
+              <label className='label-text'>Radno vrijeme do
+                <input type="text" name="radnoVrijemeDo" className='input' value={formData.radnoVrijemeDo} onChange={handleChange} />
+              </label>
             </div>
             <div className='overlap'>
               <label className='label-text'>
                 ID vozila
               </label>
               <input type="text" name="voziloId" className='input' value={formData.voziloId} onChange={handleChange} />
-
             </div>
-
             <div className='buttonContainer'><button type="submit" className='btn'>ažuriraj</button></div>
           </form>
         </div>

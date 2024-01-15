@@ -1,6 +1,7 @@
 package com.dental.dao;
 
 import com.dental.models.Korisnik;
+import com.dental.models.Prijevoznik;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,16 @@ public class KorisnikDaoImpl implements KorisnikDao{
     public Korisnik create(Korisnik korisnik){
         em.persist(korisnik);
         return korisnik;
+    }
+
+    @Override
+    @Transactional
+    public void update(Korisnik korisnik) {
+        Korisnik p = (Korisnik) em.find(Korisnik.class, korisnik.getId());
+        p.setIme(korisnik.getIme());
+        p.setPrezime(korisnik.getPrezime());
+        p.setPreference(korisnik.getPreference());
+        p.setKontakt(korisnik.getKontakt());
     }
 
     @Override

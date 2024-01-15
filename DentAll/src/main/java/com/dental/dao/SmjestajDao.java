@@ -19,5 +19,7 @@ public interface SmjestajDao {
     Smjestaj findSmjestajByKategorijaTipDostupnost(String kategorija, String tip, Boolean dostupnost);
     Smjestaj create(Smjestaj smjestaj);
 
+    void update(Smjestaj smjestaj);
+
     void deleteSmjestaj(Integer id);
 }

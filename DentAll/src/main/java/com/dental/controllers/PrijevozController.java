@@ -34,4 +34,9 @@ public class PrijevozController  {
     public void deletePrijevoznik(@RequestBody Integer id){
         prijevozservis.deletePrijevoznik(id);
     }
+
+    @PostMapping("/update")
+    public void updatePrijevoznik(@RequestBody Prijevoznik prijevoznik) {
+        prijevozservis.updatePrijevoznik(prijevoznik);
+    }
 }

@@ -76,20 +76,26 @@ const UserList = ({path}) => {
 
   const handleUpdate = (updatedData) => {
     if (selectedItem) {
-      setList((prevList) =>
-        prevList.map((item) =>
-          item.id === selectedItem.id ? { ...item, ...updatedData } : item
-        )
-      );
       setSelectedItem(null);
     }
+
+    let newData = data;
+    for (let i = 0; i < data.length; i++) {
+      if (newData[i].id === updatedData.id) {
+        newData[i] = updatedData;
+        break;
+      }
+    }
+
+    setData([...newData])
   };
+
 
   return (
     <div className='container'>
       {<ul className='lista'>
       {data.map((korisnikObject, index) => (
-        <li className="list-element" key={index} onDoubleClick={() => handleItemClick(korisnikObject)}>
+        <li className="list-element" key={index} onClick={() => handleItemClick(korisnikObject)}>
           <Korisnik  {...korisnikObject}/>
           <button onClick={() => handleDeleteClick(korisnikObject.id)}>Delete</button>
         </li>
