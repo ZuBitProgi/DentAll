@@ -1,14 +1,18 @@
 import React from 'react'
 import { useState } from 'react'
-import HoteliLista from './Index/HoteliLista'
-import SmjestajAddForm from './Index/SmjestajAddForm'
 import { useLocation } from "react-router-dom"
 import {APIProvider, Map} from '@vis.gl/react-google-maps';
 import List from '../components/SmjestajList'
-
 import '../styles/HousingAdminView.css'
+import AdminAddForm from './Index/AdminAddForm'
+
 
 function HousingAdminView(props) {
+
+  const [showForm, setShowForm] = useState(false);
+  const closeForm = () => {
+    setShowForm(false)
+  }
 
   const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 
@@ -32,6 +36,8 @@ function HousingAdminView(props) {
           </APIProvider>
         </div>
       </div>
+      {showForm && <AdminAddForm onClose={closeForm}/>}
+        {!showForm && <div className='button-overlay'> <button onClick={() => setShowForm(!showForm)}>dodaj admina</button> </div>}
     </div>
   )
 }

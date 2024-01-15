@@ -2,8 +2,10 @@ package com.dental.controllers;
 
 import java.util.List;
 
+import com.dental.models.Korisnik;
 import com.dental.models.Prijevoznik;
 import com.dental.models.Smjestaj;
+import com.dental.service.KorisnikService;
 import com.dental.service.SmjestajService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,9 @@ public class SmjestajniController {
 
     @Autowired
     private SmjestajService smjestajservis;
+    @Autowired
+    private KorisnikService korisnikService;
+
 
     @GetMapping("")
     public List<Smjestaj> listSmjestaj(){

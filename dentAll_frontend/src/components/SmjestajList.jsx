@@ -3,7 +3,6 @@ import { baseUrl } from '..';
 import { useNavigate } from 'react-router-dom';
 import Smjestaj from './Smjestaj';
 import "../styles/List.css"
-import ModalForm from './ModalForm';
 import SmjestajAddForm from '../screens/Index/SmjestajAddForm';
 import SmjestajUpdateForm from '../screens/Index/SmjestajUpdateForm';
 
