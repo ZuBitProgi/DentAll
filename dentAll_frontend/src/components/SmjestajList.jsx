@@ -5,18 +5,22 @@ import Smjestaj from './Smjestaj';
 import "../styles/List.css"
 import ModalForm from './ModalForm';
 import SmjestajAddForm from '../screens/Index/SmjestajAddForm';
+import SmjestajUpdateForm from '../screens/Index/SmjestajUpdateForm';
 
 
 const List = ({path}) => {
   let navigate = useNavigate()
-
+  const [selectedItem, setSelectedItem] = useState(null);
   const [data, setData] = useState([]);
 
   const [showAdd, setShowAdd]= useState(false)
   const closeForm = () => {
       setShowAdd(false)
     }
-
+  
+  const updateCloseForm = () => {
+    setSelectedItem(null)
+    }
 
   const fetchData = async () => {
 
@@ -65,16 +69,42 @@ const List = ({path}) => {
     setData([...data.filter((smjestajObject) => smjestajObject.id !== id)]);
   }
 
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+  };
+
+  const handleUpdate = (updatedData) => {
+    if (selectedItem) {
+      setList((prevList) =>
+        prevList.map((item) =>
+          item.id === selectedItem.id ? { ...item, ...updatedData } : item
+        )
+      );
+      setSelectedItem(null);
+    }
+  };
+
   return (
     <div className='container'>
       {<ul className='lista'>
       {data.map((smjestajObject, index) => (
-        <li className="list-element" key={index}>
+        <li className="list-element" key={index} onDoubleClick={() => handleItemClick(smjestajObject)}>
           <Smjestaj  {...smjestajObject}/>
           <button onClick={() => handleDeleteClick(smjestajObject.id)}>Delete</button>
         </li>
       ))}
       </ul>}
+      {selectedItem && (
+        <SmjestajUpdateForm
+          initialData={{
+            tip: selectedItem.tip,
+            kategorija: selectedItem.kategorija,
+            adresa: selectedItem.adresa,
+          }}
+          onUpdate={handleUpdate}
+          onClose={updateCloseForm}
+        />
+      )}
       {showAdd && <SmjestajAddForm onClose={closeForm} data={data} setData={setData}/>}
         {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)}>dodaj</button> </div>}
     </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { FaTimes } from "react-icons/fa"
 
-const UpdateFormDynamicList = ({ itemList }) => {
+/*const UpdateFormDynamicList = ({ itemList }) => {
   const [list, setList] = useState(itemList);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -41,9 +42,9 @@ const UpdateFormDynamicList = ({ itemList }) => {
       )}
     </div>
   );
-};
+};*/
 
-const UpdateForm = ({ initialData, onUpdate }) => {
+export default function SmjestajUpdateForm({ onClose, initialData, onUpdate }) {
   const [formData, setFormData] = useState(initialData);
 
   const handleChange = (e) => {
@@ -60,40 +61,44 @@ const UpdateForm = ({ initialData, onUpdate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Tip:
-        <input
-          type="text"
-          name="tip"
-          value={formData.tip}
-          onChange={handleChange}
-        />
-      </label>
+    <div className="index">
+      <div className="form-group-wrapper">
+        <div className="overlap-group">
+          <div className='form-header'><FaTimes style={{ cursor: 'pointer' }} onClick={onClose} /></div>
+          <div className="text-wrapper"> ažuriraj Prijevoznika</div>
+          <form onSubmit={handleSubmit}>
 
-      <label>
-        Kategorija:
-        <input
-          type="text"
-          name="kategorija"
-          value={formData.kategorija}
-          onChange={handleChange}
-        />
-      </label>
+            <div className='overlap'>
+              <label className='label-text'>
+                tip
+              </label>
+              <input type="text" name="tip" className='input' value={formData.tip} onChange={handleChange} />
 
-      <label>
-        adresa:
-        <input
-          type="text"
-          name="adresa"
-          value={formData.adresa}
-          onChange={handleChange}
-        />
-      </label>
+            </div>
 
-      <button type="submit">Update</button>
-    </form>
+            <div className='overlap'>
+              <label className='label-text'>
+                kategorija
+              </label>
+              <input type="text" name="Kategorija" className='input' value={formData.kategorija} onChange={handleChange} />
+
+            </div>
+
+            <div className='overlap'>
+              <label className='label-text'>
+                adresa
+              </label>
+              <input type="text" name="adresa" className='input' value={formData.adresa} onChange={handleChange} />
+
+            </div>
+
+
+
+            <button type="submit">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 };
 
-export default UpdateFormDynamicList;

@@ -20,6 +20,10 @@ const PrijevoznikList = ({ path }) => {
     setShowAdd(false)
   }
 
+  const updateCloseForm = () => {
+    setSelectedItem(null)
+  }
+
 
    const fetchData = async () => {
  
@@ -104,6 +108,7 @@ const PrijevoznikList = ({ path }) => {
             voziloId: selectedItem.voziloId,
           }}
           onUpdate={handleUpdate}
+          onClose={updateCloseForm}
         />
       )}
       {showAdd && <PrijevoznikAddForm onClose={closeForm} data={data} setData={setData} />}

@@ -152,3 +152,9 @@ border: 1px solid red;
   height: 100vh;
 }
 
+.form-group-wrapper .vrijeme-wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
