@@ -7,10 +7,11 @@ import SmjestajAddForm from '../screens/Index/SmjestajAddForm';
 import SmjestajUpdateForm from '../screens/Index/SmjestajUpdateForm';
 
 
-const List = ({path}) => {
+const List = ({path, setParentData}) => {
   let navigate = useNavigate()
   const [selectedItem, setSelectedItem] = useState(null);
   const [data, setData] = useState([]);
+  
 
   const [showAdd, setShowAdd]= useState(false)
   const closeForm = () => {
@@ -41,6 +42,8 @@ const List = ({path}) => {
       if (response.ok) {
         let newData = await response.json();
         setData(newData);
+        const adrese = newData.map(data => data.adresa);
+        setParentData([...adrese]);
       }
 
     } catch (error) {
@@ -65,7 +68,10 @@ const List = ({path}) => {
       }
     ) 
 
-    setData([...data.filter((smjestajObject) => smjestajObject.id !== id)]);
+    const newData = [...data.filter((smjestajObject) => smjestajObject.id !== id)];
+    setData(newData);
+    setParentData([...newData.map(data => data.adresa)])
+
   }
 
   const handleItemClick = (item) => {
@@ -79,7 +85,10 @@ const List = ({path}) => {
 
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === updatedData.id) {
-        data[i] = updatedData;
+        let newData = data;
+        newData[i] = updatedData;
+        setData(newData);
+        setParentData([...newData.map(data => data.adresa)]);
         break;
       }
     }
