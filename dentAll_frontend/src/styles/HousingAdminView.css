@@ -2,17 +2,52 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
+    padding: 7%;
 }
 
 .housing-map {
     height: 70%;
-    width: 50%;
+    width: 70%;
+    position: relative;
 }
 
 .housing-list-and-map {
     height: 80%;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
 }
+
+.korisnik-overlay{
+    overflow-y: scroll;
+}
+
+.korisnik-overlay .admin-button-overlay{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 4%;
+    padding-top: 5px;
+
+}
+
+.korisnik-overlay .adminAddBtn{
+    border-radius: 5px;
+    background-color: #297bf6;
+    color:white;
+    border: 0px;
+    font-size: 120%;
+    padding: 7px
+
+}
+
+button.adminAddBtn:hover,
+button.adminAddBtn:active {
+  background-color: #6192dc;
+  color: white;
+  transform: scale(1.1);
+}
+

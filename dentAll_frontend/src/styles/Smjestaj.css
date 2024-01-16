@@ -25,5 +25,13 @@
   }
 
   span {
-    font-weight: bold;
+    font-weight: 200;
+    font-family: "Inter", Helvetica;
+    font-size: 110%;
+  }
+
+  pre{
+    font-weight: 200;
+    font-family: "Inter", Helvetica;
+    font-size: 110%;
   }

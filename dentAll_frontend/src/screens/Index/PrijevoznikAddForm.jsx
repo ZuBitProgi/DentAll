@@ -43,7 +43,7 @@ export default function PrijevoznikAddForm({onClose, data, setData}) {
     <div className="form-group-wrapper">
         <div className="overlap-group">
             <form className='add-form' onSubmit={(e) => handleSubmit(e)}>
-                <div className='form-header'><FaTimes style={{ cursor: 'pointer' }} onClick={onClose} /></div>
+                <div className='form-header'><FaTimes style={{ cursor: 'pointer' }} size={30} onClick={onClose} /></div>
                 <div className="text-wrapper"> dodaj Prijevoznika</div>
                 <div className='overlap'>
                     <label className='label-text'>kontakt</label>
@@ -61,7 +61,7 @@ export default function PrijevoznikAddForm({onClose, data, setData}) {
                     <label className='label-text'>id vozila</label>
                     <input id="4" name="voziloId" value={newTransportData.voziloId} className="input" placeholder=" ..." type="text" onChange={handleFormChange} />
                 </div>
-                <div className='buttonContainer'> <button type="submit" className="btn">dodaj</button> </div>
+                <div className='addButtonContainer'> <button type="submit" className="btn">dodaj</button> </div>
             </form>
         </div>
     </div>

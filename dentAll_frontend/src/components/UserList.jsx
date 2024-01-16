@@ -94,10 +94,13 @@ const UserList = ({path}) => {
   return (
     <div className='container'>
       {<ul className='lista'>
+        <div className='listFirstRow'><div>KORISNICI:</div>
+        {!showAdd && <div className='button-overlay'> <button className='addBtn' onClick={() => setShowAdd(!showAdd)}>dodaj</button> </div>}
+        </div>
       {data.map((korisnikObject, index) => (
-        <li className="list-element" key={index} onClick={() => handleItemClick(korisnikObject)}>
+        <li className="list-element" key={index} onDoubleClick={() => handleItemClick(korisnikObject)}>
           <Korisnik  {...korisnikObject}/>
-          <button onClick={() => handleDeleteClick(korisnikObject.id)}>Delete</button>
+          <div className='delete-container'><button onClick={() => handleDeleteClick(korisnikObject.id)} className='delBtn'>obriši</button></div>
         </li>
       ))}
       </ul>}
@@ -116,7 +119,6 @@ const UserList = ({path}) => {
         />
       )}
       {showAdd && <KorisnikAddForm onClose={closeForm} data={data} setData={setData}/>}
-        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)}>dodaj</button> </div>}
     </div>
   );
 };

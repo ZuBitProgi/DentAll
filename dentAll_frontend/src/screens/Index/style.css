@@ -30,109 +30,110 @@ body {
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
   padding: 20px;
   box-sizing: border-box;
-  margin: 20px;  
+  margin: 20px;
 }
 
 .index .overlap {
   background-color: #ffffff;
   border-radius: 5px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .index .input {
-background-color: transparent;
-border: 0;
-border-color: white;
-color: black;
-font-family: "Inter", Helvetica;
-font-size: 26px;
-font-weight: 300;
-height: 31px;
-width: 100%;
+  background-color: transparent;
+  border: 0;
+  border-color: white;
+  color: black;
+  font-family: "Inter", Helvetica;
+  font-size: 26px;
+  font-weight: 300;
+  height: 31px;
+  width: 100%;
 }
 
 .index .password-wrapper {
   background-color: #ffffff;
   border-radius: 5px;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
 }
 
 .index .text-wrapper {
-color: #000000;
-font-family: "Inter", Helvetica;
-font-size: 36px;
-font-weight: 600;
-text-align: center;
-margin-bottom: 20px;  
+  color: #000000;
+  font-family: "Inter", Helvetica;
+  font-size: 34px;
+  font-weight: 550;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .buttonContainer {
-display: flex;
-justify-content: center;
-align-items: center; 
-margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .buttonContainer .btn {
-height: 67px;
-width: 225px;
-background-color: #297bf6;
-font-family: "Inter", Arial, Helvetica, sans-serif;
-font-size: 30px;
-border-radius: 35px;
-color: white;
-font-weight: 600;
-border: 0;
+  height: 67px;
+  width: 225px;
+  background-color: #297bf6;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  border-radius: 35px;
+  color: white;
+  font-weight: 600;
+  border: 0;
 }
 
 button.btn:hover,
 button.btn:active {
-background-color: #6192dc;
-transform: scale(1.1);
+  background-color: #6192dc;
+  transform: scale(1.1);
 }
 
 ::placeholder {
-color: #b1aeae; 
+  color: #b1aeae;
 }
 
 .radio {
-width: 100%;  
-display: flex;
-flex-direction: column;
-margin-bottom: 20px;
-justify-content: center;
-align-items: center; 
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .hidden {
-visibility: hidden;
+  visibility: hidden;
 }
 
 .index .error-text {
-position: relative;
-top: 0; 
-left: 0;
-color: red;
+  position: relative;
+  top: 0;
+  left: 0;
+  color: red;
 }
 
 .index .error-text {
-border: 1px solid red;
+  border: 1px solid red;
 }
 
-.index .label-text{
+.index .label-text {
   font-family: "Inter", Helvetica;
   font-size: 125%;
   padding-left: 5px;
   padding-top: 6px;
+  color: #121212;
 
 }
 
-.index .form-header{
+.index .form-header {
   text-align: end;
   padding-bottom: 2%;
 }
 
-.index .form-group-wrapper{
+.index .form-group-wrapper {
   backdrop-filter: blur(10px);
   position: absolute;
   height: 100%;
@@ -143,18 +144,66 @@ border: 1px solid red;
   align-items: center;
 }
 
-.korisnik-overlay{
+.korisnik-overlay {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 100vh;
 }
 
-.form-group-wrapper .vrijeme-wrap{
+.korisnik-overlay .header-info{
+  justify-self: flex-start;
+  align-self: flex-start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10%;
+
+}
+
+.korisnik-overlay .logo-text{
+  font-size: 250%;
+  padding-left: 10px;
+}
+
+.korisnik-overlay .user-info{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: flex-end;
+  font-family: "Inter", Helvetica;
+  font-size: 100%;
+  color: #121212;
+  padding: 5px;
+  padding-right: 2%;
+}
+
+.form-group-wrapper .vrijeme-wrap {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+}
+
+.addButtonContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.addButtonContainer .btn {
+  height: 53px;
+  width: 185px;
+  background-color: #297bf6;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  border-radius: 35px;
+  color: white;
+  font-weight: 300;
+  border: 0;
 }

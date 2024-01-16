@@ -12,8 +12,15 @@ function TransportAdminView(props) {
 
 return (
     <div className='korisnik-overlay'>
-        <p>Dobrodošli {username}</p>
-        <p>Vaša uloga je Prijevozni administrator</p>
+        <div className='header-info'>
+            <label className='logo-text'>DentAll</label>
+            <div className='user-info'>
+                <label className='user-name'>{username}</label>
+                <label>Prijevozni administrator</label>
+            </div>
+        </div>
+        {/*<p>Dobrodošli {username}</p>
+        <p>Vaša uloga je Prijevozni administrator</p>*/}
         <PrijevoznikList path="transport"></PrijevoznikList>
     </div>
   )

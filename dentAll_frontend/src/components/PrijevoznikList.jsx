@@ -5,6 +5,7 @@ import "../styles/List.css"
 import PrijevoznikAddForm from '../screens/Index/PrijevoznikAddForm';
 import Prijevoznik from './Prijevoznik';
 import PrijevoznikUpdateForm from '../screens/Index/PrijevoznikUpdateForm';
+import { FaTimes } from "react-icons/fa"
 
 
 const PrijevoznikList = ({ path }) => {
@@ -97,10 +98,13 @@ const PrijevoznikList = ({ path }) => {
   return (
     <div className='container'>
       {<ul className='lista'>
+        <div className='listFirstRow'><div>PRIJEVOZNICI:</div> {/*<div>radno vrijeme</div><div className='lastElement'>vozilo id</div>*/} 
+        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>dodaj</button> </div>}
+        </div>
         {data.map((prijevoznikObject, index) => (
-          <li className="list-element" key={index} onClick={() => handleItemClick(prijevoznikObject)}>
+          <li className="list-element" key={index} onDoubleClick={() => handleItemClick(prijevoznikObject) }>
             <Prijevoznik  {...prijevoznikObject} />
-            <button onClick={() => handleDeleteClick(prijevoznikObject.id)}>Delete</button>
+            <div className='delete-container'><button onClick={() => handleDeleteClick(prijevoznikObject.id) } className='delBtn'>obriši</button></div>
           </li>
         ))}
       </ul>}
@@ -118,7 +122,6 @@ const PrijevoznikList = ({ path }) => {
         />
       )}
       {showAdd && <PrijevoznikAddForm onClose={closeForm} data={data} setData={setData} />}
-      {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)}>dodaj</button> </div>}
     </div>
   );
 };
