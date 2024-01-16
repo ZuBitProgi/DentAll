@@ -213,6 +213,10 @@
 			\eject
 		\section{Dijagram komponenti}
 		
-			\textbf{\textit{dio 2. revizije}}\\
-		
-			 \textit{Potrebno je priložiti dijagram komponenti s pripadajućim opisom. Dijagram komponenti treba prikazivati strukturu cijele aplikacije.}
+			Na slici 4.6 prikazan je dijagram komponenti. Za dohvaćanje HTML, CSS i JS datoteka na klijentsku stranu (\textit frontend) koristi se prvo od dva sučelja. Ovisno o potrebnom prikazu (HousingAdminView, TransportAdminView, UserAdminView, Index), Router komponenta određuje koje se HTML, CSS i JS datoteke poslužuju na prvom sučelju. Sučelju za primanje JSON podataka pristupa se putem REST API komponenti. REST API pruža podatke koji pripadaju serverskoj strani aplikacije (\textit backend). Java Persistence API omogućava dohvaćanje podataka iz baze generirajući SQL upite te upisivanje u bazu. Na serverskoj strani implementiramo kontrolere (Controllers) kako bismo prenijeli modele, pretvorene u DTO (Data Transfer Object), prema klijentskoj strani dijela aplikacije.
+			 \begin{figure}[htbp]
+			 	\centering
+			 	\includegraphics[width=0.9\textwidth]{dijagrami/DijagramKomponenti.png}
+			 	\caption{Dijagram komponenti}
+			 	\label{fig:DijagramKomponenti}
+			 \end{figure}
