@@ -36,7 +36,7 @@ public class PrijevoznikService {
         return prijevoznikDao.findPrijevoznikById(id);
     }
 
-    public Prijevoznik findPrijevoznikByVozilo(String kapacitet) {
+    public Prijevoznik findPrijevoznikByVozilo(Integer kapacitet) {
         return prijevoznikDao.findPrijevoznikByVozilo(kapacitet);
     }
 

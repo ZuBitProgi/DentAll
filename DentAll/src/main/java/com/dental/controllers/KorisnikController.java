@@ -7,8 +7,10 @@ import com.dental.dao.SmjestajDaoImpl;
 import com.dental.models.Korisnik;
 import com.dental.models.Prijevoznik;
 import com.dental.models.Putovanje;
+import com.dental.models.Smjestaj;
 import com.dental.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
@@ -47,23 +49,31 @@ public class KorisnikController {
     @PostMapping("/create")
     public Korisnik createKorisnik(@RequestBody Korisnik korisnik){
 
-        String kategorija = null, tip = null, kapacitet = null, adresa = null;
+        String kategorija = "1", tip = "stan";
+        Integer kapacitet = 0;
         Boolean dostupnost = true;
-        LocalTime vrijeme = null;
+        Time vrijeme = new Time(8, 0, 0);
         for(String p : korisnik.getPreference().split(",")){
-            if(p.split(":")[0].equals("kategorija")) kategorija = p.split(":")[1];
-            else if(p.split(":")[0].equals("tip")) tip = p.split(":")[1];
-            else if(p.split(":")[0].equals("kapacitet")) kapacitet = p.split(":")[1];
-            else if(p.split(":")[0].equals("adresa")) adresa= p.split(":")[1];
-            else vrijeme = LocalTime.parse(p.split(":")[1]);
+            if (p.startsWith("tip")) {
+                tip = p.split(":")[1];
+            } else if (p.startsWith("kategorija")) {
+                kategorija = p.split(":")[1];
+            } else if (p.startsWith("kapacitet")) {
+                kapacitet = Integer.parseInt(p.split(":")[1]);
+            } else if (p.startsWith("vrijeme")) {
+                vrijeme = Time.valueOf(p.split(":")[1]);
+            }
         }
-        Putovanje putovanje = new Putovanje(Time.valueOf(vrijeme), klinikaService.findKlinikaByAdresa(adresa).getId(), prijevoznikService.findPrijevoznikByVozilo(kapacitet).getId(), smjestajService.findSmjestajByKategorijaTipDostupnost(kategorija, tip, dostupnost).getId(), korisnik.getId(), "tamo");
-        Putovanje feedback=putovanjeService.create(putovanje);
+        Putovanje putovanje = new Putovanje(vrijeme,0, prijevoznikService.findPrijevoznikByVozilo(kapacitet).getId(), smjestajService.findSmjestajByKategorijaTipDostupnost(kategorija, tip, dostupnost).getId(), korisnik.getId(), "tamo");
+        Putovanje feedback = putovanjeService.create(putovanje);
         if(feedback != null){
             try {
                 String to = korisnik.getKontakt();
-                String subject = "Registracija";
-                String content = "Uspjesna autorizacija!";
+                String subject = "Ponuda klinike iz servisa DentAll";
+                Smjestaj s = smjestajService.findSmjestajById(feedback.getSmjestajId());
+                Prijevoznik p = prijevoznikService.findPrijevoznikById(feedback.getPrijevoznikId());
+                String content = "Smjestaj: " + s.getAdresa() + "\nPrijevoznik: " + p.getModel() + "\nVrijeme polaska: " + feedback.getVrijeme().toString();
+
                 emailService.sendEmail(to, subject, content);
             } catch (Exception e) {
                 // Handle the exception (log it, throw a custom exception, etc.)

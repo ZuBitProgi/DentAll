@@ -53,7 +53,7 @@ export default function KorisnikAddForm({onClose, data, setData}) {
                             <input id="3" className="input" placeholder=" ..." type="text" name="preference" value={newUserData.preference} onChange={handleFormChange} />
                         </div>
                         <div className='overlap'>
-                            <label className='label-text'>kontakt</label>
+                            <label className='label-text'>e-mail</label>
                             <input id="4" className="input" placeholder=" ..." type="text" name="kontakt" value={newUserData.kontakt} onChange={handleFormChange} />
                         </div>
                         <div className='overlap'>

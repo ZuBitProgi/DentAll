@@ -1,6 +1,6 @@
 .lista {
     list-style-type: none;
-    width: 80%;
+    width: 100%;
     padding-left: 0%;
 }
 
@@ -28,8 +28,6 @@
     align-items: center;
     padding-left: 7%;
     padding-bottom: 6px;
-    border-bottom: 8px solid;
-    border-color: #297bf6;
     font-family: "Inter", Helvetica;
     font-size: 160%;
     font-weight: 500;
@@ -42,7 +40,7 @@
     justify-content: space-around;
     align-items: center;
     font-family: "Inter", Helvetica;
-    font-size: 110%;
+    font-size: 80%;
     color: #121212;
 }
 

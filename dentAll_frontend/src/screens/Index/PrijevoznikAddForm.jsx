@@ -6,18 +6,16 @@ import { baseUrl } from '../..';
 
 export default function PrijevoznikAddForm({onClose, data, setData}) {
 
-    const [newTransportData, setNewTransportData] = useState({ kontakt: '', radnoVrijemeOd: '', radnoVrijemeDo: '', voziloId: '' });
+    const [newTransportData, setNewTransportData] = useState({ kontakt: '', radnoVrijemeOd: '', radnoVrijemeDo: '', vrsta: '', kapacitet: '', model: ''});
     const navigate = useNavigate();
 
     const handleFormChange = (e) => {
         setNewTransportData({ ...newTransportData, [e.target.name]: e.target.value });
-        console.log(newTransportData)
       };
 
     async function handleSubmit(e){
         e.preventDefault();
         setData([...data, newTransportData])
-        console.log(data)
 
         if (localStorage.getItem("token") === null) {
             navigate("/");
@@ -32,7 +30,7 @@ export default function PrijevoznikAddForm({onClose, data, setData}) {
             },
             body: JSON.stringify(newTransportData)
         })
-        setNewTransportData({kontakt: '', radnoVrijemeOd: '', radnoVrijemeDo: '', voziloId: ''});
+        setNewTransportData({ kontakt: '', radnoVrijemeOd: '', radnoVrijemeDo: '', vrsta: '', kapacitet: '', model: ''});
         onClose(true);
     }
 
@@ -58,8 +56,16 @@ export default function PrijevoznikAddForm({onClose, data, setData}) {
                     <input id="3" name="radnoVrijemeDo" value={newTransportData.radnoVrijemeDo} className="input" placeholder=" ..." type="text" onChange={handleFormChange} />
                 </div>
                 <div className='overlap'>
-                    <label className='label-text'>id vozila</label>
-                    <input id="4" name="voziloId" value={newTransportData.voziloId} className="input" placeholder=" ..." type="text" onChange={handleFormChange} />
+                    <label className='label-text'>vrsta</label>
+                    <input id="4" name="vrsta" value={newTransportData.vrsta} className="input" placeholder=" ..." type="text" onChange={handleFormChange} />
+                </div>
+                <div className='overlap'>
+                    <label className='label-text'>kapacitet</label>
+                    <input id="5" name="kapacitet" value={newTransportData.kapacitet} className="input" placeholder=" ..." type="text" onChange={handleFormChange} />
+                </div>
+                <div className='overlap'>
+                    <label className='label-text'>model</label>
+                    <input id="6" name="model" value={newTransportData.model} className="input" placeholder=" ..." type="text" onChange={handleFormChange} />
                 </div>
                 <div className='addButtonContainer'> <button type="submit" className="btn">dodaj</button> </div>
             </form>

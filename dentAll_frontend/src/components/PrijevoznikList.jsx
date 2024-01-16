@@ -11,9 +11,7 @@ import { FaTimes } from "react-icons/fa"
 const PrijevoznikList = ({ path }) => {
   let navigate = useNavigate()
 
-  const [data, setData] = useState([/*{ id: 1, kontakt: '+385998432345', radnoVrijemeOd: '08:00', radnoVrijemeDo: '15:00', voziloId: 1 },
-  { id: 2, kontakt: '+385998432346', radnoVrijemeOd: '08:00', radnoVrijemeDo: '16:00', voziloId: 2 },
-{ id: 3, kontakt: '+385998432347', radnoVrijemeOd: '09:00', radnoVrijemeDo: '17:00', voziloId: 3 },*/]);
+  const [data, setData] = useState([]);
 
   const [showAdd, setShowAdd] = useState(false)
   const [selectedItem, setSelectedItem] = useState(null);
@@ -45,7 +43,6 @@ const PrijevoznikList = ({ path }) => {
  
        if (response.ok) {
          let newData = await response.json();
-         console.log(newData)
          setData(newData);
        }
  
@@ -72,6 +69,7 @@ const PrijevoznikList = ({ path }) => {
     )
 
     setData([...data.filter((prijevoznikObject) => prijevoznikObject.id !== id)]);
+    setSelectedItem(null);
   }
 
   const handleItemClick = (item) => {
@@ -99,12 +97,12 @@ const PrijevoznikList = ({ path }) => {
     <div className='container'>
       {<ul className='lista'>
         <div className='listFirstRow'><div>PRIJEVOZNICI:</div> {/*<div>radno vrijeme</div><div className='lastElement'>vozilo id</div>*/} 
-        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>dodaj</button> </div>}
+        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>Dodaj</button> </div>}
         </div>
         {data.map((prijevoznikObject, index) => (
-          <li className="list-element" key={index} onDoubleClick={() => handleItemClick(prijevoznikObject) }>
+          <li className="list-element" key={index} onClick={() => handleItemClick(prijevoznikObject) }>
             <Prijevoznik  {...prijevoznikObject} />
-            <div className='delete-container'><button onClick={() => handleDeleteClick(prijevoznikObject.id) } className='delBtn'>obriši</button></div>
+            <div className='delete-container'><button onClick={() => handleDeleteClick(prijevoznikObject.id) } className='delBtn'>Obriši</button></div>
           </li>
         ))}
       </ul>}
@@ -115,7 +113,9 @@ const PrijevoznikList = ({ path }) => {
             kontakt: selectedItem.kontakt,
             radnoVrijemeOd: selectedItem.radnoVrijemeOd,
             radnoVrijemeDo: selectedItem.radnoVrijemeDo,
-            voziloId: selectedItem.voziloId,
+            vrsta: selectedItem.vrsta,
+            kapacitet: selectedItem.kapacitet,
+            model: selectedItem.model
           }}
           onUpdate={handleUpdate}
           onClose={updateCloseForm}

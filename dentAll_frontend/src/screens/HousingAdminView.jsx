@@ -71,14 +71,30 @@ function HousingAdminView(props) {
     setCoords()
   }, [data])
 
-  const location = useLocation()
-  const username = location.state.username
+
+
   const navigate = useNavigate();
+  const location = useLocation()
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+      if (location.state === null || localStorage.getItem("token") === null) {
+          navigate("/")
+      } else {
+          setUsername(location.state.username)
+      }
+
+  }, [])
+  function handleOdjava() {
+    localStorage.clear();
+    navigate("/")
+  }
 
   return (
     <div className='korisnik-overlay'>
       <div className='header-info'>
         <label className='logo-text' onClick={()=>{navigate("/")}} style={{cursor: 'pointer'}}>DentAll</label>
+        <button onClick={handleOdjava}>Odjava</button>
         <div className='user-info'>
           <label className='user-name'>{username}</label>
           <label>Smještajni administrator</label>

@@ -13,16 +13,16 @@ public class MailConfig {
     @Bean
     public JavaMailSender javaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.example.com");
-        mailSender.setPort(587);
+        mailSender.setHost("<TODO ADD ZOHO IN PROD>");
+        mailSender.setPort(465);
 
-        mailSender.setUsername("your-email@example.com");
-        mailSender.setPassword("your-password");
+        mailSender.setUsername("<TODO MAIL IN PROD>");
+        mailSender.setPassword("<TODO PASS IN PROD>");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.enable", "true");
         props.put("mail.debug", "true");
 
         return mailSender;
