@@ -12,7 +12,7 @@ public class Vozilo {
     private Integer id;
 
     private String vrsta;
-    private Integer kapacitet;
+    private String kapacitet;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="IDPrijevoznik")
@@ -24,7 +24,7 @@ public class Vozilo {
 
     }
 
-    public Vozilo(String vrsta, Integer kapacitet){
+    public Vozilo(String vrsta, String kapacitet){
         this.vrsta = vrsta;
         this.kapacitet = kapacitet;
     }
@@ -37,7 +37,7 @@ public class Vozilo {
         return vrsta;
     }
 
-    public Integer getKapacitet() {
+    public String getKapacitet() {
         return kapacitet;
     }
 
@@ -49,7 +49,7 @@ public class Vozilo {
         this.vrsta = vrsta;
     }
 
-    public void setKapacitet(Integer kapacitet) {
+    public void setKapacitet(String kapacitet) {
         this.kapacitet = kapacitet;
     }
 
