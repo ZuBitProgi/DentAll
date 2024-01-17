@@ -154,43 +154,59 @@
 		\section{Dijagram razreda}
 		
 
-			Na slikama 4.2, 4.3, 4.4 i 4.5 prikazani su razredi za implementaciju funkcionalnosti prijave i registracije korisnika. Na slici 4.2 prikazan je razred \textit{AuthController} koji služi prihvaćanju HTTP zahtjeva od strane klijenta i to specifično za URL \textit{/auth/**}. Metode \textit{login()} i \textit{register()} služe kao URL-ovi \textit{/auth/login} i \textit{/auth/register} na koje se šalju JSON objekti za prijavu administratora i registraciju novog administratora.
+			Na slikama~\ref{fig:controllers}, ~\ref{fig:models}, ~\ref{fig:dto}, ~\ref{fig:security} i ~\ref{fig:dao}
+			prikazani su razredi za implementaciju funkcionalnosti prijave i registracije korisnika.
+			
+			Na slici~\ref{fig:controllers} prikazan je razred \textit{AuthController} koji služi prihvaćanju HTTP zahtjeva od strane klijenta i to specifično za URL \textit{/auth/**}. Metode \textit{login()} i \textit{register()} služe kao URL-ovi \textit{/auth/login} i \textit{/auth/register} na koje se šalju JSON objekti za prijavu administratora i registraciju novog administratora. Prikazan su i razredi: \textit{PrijevozController}, \textit{KorisnikController},  \textit{PrijevozController} i \textit{SmjestajniController}. Metode unutar tih razreda izvršavaju manipulacije nad modelima i vraćaju tražene informacije koje su predstavljene modelima, obično u obliku listi podataka. 
+			
+			Modeli su prikazani slikom~\ref{fig:models}. Razredi modela preslikavaju strukturu baze podataka u okviru aplikacije. Razredi odgovaraju entitetima iz baze podataka.
 			
 			\begin{figure}[htbp]
 				\centering
-				\includegraphics[width=0.9\textwidth]{slike/controllersUML}
-				\caption{UML dijagram paketa \textit{Controllers}}
-				\label{fig:controllersUML}
+				\includegraphics[width=0.9\textwidth]{slike/controllers}
+				\caption{\textit{Controllers}}
+				\label{fig:controllers}
 			\end{figure}
 			
-			Slika 4.3 prikazuje paket DTO koji služi za pretvaranje JSON objekata koji stižu na određenu rutu i Java objekt i za pretvaranje Java objekata u JSON odgovore koje klijent razumije.
-			
 			\begin{figure}[htbp]
 				\centering
-				\includegraphics[width=0.9\textwidth]{slike/dtoUML}
-				\caption{UML dijagram paketa \textit{DTO}}
-				\label{fig:dtoUML}
+				\includegraphics[width=0.9\textwidth]{slike/models}
+				\caption{UML dijagram paketa \textit{Models}}
+				\label{fig:models}
 			\end{figure}
 			
-			Slika 4.4 prikazuje paket \textit{Repository} koji preko JPA-a (\textit{Java Persistance API}) pristupa bazi podataka. Za stvaranje SQL upita koristi se \textit{Spring Data} koji omogućava kreirane metoda s posebnim imenima i iz njih stvara SQL upite. Primjerice \textit{findByUsername()} \textit{Spring Data} pretvara u SQL upit koji pretražuje tablicu \textit{Users} za određeno korisničko ime.
+			\eject
+			
+			Slika~\ref{fig:dto} prikazuje paket DTO koji služi za pretvaranje JSON objekata koji stižu na određenu rutu i Java objekt i za pretvaranje Java objekata u JSON odgovore koje klijent razumije.
+			Između razreda Controllers i DTO ne postoje veze na dijagramima.
 			
 			\begin{figure}[htbp]
 				\centering
-				\includegraphics[width=0.9\textwidth]{slike/repoUML}
-				\caption{UML dijagram paketa \textit{Repository}}
-				\label{fig:repoUML}
+				\includegraphics[width=0.9\textwidth]{slike/dto}
+				\caption{\textit{DTO}}
+				\label{fig:dto}
 			\end{figure}
 			
-			Slika 4.5 prikazuje paket \textit{Security} koji je zadužen za obradu svakog zahtjeva koji stiže na server i prosuditi ima li trenutni korisnik pravo pristupa. Glavna klasa za to je klasa \textit{SecurityConfig} koja preko metode \textit{filterChain()} primjenjuje filtre na svaki zahtjev da odredi pravo pristupa. Također klasa \textit{SecurityConfig} pomoću klasa \textit{JWTGenerator, JWTAuthenticationFilter i JwtAuthEntryPoint} za svaku uspješnu prijavu generira JWT token koji se zatim u svim zahtjevima tog korisnika koristi za autentifikaciju tog korisnika.
+			
+			Slika~\ref{fig:security} prikazuje paket \textit{Security} koji je zadužen za obradu svakog zahtjeva koji stiže na server i prosuditi ima li trenutni korisnik pravo pristupa. Glavna klasa za to je klasa \textit{SecurityConfig} koja preko metode \textit{filterChain()} primjenjuje filtre na svaki zahtjev da odredi pravo pristupa. Također klasa \textit{SecurityConfig} pomoću klasa \textit{JWTGenerator, JWTAuthenticationFilter i JwtAuthEntryPoint} za svaku uspješnu prijavu generira JWT token koji se zatim u svim zahtjevima tog korisnika koristi za autentifikaciju tog korisnika.
 			
 			\begin{figure}[htbp]
 				\centering
-				\includegraphics[width=0.9\textwidth]{slike/securityUML}
+				\includegraphics[width=0.9\textwidth]{slike/security}
 				\caption{UML dijagram paketa \textit{Security}}
-				\label{fig:securityUML}
+				\label{fig:security}
 			\end{figure}
 			
+			\eject
 			
+			Slika~\ref{fig:security} prikazuje paket \textit{DAO}. Paket \textit{DAO} ima odgovornost za pristup podacima u sustavu i interakciju s bazom podataka. Implementacije razreda unutar ovog paketa, kao što su \textit{PutovanjeDaoImpl}, \textit{SmjestajDaoImpl}, \textit{KlinikaDaoImpl}, \textit{VoziloDaoImpl}, \textit{PrijevoznikDaoImpl} i \textit{KorisnikDaoImpl}, služe za implementaciju funkcija koje upravljaju bazom podataka. Ovi razredi omogućavaju izvođenje operacija čitanja, pisanja, ažuriranja i brisanja podataka u odgovarajućim entitetima sustava.
+			
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[width=0.9\textwidth]{slike/dao}
+				\caption{UML dijagram paketa \textit{DAO}}
+				\label{fig:dao}
+			\end{figure}
 			
 			\eject
 		
