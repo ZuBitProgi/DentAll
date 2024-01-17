@@ -197,7 +197,7 @@
 		\section{Dijagram stanja}
 			
 			
-			Na slici 4.6 prikazan je dijagram stanja. Dijagram stanja prikazuje u kojem se stanju korisnik aplikacije može nalaziti. Početno stanje je prijava. Korisnik se može prijaviti kao jedan od administratora: Korisnički administrator, Smještajni administrator ili Prijevozni administrator. Ovisno o tome koji administrator se prijavi, odlazi na odgovarajuću početnu stranicu (homepage) gdje se nalaze opcije za korištenje ovisno o ulozi. Svi administratori mogu se vratiti na prijavu tako što se prethodno odjave, klikom "Odjava".
+			Na slici~\ref{fig:dijagramStanja} prikazan je dijagram stanja. Dijagram stanja prikazuje u kojem se stanju korisnik aplikacije može nalaziti. Početno stanje je prijava. Korisnik se može prijaviti kao jedan od administratora: Korisnički administrator, Smještajni administrator ili Prijevozni administrator. Ovisno o tome koji administrator se prijavi, odlazi na odgovarajuću početnu stranicu (homepage) gdje se nalaze opcije za korištenje ovisno o ulozi. Svi administratori mogu se vratiti na prijavu tako što se prethodno odjave, klikom "Odjava".
 			
 			Ako je prijavljeni administrator smještajni administrator, ima opciju dodavanja novih administratora odabirom opcije "Dodaj admina". Također, ima mogućnost pregleda smještaja i ažuriranja istog pomoću opcije "Ažuriraj". Već postojeći smještaj administrator može obrisati opcijom "Obriši". Novi smještaj dodaje opcijom "Dodaj".
 			
@@ -214,14 +214,24 @@
 			
 			
 			\eject 
-		\section{Dijagram aktivnosti}
+			\clearpage
 			
+		\section{Dijagram aktivnosti}
+		
+				Na slici~\ref{fig:dijaramAktivnosti} prikazan je dijagram aktivnosti. Dijagram aktivnosti ilustrira detalje procesa kreiranja rezervacije za korisnika putem web-aplikacije. Korisnički administrator započinje postupak unosom ispravnih podataka za prijavu u web-aplikaciju. Ukoliko se uneseni podaci pokažu neispravnima, administrator će ponovno unijeti potrebne informacije kako bi uspješno pristupio aplikaciji.
+				Nakon uspješne prijave administratoru se učitava stranica, a zatim korisnički administrator unosi podatke o korisniku za kojeg želi napraviti rezervaciju. Web-aplikacija provodi provjeru ispravnosti unesenih podataka, osiguravajući da su svi potrebni detalji upisani. Kada su svi podaci uneseni ispravno, aplikacija nastavlja s provjerom dostupnosti smještaja i prijevoza za odabranog korisnika. Na temelju rezultata provjere dostupnosti, web-aplikacija generira rezervaciju za korisnika. Baza podataka se ažurira označavajući odabrani smještaj i prijevoz kao zauzet u određenom razdoblju rezerviranom za korisnika. Nakon spremanja podataka, Web-aplikacija šalje e-mail potvrdu korisniku o potvrdi rezervacije.
 			 
+			 	\begin{figure}[htbp]
+			 	\centering
+			 	\includegraphics[width=0.9\textwidth]{dijagrami/dijagramAktivnosti.png}
+			 	\caption{Dijagram aktivnosti}
+			 	\label{fig:dijaramAktivnosti}
+			 \end{figure}
 			
 			\eject
 		\section{Dijagram komponenti}
 		
-			Na slici 4.6 prikazan je dijagram komponenti. Za dohvaćanje HTML, CSS i JS datoteka na klijentsku stranu (\textit frontend) koristi se prvo od dva sučelja. Ovisno o potrebnom prikazu (HousingAdminView, TransportAdminView, UserAdminView, Index), Router komponenta određuje koje se HTML, CSS i JS datoteke poslužuju na prvom sučelju. Sučelju za primanje JSON podataka pristupa se putem REST API komponenti. REST API pruža podatke koji pripadaju serverskoj strani aplikacije (\textit backend). Java Persistence API omogućava dohvaćanje podataka iz baze generirajući SQL upite te upisivanje u bazu. Na serverskoj strani implementiramo kontrolere (Controllers) kako bismo prenijeli modele, pretvorene u DTO (Data Transfer Object), prema klijentskoj strani dijela aplikacije.
+			Na slici~\ref{fig:DijagramKomponenti} prikazan je dijagram komponenti. Za dohvaćanje HTML, CSS i JS datoteka na klijentsku stranu (\textit frontend) koristi se prvo od dva sučelja. Ovisno o potrebnom prikazu (HousingAdminView, TransportAdminView, UserAdminView, Index), Router komponenta određuje koje se HTML, CSS i JS datoteke poslužuju na prvom sučelju. Sučelju za primanje JSON podataka pristupa se putem REST API komponenti. REST API pruža podatke koji pripadaju serverskoj strani aplikacije (\textit backend). Java Persistence API omogućava dohvaćanje podataka iz baze generirajući SQL upite te upisivanje u bazu. Na serverskoj strani implementiramo kontrolere (Controllers) kako bismo prenijeli modele, pretvorene u DTO (Data Transfer Object), prema klijentskoj strani dijela aplikacije.
 			 \begin{figure}[htbp]
 			 	\centering
 			 	\includegraphics[width=0.9\textwidth]{dijagrami/DijagramKomponenti.png}
