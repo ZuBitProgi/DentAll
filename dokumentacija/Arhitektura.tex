@@ -197,18 +197,26 @@
 		\section{Dijagram stanja}
 			
 			
-			\textbf{\textit{dio 2. revizije}}\\
+			Na slici 4.6 prikazan je dijagram stanja. Dijagram stanja prikazuje u kojem se stanju korisnik aplikacije može nalaziti. Početno stanje je prijava. Korisnik se može prijaviti kao jedan od administratora: Korisnički administrator, Smještajni administrator ili Prijevozni administrator. Ovisno o tome koji administrator se prijavi, odlazi na odgovarajuću početnu stranicu (homepage) gdje se nalaze opcije za korištenje ovisno o ulozi. Svi administratori mogu se vratiti na prijavu tako što se prethodno odjave, klikom "Odjava".
 			
-			\textit{Potrebno je priložiti dijagram stanja i opisati ga. Dovoljan je jedan dijagram stanja koji prikazuje \textbf{značajan dio funkcionalnosti} sustava. Na primjer, stanja korisničkog sučelja i tijek korištenja neke ključne funkcionalnosti jesu značajan dio sustava, a registracija i prijava nisu. }
+			Ako je prijavljeni administrator smještajni administrator, ima opciju dodavanja novih administratora odabirom opcije "Dodaj admina". Također, ima mogućnost pregleda smještaja i ažuriranja istog pomoću opcije "Ažuriraj". Već postojeći smještaj administrator može obrisati opcijom "Obriši". Novi smještaj dodaje opcijom "Dodaj".
+			
+			Ako je prijavljeni administrator prijevozni administrator, ima opciju pregleda već postojećih prijevoznika te ažuriranja istih opcijom "Ažuriraj". Također, prijevozni administrator može dodavati nove prijevoznike opcijom "Dodaj" i brisati već postojeće opcijom "Obriši".
+			
+			Ako je prijavljeni administrator korisnički administrator, ima opciju dodavanja novog korisnika (klijenta) opcijom "Dodaj". Također, odabirom korisnika mogu se pregledavati njegovi podaci te odabirom opcije "Ažuriraj" ažurirati. Korisnike se može brisati opcijom "Obriši".
+			
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[width=0.9\textwidth]{dijagrami/dijagramStanja.png}
+				\caption{Dijagram stanja}
+				\label{fig:dijagramStanja}
+			\end{figure}
 			
 			
 			\eject 
-		
 		\section{Dijagram aktivnosti}
 			
-			\textbf{\textit{dio 2. revizije}}\\
-			
-			 \textit{Potrebno je priložiti dijagram aktivnosti s pripadajućim opisom. Dijagram aktivnosti treba prikazivati značajan dio sustava.}
+			 
 			
 			\eject
 		\section{Dijagram komponenti}
