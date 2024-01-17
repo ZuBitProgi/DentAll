@@ -53,12 +53,12 @@ export default function SmjestajAddForm({onClose, data, setData}) {
                             <label></label>
                             <input id="3" className="input" type="text" name="kategorija" placeholder="kategorija..." value={newHousingData.kategorija} onChange={handleFormChange} />
                         </div>
-                        <div className='overlap'>
-                            <label>Dostupno
-                                <input id="4" type="radio" name="dostupnost" value="true" onChange={handleFormChange} /> 
+                        <div className='check-box-overlap'>
+                            <label className='check-label-text'><label className='label-text'>Dostupno</label>
+                                <input id="4" type="radio" label='small' name="dostupnost" className="check-box-input" value="true" onChange={handleFormChange} /> 
                             </label>
-                            <label>Nedostupno
-                                <input id="5" type="radio" name="dostupnost" value="false" onChange={handleFormChange} /> 
+                            <label className='check-label-text'><label className='label-text'>Nedostupno</label>
+                                <input id="5" type="radio" name="dostupnost" className="check-box-input" value="false" onChange={handleFormChange} /> 
                             </label>
                         </div>
                         <div className='buttonContainer'> <button type="submit" className="btn">dodaj</button> </div>

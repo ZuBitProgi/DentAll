@@ -108,12 +108,12 @@ export default function SmjestajUpdateForm({ onClose, initialData, onUpdate }) {
             </label>
             <input type="text" name="Kategorija" className='input' value={formData.kategorija} onChange={handleChange} />
           </div>
-          <div className='overlap'>
-            <label>Dostupno
-                <input id="4" type="radio" name="dostupnost" value="true" checked={formData.dostupnost === true || formData.dostupnost === "true" ? true : false} onChange={handleChange} /> 
+          <div className='check-box-overlap'>
+            <label className='check-label-text'><label className='label-text'>Dostupno</label>
+                <input id="4" type="radio" className='check-box-input' name="dostupnost" value="true" checked={formData.dostupnost === true || formData.dostupnost === "true" ? true : false} onChange={handleChange} /> 
             </label>
-            <label>Nedostupno
-                <input id="5" type="radio" name="dostupnost" value="false" checked={formData.dostupnost === false || formData.dostupnost === "false" ? true : false} onChange={handleChange} /> 
+            <label className='check-label-text'><label className='label-text'>Nedostupno</label>
+                <input id="5" type="radio" className='check-box-input' name="dostupnost" value="false" checked={formData.dostupnost === false || formData.dostupnost === "false" ? true : false} onChange={handleChange} /> 
             </label>
           </div>
            
