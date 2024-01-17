@@ -3,48 +3,6 @@ import { FaTimes } from "react-icons/fa"
 import { baseUrl } from '../..';
 import { useNavigate } from 'react-router-dom';
 
-/*const UpdateFormDynamicList = ({ itemList }) => {
-  const [list, setList] = useState(itemList);
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-  };
-
-  const handleUpdate = (updatedData) => {
-    if (selectedItem) {
-      setList((prevList) =>
-        prevList.map((item) =>
-          item.id === selectedItem.id ? { ...item, ...updatedData } : item
-        )
-      );
-      setSelectedItem(null);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Prijevoznik</h1>
-      <ul>
-        {list.map((item) => (
-          <li key={item.id} onClick={() => handleItemClick(item)}>
-            {item.kontakt} - {item.radnoVrijeme} - {item.voziloId} 
-          </li>
-        ))}
-      </ul>
-      {selectedItem && (
-        <UpdateForm
-          initialData={{
-            kontakt: selectedItem.kontakt,
-            radnoVrijeme: selectedItem.radnoVrijeme,
-            voziloId: selectedItem.voziloId,
-          }}
-          onUpdate={handleUpdate}
-        />
-      )}
-    </div>
-  );
-};*/
 
 export default function PrijevoznikUpdateForm({ onClose, initialData, onUpdate }) {
   const [formData, setFormData] = useState(initialData);
@@ -108,12 +66,18 @@ export default function PrijevoznikUpdateForm({ onClose, initialData, onUpdate }
               </label>
             </div>
             <div className='overlap'>
-              <label className='label-text'>
-                ID vozila
-              </label>
-              <input type="text" name="voziloId" className='input' value={formData.voziloId} onChange={handleChange} />
+                <label className='label-text'>vrsta</label>
+                <input name="vrsta" value={formData.vrsta} className="input" placeholder=" ..." type="text" onChange={handleChange} />
             </div>
-            <div className='buttonContainer'><button type="submit" className='btn'>ažuriraj</button></div>
+            <div className='overlap'>
+                <label className='label-text'>kapacitet</label>
+                <input name="kapacitet" value={formData.kapacitet} className="input" placeholder=" ..." type="text" onChange={handleChange} />
+            </div>
+            <div className='overlap'>
+                <label className='label-text'>model</label>
+                <input name="model" value={formData.model} className="input" placeholder=" ..." type="text" onChange={handleChange} />
+            </div>
+            <div className='buttonContainer'><button type="submit" className='btn'>Ažuriraj</button></div>
           </form>
         </div>
       </div>

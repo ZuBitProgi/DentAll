@@ -18,24 +18,24 @@ public class Prijevoznik {
     @JsonFormat(pattern = "HH:mm")
     private Time radnoVrijemeDo;
 
-    private Integer voziloId;
-
+    private String vrsta;
+    private Integer kapacitet;
+    private String model;
     public Prijevoznik(){
 
     };
-    @OneToMany(mappedBy = "prijevoznik",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Vozilo> vozila=new ArrayList<>();
-
-
 
     @OneToMany(mappedBy = "prijevoznik",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Putovanje> putovanja=new ArrayList<>();
 
-    public Prijevoznik(String kontakt, Time radnoVrijemeOd, Time radnoVrijemeDo, Integer voziloId){
+    public Prijevoznik(Integer id, String kontakt, Time radnoVrijemeOd, Time radnoVrijemeDo, String vrsta, Integer kapacitet, String model) {
+        this.id = id;
         this.kontakt = kontakt;
         this.radnoVrijemeOd = radnoVrijemeOd;
-        this.voziloId = voziloId;
         this.radnoVrijemeDo = radnoVrijemeDo;
+        this.vrsta = vrsta;
+        this.kapacitet = kapacitet;
+        this.model = model;
     }
 
     public Integer getId() {
@@ -52,10 +52,6 @@ public class Prijevoznik {
 
     public Time getRadnoVrijemeDo() {return radnoVrijemeDo;}
 
-    public Integer getVoziloId() {
-        return voziloId;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -70,7 +66,35 @@ public class Prijevoznik {
 
     public void setRadnoVrijemeDo(Time radnoVrijemeDo) {this.radnoVrijemeDo = radnoVrijemeDo;}
 
-    public void setVoziloId(Integer voziloId) {
-        this.voziloId = voziloId;
+    public String getVrsta() {
+        return vrsta;
+    }
+
+    public void setVrsta(String vrsta) {
+        this.vrsta = vrsta;
+    }
+
+    public Integer getKapacitet() {
+        return kapacitet;
+    }
+
+    public void setKapacitet(Integer kapacitet) {
+        this.kapacitet = kapacitet;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public List<Putovanje> getPutovanja() {
+        return putovanja;
+    }
+
+    public void setPutovanja(List<Putovanje> putovanja) {
+        this.putovanja = putovanja;
     }
 }

@@ -101,7 +101,7 @@ const List = ({path, setParentData}) => {
        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>dodaj</button> </div>}
        </div>
       {data.map((smjestajObject, index) => (
-        <li className="list-element" key={index} onDoubleClick={() => handleItemClick(smjestajObject)}>
+        <li className="list-element" key={index} onClick={() => handleItemClick(smjestajObject)}>
           <Smjestaj  {...smjestajObject}/>
          <div className='delete-container'><button onClick={() => handleDeleteClick(smjestajObject.id)} className='delBtn'>Delete</button></div>
         </li>

@@ -10,6 +10,6 @@ public interface PrijevoznikDao {
      List<Prijevoznik> findAll();
      Prijevoznik findPrijevoznikById(Integer id);
 
-     Prijevoznik findPrijevoznikByVozilo(String kapacitet);
+     Prijevoznik findPrijevoznikByVozilo(Integer kapacitet);
      Prijevoznik create(Prijevoznik prijevoznik);
 }

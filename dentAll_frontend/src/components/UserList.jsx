@@ -68,6 +68,7 @@ const UserList = ({path}) => {
     ) 
 
     setData([...data.filter((korisnikObject) => korisnikObject.id !== id)]);
+    setSelectedItem(null);
   }
 
   const handleItemClick = (item) => {
@@ -98,7 +99,7 @@ const UserList = ({path}) => {
         {!showAdd && <div className='button-overlay'> <button className='addBtn' onClick={() => setShowAdd(!showAdd)}>dodaj</button> </div>}
         </div>
       {data.map((korisnikObject, index) => (
-        <li className="list-element" key={index} onDoubleClick={() => handleItemClick(korisnikObject)}>
+        <li className="list-element" key={index} onClick={() => handleItemClick(korisnikObject)}>
           <Korisnik  {...korisnikObject}/>
           <div className='delete-container'><button onClick={() => handleDeleteClick(korisnikObject.id)} className='delBtn'>obriši</button></div>
         </li>

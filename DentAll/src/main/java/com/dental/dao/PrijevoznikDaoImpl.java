@@ -14,9 +14,6 @@ public class PrijevoznikDaoImpl implements PrijevoznikDao{
     @PersistenceContext
     private EntityManager em;
 
-    @Autowired
-    private VoziloDaoImpl voziloDaoImpl;
-
     @Override
     @Transactional
     public Prijevoznik create(Prijevoznik prijevoznik){
@@ -39,7 +36,9 @@ public class PrijevoznikDaoImpl implements PrijevoznikDao{
         p.setKontakt(prijevoznik.getKontakt());
         p.setRadnoVrijemeDo(prijevoznik.getRadnoVrijemeDo());
         p.setRadnoVrijemeOd(prijevoznik.getRadnoVrijemeOd());
-        p.setVoziloId(prijevoznik.getVoziloId());
+        p.setModel(prijevoznik.getModel());
+        p.setVrsta(prijevoznik.getVrsta());
+        p.setKapacitet(prijevoznik.getKapacitet());
     }
 
     @Override
@@ -58,9 +57,9 @@ public class PrijevoznikDaoImpl implements PrijevoznikDao{
 
     @Override
     @Transactional(readOnly = true)
-    public Prijevoznik findPrijevoznikByVozilo(String kapacitet){
+    public Prijevoznik findPrijevoznikByVozilo(Integer kapacitet){
         //VoziloDao vozilo = new VoziloDao();
-        return em.createQuery("SELECT pr FROM Prijevoznik pr JOIN Vozilo v WHERE pr.IDPrijevoznik = v.IDPrijevoznik AND v.kapacitet >= :kapacitet GROUP BY pr HAVING COUNT(v) > 0", Prijevoznik.class)
+        return em.createQuery("SELECT pr FROM Prijevoznik pr WHERE pr.kapacitet >= :kapacitet", Prijevoznik.class)
                 .setParameter("kapacitet",kapacitet)
                 .setMaxResults(1)
                 .getSingleResult();
