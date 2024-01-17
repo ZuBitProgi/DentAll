@@ -33,7 +33,6 @@ body {
   margin: 20px;
   margin-bottom: 40vh;
 }
-
 .index .overlap {
   background-color: #ffffff;
   border-radius: 5px;
@@ -162,6 +161,29 @@ button.btn:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.index .form-group-wrapper {
+  backdrop-filter: blur(10px);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+@media screen and (min-width: 768px) {
+  .form-group-wrapper {
+    margin-top: 200px;
+  }
+}
+
+.smjestaj {
+  margin-top: 200px;
+  margin-left: 300px;
 }
 
 .korisnik-overlay {

@@ -55,12 +55,12 @@ function HousingAdminView(props) {
       let newCoords = []
       for (let adresa of data) {
         //let res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${adresa}&key=${API_KEY}`)
-        let resData = await res.json();
+        //let resData = await res.json();
 
-        newCoords.push({
-          lat: resData.results[0].geometry.location.lat,
-          lng: resData.results[0].geometry.location.lng
-        })
+        // newCoords.push({
+        //   lat: resData.results[0].geometry.location.lat,
+        //   lng: resData.results[0].geometry.location.lng
+        // })
       }
 
       console.log("New coords", newCoords)
