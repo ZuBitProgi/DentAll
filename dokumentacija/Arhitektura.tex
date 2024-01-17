@@ -153,11 +153,8 @@
 			
 		\section{Dijagram razreda}
 		
-
-			Na slikama~\ref{fig:controllers}, ~\ref{fig:models}, ~\ref{fig:dto}, ~\ref{fig:security} i ~\ref{fig:dao}
-			prikazani su razredi za implementaciju funkcionalnosti prijave i registracije korisnika.
 			
-			Na slici~\ref{fig:controllers} prikazan je razred \textit{AuthController} koji služi prihvaćanju HTTP zahtjeva od strane klijenta i to specifično za URL \textit{/auth/**}. Metode \textit{login()} i \textit{register()} služe kao URL-ovi \textit{/auth/login} i \textit{/auth/register} na koje se šalju JSON objekti za prijavu administratora i registraciju novog administratora. Prikazan su i razredi: \textit{PrijevozController}, \textit{KorisnikController},  \textit{PrijevozController} i \textit{SmjestajniController}. Metode unutar tih razreda izvršavaju manipulacije nad modelima i vraćaju tražene informacije koje su predstavljene modelima, obično u obliku listi podataka. 
+			Slika~\ref{fig:controllers} prikazuje razred \textit{AuthController} koji služi prihvaćanju HTTP zahtjeva od strane klijenta i to specifično za URL \textit{/auth/**}. Metode \textit{login()} i \textit{register()} služe kao URL-ovi \textit{/auth/login} i \textit{/auth/register} na koje se šalju JSON objekti za prijavu administratora i registraciju novog administratora. Prikazan su i razredi: \textit{PrijevozController}, \textit{KorisnikController},  \textit{PrijevozController} i \textit{SmjestajniController}. Metode unutar tih razreda izvršavaju manipulacije nad modelima i vraćaju tražene informacije koje su predstavljene modelima, obično u obliku listi podataka. 
 			
 			Modeli su prikazani slikom~\ref{fig:models}. Razredi modela preslikavaju strukturu baze podataka u okviru aplikacije. Razredi odgovaraju entitetima iz baze podataka.
 			
