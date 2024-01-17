@@ -74,7 +74,7 @@ public class KorisnikController {
                 Prijevoznik p = prijevoznikService.findPrijevoznikById(feedback.getPrijevoznikId());
                 String content = "Smjestaj: " + s.getAdresa() + "\nPrijevoznik: " + p.getModel() + "\nVrijeme polaska: " + feedback.getVrijeme().toString();
 
-                emailService.sendEmail(to, subject, content);
+                //emailService.sendEmail(to, subject, content);
             } catch (Exception e) {
                 // Handle the exception (log it, throw a custom exception, etc.)
                 e.printStackTrace();

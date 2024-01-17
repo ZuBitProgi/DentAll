@@ -108,6 +108,7 @@ const UserList = ({path}) => {
       {selectedItem && (
         <KorisnikUpdateForm
           initialData={{
+            id: selectedItem.id,
             ime: selectedItem.ime,
             prezime: selectedItem.prezime,
             preference: selectedItem.preference,
