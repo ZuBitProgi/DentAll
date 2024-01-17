@@ -6,10 +6,9 @@
     padding: 7%;
 }
 
-.housing-map {
+.housing-list-and-map .housing-map {
     height: 70%;
     width: 70%;
-    position: relative;
 }
 
 .housing-list-and-map {
