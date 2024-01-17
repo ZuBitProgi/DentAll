@@ -40,6 +40,12 @@ body {
   margin-bottom: 20px;
 }
 
+.index .check-box-overlap{
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+}
+
 .index .input {
   background-color: transparent;
   border: 0;
@@ -127,6 +133,19 @@ button.btn:active {
   padding-top: 6px;
   color: #121212;
 
+}
+
+.index .check-label-text{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.index .check-box-input{
+  width: 50%;
+  height: 18px;
+  align-self: center;
 }
 
 .index .form-header {
