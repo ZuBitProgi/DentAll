@@ -60,10 +60,10 @@ const AdminAddForm = ({onClose}) => {
                         <input id="3" className="check-box-input" type="checkbox" name="rola" value="sleep_admin" checked={newUserData.roles.includes("sleep_admin")} onChange={handleFormChange} />
                     </label>
                     <label className='check-label-text'><label className='label-text'>prijevoznik Admin</label> 
-                        <input id="3" className="check-box-input" type="checkbox" name="rola" value="transport_admin" checked={newUserData.roles.includes("transport_admin")} onChange={handleFormChange} />
+                        <input id="4" className="check-box-input" type="checkbox" name="rola" value="transport_admin" checked={newUserData.roles.includes("transport_admin")} onChange={handleFormChange} />
                     </label>
                     <label className='check-label-text'><label className='label-text'>korisnik Admin</label> 
-                        <input id="3" className="check-box-input" type="checkbox" name="rola" value="user_admin" checked={newUserData.roles.includes("user_admin")} onChange={handleFormChange} />
+                        <input id="5" className="check-box-input" type="checkbox" name="rola" value="user_admin" checked={newUserData.roles.includes("user_admin")} onChange={handleFormChange} />
                     </label>
                 </div>
                 <div className='buttonContainer'> <button type="submit" className="btn">dodaj</button> </div>

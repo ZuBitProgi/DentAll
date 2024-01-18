@@ -125,7 +125,7 @@ submit_button = driver.find_element(By.CLASS_NAME, "btn")
 submit_button.click()
 
 print("    [TEST] Checking if the transported was added to the page")
-email = driver.find_element(By.CSS_SELECTOR, "ul.lista>li:last-child>div:first-child>div:first-child")
+email = driver.find_element(By.CSS_SELECTOR, "ul.lista>li:last-of-type>div:first-child>div:first-child")
 if (not "transporter@transp.com" in email.text):
     print("[-] Failed")
     exit(1)
@@ -175,7 +175,7 @@ submit_button = driver.find_element(By.CLASS_NAME, "btn")
 submit_button.click()
 
 print("    [TEST] Checking if the housing was added to the page")
-address = driver.find_element(By.CSS_SELECTOR, "ul.lista>li:last-child>div>div:last-child")
+address = driver.find_element(By.CSS_SELECTOR, "ul.lista>li:last-of-type>div:first-child>div:first-child")
 if (not "221B Baker Street" in address.text):
     print("[-] Failed")
     exit(1)
@@ -183,5 +183,137 @@ if (not "221B Baker Street" in address.text):
 print("[+] Success")
 print("-" * 20)
 
-#driver.close()
+# -----------------------------------------------
+print("[INFO] Testing adding a user")
+
+driver.get("http://localhost:5173/")
+button = driver.find_element(By.CLASS_NAME, "btn")
+username_input = driver.find_element(By.ID, "username")
+password_input = driver.find_element(By.ID, "password")
+roles_input = driver.find_element(By.ID, "user_admin")
+
+username_input.send_keys("stela")
+password_input.send_keys("pass")
+roles_input.click()
+button.click()
+
+add_button = driver.find_element(By.CLASS_NAME, "addBtn")
+add_button.click()
+print("    [TEST] Checking if a menu popped up")
+try:
+    add_form = driver.find_element(By.CLASS_NAME, "add-form")
+except (e):
+    print("[-] Failed")
+    exit(1)
+
+print("    [INFO] Filling up form with values")
+print("        Ime: Sherlock")
+print("        Prezime: Holmes")
+print("        Preference: tip:stan")
+print("        Email: scienceofdeduction@gmail.com")
+print("        Datum dolaska: 2024-1-11")
+print("        Datum odlaska: 2024-1-12")
+
+name_input = driver.find_element(By.ID, "1")
+lastname_input = driver.find_element(By.ID, "2")
+preference_input = driver.find_element(By.ID, "3")
+email_input2 = driver.find_element(By.ID, "4")
+data_arrive_input = driver.find_element(By.ID, "5")
+data_leave_input = driver.find_element(By.ID, "6")
+
+
+name_input.send_keys("Sherlock")
+lastname_input.send_keys("Holmes")
+preference_input.send_keys("tip:stan")
+email_input2.send_keys("scienceofdeduction@gmail.com")
+data_arrive_input.send_keys("01112024")
+data_leave_input.send_keys("01122024")
+
+
+submit_button = driver.find_element(By.CLASS_NAME, "btn")
+submit_button.click()
+
+print("    [TEST] Checking if the housing was added to the page")
+name = driver.find_element(By.CSS_SELECTOR, "ul.lista>li:last-of-type>div:first-child>div:first-child")
+if (not "Sherlock" in name.text):
+    print("[-] Failed")
+    exit(1)
+
+print("[+] Success")
+print("-" * 20)
+
+# -----------------------------------------------
+print("[INFO] Testing adding a new admin")
+
+driver.get("http://localhost:5173/")
+button = driver.find_element(By.CLASS_NAME, "btn")
+username_input = driver.find_element(By.ID, "username")
+password_input = driver.find_element(By.ID, "password")
+roles_input = driver.find_element(By.ID, "sleep_admin")
+
+username_input.send_keys("stela")
+password_input.send_keys("pass")
+roles_input.click()
+button.click()
+
+add_button = driver.find_element(By.CLASS_NAME, "admin")
+add_button.click()
+print("    [TEST] Checking if a menu popped up")
+try:
+    add_form = driver.find_element(By.CLASS_NAME, "add-form")
+except (e):
+    print("[-] Failed")
+    exit(1)
+
+print("    [INFO] Filling up form with values")
+print("        Ime: Sherlock")
+print("        Prezime: Holmes")
+print("        Roles: sleep_admin, user_admin")
+
+name_input = driver.find_element(By.ID, "1")
+lastname_input = driver.find_element(By.ID, "2")
+role1_input = driver.find_element(By.ID, "3")
+role2_input = driver.find_element(By.ID, "4")
+
+
+name_input.send_keys("Sherlock")
+lastname_input.send_keys("Holmes")
+role1_input.click()
+role2_input.click()
+
+submit_button = driver.find_element(By.CLASS_NAME, "btn")
+submit_button.click()
+
+print("    [TEST] Checking if logging out works")
+logout = driver.find_element(By.CLASS_NAME, "odjava")
+logout.click()
+if (driver.current_url.endswith("/housing")):
+    print("[-] Failed")
+    exit(1)
+
+print("    [INFO] Logging in as new user to the housing section")
+button = driver.find_element(By.CLASS_NAME, "btn")
+username_input = driver.find_element(By.ID, "username")
+password_input = driver.find_element(By.ID, "password")
+roles_input = driver.find_element(By.ID, "sleep_admin")
+
+username_input.send_keys("Sherlock")
+password_input.send_keys("Holmes")
+roles_input.click()
+button.click()
+
+print("    [TEST] Checking if redirect was correct")
+if (not driver.current_url.endswith("/housing")):
+    print("[-] Failed")
+    exit(1)
+
+print("    [TEST] Checking if the displayed username is correct")
+if (driver.find_element(By.CSS_SELECTOR, "span.username").text != "Sherlock"):
+    print("[-] Failed")
+    exit(1)
+
+print("[+] Success")
+print("-" * 20)
+
+driver.close()
 
