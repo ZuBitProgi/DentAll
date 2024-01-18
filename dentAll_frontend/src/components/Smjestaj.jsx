@@ -1,7 +1,7 @@
 import React from 'react'
 import "../styles/Smjestaj.css"
 
-const Smjestaj = ({id, adresa, tip, kategorija, dostupnost}) => {
+const Smjestaj = ({id, adresa, tip, kategorija, dostupnost, onClick}) => {
 
 
   return (
