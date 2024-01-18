@@ -116,7 +116,7 @@ function HousingAdminView(props) {
       {showForm && <AdminAddForm onClose={closeForm} />}
         <div className="housing-list-and-map">
           <List setParentData={setData} path="accomodation"></List>
-            <button onClick={() => {setShowMap(!showMap)}}>Karta</button>
+            <button className="karta" onClick={() => {setShowMap(!showMap)}}>Karta</button>
             {showMap &&           
             <div className='housing-map'>
               <APIProvider apiKey={API_KEY}>

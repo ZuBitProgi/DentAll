@@ -96,8 +96,7 @@ const PrijevoznikList = ({ path }) => {
   return (
     <div className='container'>
       {<ul className='lista'>
-        <div className='listFirstRow'><div>PRIJEVOZNICI:</div> {/*<div>radno vrijeme</div><div className='lastElement'>vozilo id</div>*/} 
-        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>Dodaj</button> </div>}
+        <div className='listFirstRow'><div>PRIJEVOZNICI</div> {/*<div>radno vrijeme</div><div className='lastElement'>vozilo id</div>*/} 
         </div>
         {data.map((prijevoznikObject, index) => (
           <li className="list-element" key={index} >
@@ -105,6 +104,7 @@ const PrijevoznikList = ({ path }) => {
             <div className='delete-container'><button onClick={() => handleDeleteClick(prijevoznikObject.id) } className='delBtn'>Obriši</button></div>
           </li>
         ))}
+        {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>Dodaj</button> </div>}
       </ul>}
       {selectedItem && (
         <PrijevoznikUpdateForm
