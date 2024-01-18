@@ -40,7 +40,6 @@ export const Index = () => {
     let prefix = resData["tokenType"];
 
     localStorage.setItem("token", prefix + token);
-    console.log(token + prefix)
     
     if (response.status !== 200) {
       document.getElementById("error-text").className = "error-text"
