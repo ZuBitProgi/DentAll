@@ -7,7 +7,7 @@ const Korisnik = ({id, ime, prezime, preference, kontakt}) => {
     <div className='smjestaj-container'>
         <div><span>ime: </span>{ime}</div>
         <div><span>prezime: </span>{prezime}</div>
-        <div><span>preference: </span>{preference}</div>
+        <div><span>preference: </span>{preference === "" ? "-" : preference.split(":")[1]}</div>
         <div><span>kontakt: </span>{kontakt}</div>
     </div>
   )

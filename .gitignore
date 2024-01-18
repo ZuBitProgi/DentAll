@@ -10,3 +10,6 @@
 *.synctex.gz
 
 *.toc
+
+dentAll_frontend/tests/venv/
+.idea/

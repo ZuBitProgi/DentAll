@@ -9,7 +9,9 @@ import com.dental.models.Prijevoznik;
 import com.dental.models.Putovanje;
 import com.dental.models.Smjestaj;
 import com.dental.service.*;
+import jakarta.persistence.NoResultException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,12 +44,17 @@ public class KorisnikController {
     }
 
     @GetMapping("/Id")
-    public Korisnik getKorisnikById(@RequestBody Integer id){
-        return korisnikService.findKorisnikById(id);
+    public HttpStatus getKorisnikById(@RequestBody Integer id){
+        try {
+            korisnikService.findKorisnikById(id);
+            return HttpStatus.OK;
+        } catch (NoResultException e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
 
     @PostMapping("/create")
-    public Korisnik createKorisnik(@RequestBody Korisnik korisnik){
+    public HttpStatus createKorisnik(@RequestBody Korisnik korisnik){
 
         String kategorija = "1", tip = "stan";
         Integer kapacitet = 0;
@@ -74,16 +81,16 @@ public class KorisnikController {
                 Prijevoznik p = prijevoznikService.findPrijevoznikById(feedback.getPrijevoznikId());
                 String content = "Smjestaj: " + s.getAdresa() + "\nPrijevoznik: " + p.getModel() + "\nVrijeme polaska: " + feedback.getVrijeme().toString();
 
-                emailService.sendEmail(to, subject, content);
+                //emailService.sendEmail(to, subject, content);
             } catch (Exception e) {
-                // Handle the exception (log it, throw a custom exception, etc.)
-                e.printStackTrace();
+                return HttpStatus.BAD_REQUEST;
             }
         }
         //KlinikaDaoImpl klinika = new KlinikaDaoImpl();
         //PrijevoznikDaoImpl prijevoznik = new PrijevoznikDaoImpl();
         //SmjestajDaoImpl smjestaj = new SmjestajDaoImpl();
-        return korisnikService.createKorisnik(korisnik);
+        korisnikService.createKorisnik(korisnik);
+        return HttpStatus.OK;
         //return korisnikService.findKorisnikById(korisnik.getId());
     }
 
@@ -92,11 +99,21 @@ public class KorisnikController {
     }
 
     @PostMapping("/update")
-    public void updateKorisnik(@RequestBody Korisnik korisnik) {
-        korisnikService.updateKorisnik(korisnik);
+    public HttpStatus updateKorisnik(@RequestBody Korisnik korisnik) {
+        try {
+            korisnikService.updateKorisnik(korisnik);
+            return HttpStatus.OK;
+        } catch (NoResultException e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
     @PostMapping("/delete")
-    public void deleteKorisnik(@RequestBody Integer id){
-        korisnikService.deleteKorisnik(id);
+    public HttpStatus deleteKorisnik(@RequestBody Integer id){
+        try {
+            korisnikService.deleteKorisnik(id);
+            return HttpStatus.OK;
+        } catch (NoResultException e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
 }

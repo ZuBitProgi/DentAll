@@ -1,54 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaTimes } from "react-icons/fa"
+import { baseUrl } from '../..';
 
-/*const UpdateFormDynamicList = ({ itemList }) => {
-  const [list, setList] = useState(itemList);
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-  };
-
-  const handleUpdate = (updatedData) => {
-    if (selectedItem) {
-      setList((prevList) =>
-        prevList.map((item) =>
-          item.id === selectedItem.id ? { ...item, ...updatedData } : item
-        )
-      );
-      setSelectedItem(null);
-    }
-  };
-
-  return (
-    <div>
-      <h1>Korisnik</h1>
-      <ul>
-        {list.map((item) => (
-          <li key={item.id} onClick={() => handleItemClick(item)}>
-            {item.ime} {item.prezime} - {item.preference} - {item.kontakt} -{item.datumDolaska} -{item.datumOdlaska}
-          </li>
-        ))}
-      </ul>
-      {selectedItem && (
-        <UpdateForm
-          initialData={{
-            ime: selectedItem.ime,
-            prezime: selectedItem.prezime,
-            preference: selectedItem.preference,
-            kontakt: selectedItem.kontakt,
-            datumDolaska: selectedItem.datumDolaska,
-            datumOdlaska: selectedItem.datumOdlaska
-          }}
-          onUpdate={(updatedData) => handleUpdate(updatedData)}
-        />
-      )}
-    </div>
-  );
-};*/
 
 export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
   const [formData, setFormData] = useState(initialData);
+  const [isValidName, setIsValidName] = useState(false);
+  const [isValidSrname, setIsValidSrname] = useState(false);
+  const [isValidDate, setIsValidDate] = useState(false);
+  const [isValidOption, setIsValidOption] = useState(false);
+  const [isValidMail, setIsValidMail] = useState(false);
+  const [imeMessage, setImeMessage] = useState("");
+  const [srnameMessage, setSrnameMessage] = useState("");
+  const [dateMessage, setDateMessage] = useState("");
+  const [optionMessage, setoptionMessage] = useState("");
+  const [mailMessage, setMailMessage] = useState("");
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,27 +25,82 @@ export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    let token = localStorage.getItem("token");
-    if (token === null) {
-      navigate("/");
-      return;
+      if (formData.ime.length === 0) {
+        setIsValidName(false);
+        setImeMessage("Polje za ime ne smije biti prazno.")
+    } else {
+        setIsValidName(true);
+        setImeMessage("");
     }
 
-    await fetch(`${baseUrl}/api/user/update`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": token
-      },
-      body: JSON.stringify(formData)
-    })
+    if (formData.prezime.length === 0) {
+        setIsValidSrname(false);
+        setSrnameMessage("Polje za prezime ne smije biti prazno.")
+    } else {
+        setIsValidSrname(true);
+        setSrnameMessage("");
+    }
 
-    onClose(true);
-    onUpdate(formData);
+    if (formData.preference.length === 0) {
+        setIsValidOption(true);
+        setoptionMessage("")
+    } else if (formData.preference !== ("tip:kuca") && formData.preference !== ("tip:stan") && formData.preference !== ("tip:soba")) {
+        setIsValidOption(false);
+        setoptionMessage("Preference moraju biti u formatu: [tip:kuca/stan/soba]");
+    } else {
+        setIsValidOption(true);
+        setoptionMessage("")
+    }
+
+    if (formData.kontakt.length === 0) {
+        setIsValidMail(false)
+        setMailMessage("Polje za e-mail ne smije biti prazno.")
+    } else {
+        if (formData.kontakt.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+            setIsValidMail(true);
+            setMailMessage("");
+        } else {
+            setIsValidMail(false);
+            setMailMessage("E-mail mora biti u obliku {example@gmail.com}")
+        }
+    }
+
+
   };
+
+  async function updateUser() {
+    if (isValidName && isValidSrname && isValidMail && isValidOption) {
+
+      try {
+        let token = localStorage.getItem("token");
+        if (token === null) {
+          navigate("/");
+          return;
+        }
+
+        await fetch(`${baseUrl}/api/user/update`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": token
+          },
+          body: JSON.stringify(formData)
+        })
+  
+        onClose(true);
+        onUpdate(formData);
+      } catch(err) {
+
+      }
+    }
+}
+
+  useEffect(() => {
+    updateUser();
+  }, [isValidName, isValidSrname, isValidOption, isValidMail])
 
   return (
     <div className="index">
@@ -93,7 +115,7 @@ export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
                 ime
               </label>
               <input type="text" name="ime" className='input' value={formData.ime} onChange={handleChange} />
-
+              {!isValidName && <p className="poruka">{imeMessage}</p>}
             </div>
 
             <div className='overlap'>
@@ -101,7 +123,7 @@ export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
                 prezime
               </label>
               <input type="text" name="prezime" className='input' value={formData.prezime} onChange={handleChange} />
-
+              {!isValidSrname && <p className="poruka">{srnameMessage}</p>}
             </div>
 
             <div className='overlap'>
@@ -109,7 +131,7 @@ export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
                 preference
               </label>
               <input type="text" name="preference" className='input' value={formData.preference} onChange={handleChange} />
-
+              {!isValidOption && <p id="opt">{optionMessage}</p>}
             </div>
 
             <div className='overlap'>
@@ -117,7 +139,7 @@ export default function KorisnikUpdateForm({ onClose, initialData, onUpdate }) {
                 kontakt
               </label>
               <input type="text" name="kontakt" className='input' value={formData.kontakt} onChange={handleChange} />
-
+              {!isValidMail && <p id="mail">{mailMessage}</p>}
             </div>
 
             <div className='overlap'>

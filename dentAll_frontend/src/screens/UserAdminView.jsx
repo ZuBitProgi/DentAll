@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import KorisnikAddForm from './Index/KorisnikAddForm'
 import UserList from "../components/UserList"
+import "../styles/UserAdminView.css"
+import { FaTooth } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 function UserAdminView(props) {
 
@@ -31,14 +33,23 @@ function UserAdminView(props) {
   return (
     <div className='korisnik-overlay'>
       <div className='header-info'>
+        <div className='container2'>
+        <IconContext.Provider value={{ color: "black", size: "5em", className: "global-class-name" }}>
+          <div>
+            <FaTooth />
+          </div>
+        </IconContext.Provider>
         <label className='logo-text' onClick={()=>{navigate("/")}} style={{cursor: 'pointer'}}>DentAll</label>
-        <button onClick={handleOdjava}>Odjava</button>
+        </div>
         <div className='user-info'>
+          <label id="admin">Korisnički administrator</label>
           <label className='user-name'>{username}</label>
-          <label>Korisnički administrator</label>
+          <button className="odjava" onClick={handleOdjava}>Odjava</button>
         </div>
       </div>
+      <div className='frame'>
       <UserList path="user"></UserList>
+      </div>
     </div>
   )
 }
