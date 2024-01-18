@@ -3,7 +3,7 @@
     height: 70%;
     width: 70%;
     z-index: -100;
-
+    margin-left: 10px;
 }
 
 .housing-list-and-map {
@@ -11,6 +11,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    margin-right: 10px;
 }
 
 .korisnik-overlay{

@@ -7,7 +7,7 @@
   position: fixed;
 }
 
-.index .overlap-group-wrapper {
+.overlap-group-wrapper {
   flex: 1;
   background: linear-gradient(180deg, rgb(135.94, 177.53, 239.9) 0%, rgba(245, 245, 245, 0) 100%);
   display: flex;
@@ -23,15 +23,13 @@ body {
   overflow: hidden;
 }
 
-.index .overlap-group {
+.overlap-group {
   background-color: #d9d9d9;
   width: 480px;
   border-radius: 15px;
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
   padding: 20px;
   box-sizing: border-box;
-  margin: 20px;
-  margin-bottom: 40vh;
 }
 .index .overlap {
   background-color: #ffffff;
@@ -161,17 +159,6 @@ button.btn:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-@media screen and (min-width: 768px) {
-  .form-group-wrapper {
-    margin-top: 200px;
-  }
-}
-
-.smjestaj {
-  margin-top: 200px;
-  margin-left: 300px;
 }
 
 .korisnik-overlay {
