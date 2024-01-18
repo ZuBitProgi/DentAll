@@ -5,6 +5,7 @@ import Smjestaj from './Smjestaj';
 import "../styles/List.css"
 import SmjestajAddForm from '../screens/Index/SmjestajAddForm';
 import SmjestajUpdateForm from '../screens/Index/SmjestajUpdateForm';
+import { MdDelete } from "react-icons/md";
 
 
 const List = ({path, setParentData}) => {
@@ -97,15 +98,17 @@ const List = ({path, setParentData}) => {
   return (
     <div className='container'>
       {<ul className='lista'>
-       <div className='listFirstRow'> <div>SMJEŠTAJ:</div>
-       {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>dodaj</button> </div>}
+       <div className='listFirstRow'>SMJESTAJ
        </div>
       {data.map((smjestajObject, index) => (
         <li className="list-element" key={index} onClick={() => handleItemClick(smjestajObject)}>
           <Smjestaj  {...smjestajObject}/>
-         <div className='delete-container'><button onClick={() => handleDeleteClick(smjestajObject.id)} className='delBtn'>Delete</button></div>
+         {/* <div className='delete-container'><button onClick={() => handleDeleteClick(smjestajObject.id)} className='delBtn'>Delete</button></div> */}
+         <div className='delete-container'><MdDelete onClick={() => {handleDeleteClick(smjestajObject.id)}}/></div>
         </li>
       ))}
+      
+      {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>Dodaj</button> </div>}
       </ul>}
       {selectedItem && (
         <SmjestajUpdateForm

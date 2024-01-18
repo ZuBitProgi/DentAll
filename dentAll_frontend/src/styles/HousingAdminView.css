@@ -1,52 +1,74 @@
-.housing-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    padding: 7%;
-}
 
-.housing-list-and-map .housing-map {
+.housing-map {
     height: 70%;
     width: 70%;
+    z-index: -100;
+
 }
 
 .housing-list-and-map {
-    height: 80%;
-    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
 .korisnik-overlay{
     overflow-y: scroll;
 }
 
-.korisnik-overlay .admin-button-overlay{
+
+.odjava {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #F6A192; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    transition: background-color 0.2s;
+  }
+  
+.odjava:hover {
+      background-color: #f5826e
+  }
+
+.user-info {
     display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background-color 0.3s;
+}
+
+.housing-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
     width: 100%;
-    justify-content: flex-end;
-    padding-right: 4%;
-    padding-top: 5px;
-
 }
 
-.korisnik-overlay .adminAddBtn{
-    border-radius: 5px;
-    background-color: #297bf6;
-    color:white;
-    border: 0px;
-    font-size: 120%;
-    padding: 7px
 
+.container1 {
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s;
+    justify-content: center;
+    align-items: center;
 }
 
-button.adminAddBtn:hover,
-button.adminAddBtn:active {
-  background-color: #6192dc;
-  color: white;
-  transform: scale(1.1);
+.admin {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #F6A192; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    transition: background-color 0.2s;
+    width: 100px;
+}
+.admin:hover {
+    background-color: #f5826e
 }
 
+.karta {
+
+}

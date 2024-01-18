@@ -6,6 +6,8 @@ import List from '../components/SmjestajList'
 import '../styles/HousingAdminView.css'
 import AdminAddForm from './Index/AdminAddForm'
 import { baseUrl } from '..';
+import { FaTooth } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 
 function HousingAdminView(props) {
@@ -15,7 +17,7 @@ function HousingAdminView(props) {
 
   const [showForm, setShowForm] = useState(false);
   const [data, setData] = useState([]);
-
+  const [showMap, setShowMap] = useState(false);
   const [coordinates, setCoordinates] = useState([]);
 
   const closeForm = () => {
@@ -54,13 +56,13 @@ function HousingAdminView(props) {
     const setCoords = async () => {
       let newCoords = []
       for (let adresa of data) {
-        //let res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${adresa}&key=${API_KEY}`)
-        //let resData = await res.json();
+        let res = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${adresa}&key=${API_KEY}`)
+        let resData = await res.json();
 
-        // newCoords.push({
-        //   lat: resData.results[0].geometry.location.lat,
-        //   lng: resData.results[0].geometry.location.lng
-        // })
+        newCoords.push({
+          lat: resData.results[0].geometry.location.lat,
+          lng: resData.results[0].geometry.location.lng
+        })
       }
 
       console.log("New coords", newCoords)
@@ -89,42 +91,49 @@ function HousingAdminView(props) {
     localStorage.clear();
     navigate("/")
   }
-
   return (
     <div className='korisnik-overlay'>
       <div className='header-info'>
-        <label className='logo-text' onClick={()=>{navigate("/")}} style={{cursor: 'pointer'}}>DentAll</label>
-        <button onClick={handleOdjava}>Odjava</button>
-        <div className='user-info'>
-          <label className='user-name'>{username}</label>
-          <label>Smještajni administrator</label>
+        <div className='container1'>
+          <div className='container2'>
+            <IconContext.Provider value={{ color: "black", size: "5em", className: "global-class-name" }}>
+              <div>
+                <FaTooth />
+              </div>
+            </IconContext.Provider>
+            <label className='logo-text' onClick={()=>{navigate("/")}} style={{cursor: 'pointer'}}>DentAll</label>
+          </div>
         </div>
-      </div>
-      {showForm && <AdminAddForm onClose={closeForm} />}
-      {!showForm && <div className='admin-button-overlay'> <button onClick={() => setShowForm(!showForm)} className='adminAddBtn'>dodaj admina</button> </div>}
-      <div className='housing-container'>
-        <div className="housing-list-and-map">
-          <List setParentData={setData} path="accomodation"></List>
-          <div className='housing-map'>
-            {/*
-                        <APIProvider apiKey={API_KEY}>
-              <Map
-                zoom={3}
-                center={{ lat: 22.54992, lng: 0 }}
-                gestureHandling={'greedy'}
-                disableDefaultUI={true}
-                mapId={'My map id'}
-              >
-              {
-                coordinates.map((c, i) => <Marker key={i} position={c}/>)
-              }
-              </Map>
-            </APIProvider>
-            */}
-
+        <div className='user-info'>
+          <label className='user-name'>Smještajni administrator</label>
+          <label className='user-name'>Korisnik: <span className='username'>{username}</span></label>
+          <div className='housing-buttons'>
+            <button className="odjava" onClick={handleOdjava}>Odjava</button>
+            <button onClick={() => setShowForm(!showForm)} className='admin'>Dodaj admina</button>
           </div>
         </div>
       </div>
+      {showForm && <AdminAddForm onClose={closeForm} />}
+        <div className="housing-list-and-map">
+          <List setParentData={setData} path="accomodation"></List>
+            <button onClick={() => {setShowMap(!showMap)}}>Karta</button>
+            {showMap &&           
+            <div className='housing-map'>
+              <APIProvider apiKey={API_KEY}>
+                <Map
+                  zoom={3}
+                  center={{ lat: 22.54992, lng: 0 }}
+                  gestureHandling={'greedy'}
+                  disableDefaultUI={true}
+                  mapId={'My map id'}
+                >
+                {
+                  coordinates.map((c, i) => <Marker key={i} position={c}/>)
+                }
+                </Map>
+              </APIProvider>
+            </div>}
+        </div>
     </div>
   )
 }

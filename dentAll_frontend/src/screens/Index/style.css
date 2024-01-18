@@ -163,18 +163,6 @@ button.btn:active {
   align-items: center;
 }
 
-.index .form-group-wrapper {
-  backdrop-filter: blur(10px);
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-}
-
 @media screen and (min-width: 768px) {
   .form-group-wrapper {
     margin-top: 200px;
@@ -189,22 +177,19 @@ button.btn:active {
 .korisnik-overlay {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 100vh;
 }
 
-.korisnik-overlay .header-info{
-  justify-self: flex-start;
-  align-self: flex-start;
+.header-info{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  height: 10%;
-
+  height: 30%;
 }
 
 .korisnik-overlay .logo-text{
@@ -212,7 +197,7 @@ button.btn:active {
   padding-left: 10px;
 }
 
-.korisnik-overlay .user-info{
+ .user-info{
   display: flex;
   flex-direction: column;
   justify-content:center;

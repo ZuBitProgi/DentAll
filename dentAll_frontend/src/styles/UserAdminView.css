@@ -13,14 +13,6 @@
     margin-top: 20px;
 }
 
-.user-info {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 40px;
-    transition: background-color 0.3s;
-}
-
 .user-name {
     font-family: "playfair";
 }
@@ -50,10 +42,7 @@
     padding: 20px;
 }
 
-.korisnik-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+.username {
+    font-style: italic;
+    font-family: "playfair";
 }

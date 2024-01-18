@@ -120,7 +120,7 @@ export default function SmjestajAddForm({onClose, data, setData}) {
                                 <input id="5" type="radio" name="dostupnost" className="check-box-input" value="false" onChange={handleFormChange} /> 
                             </label>
                         </div>
-                        <div className='buttonContainer'> <button type="submit" className="btn">dodaj</button> </div>
+                        <div className='buttonContainer'> <button type="submit" className="btn">Dodaj</button> </div>
                     </form>
                 </div>
             </div>

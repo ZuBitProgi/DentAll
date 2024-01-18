@@ -43,7 +43,7 @@ function UserAdminView(props) {
         </div>
         <div className='user-info'>
           <label id="admin">Korisnički administrator</label>
-          <label className='user-name'>{username}</label>
+          <label className='user-name'>Korisnik: <span className='username'>{username}</span></label>
           <button className="odjava" onClick={handleOdjava}>Odjava</button>
         </div>
       </div>
