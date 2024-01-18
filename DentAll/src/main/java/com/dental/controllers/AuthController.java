@@ -52,6 +52,9 @@ public class AuthController {
         }
         List<Role> roles = new ArrayList<Role>();
         roles = registerDto.getRoles().stream().map(string -> new Role(string)).toList();
+        if (roles.isEmpty()) {
+            return new ResponseEntity<>("Error: No role selected", HttpStatus.BAD_REQUEST);
+        }
        UserEntity user = new UserEntity(registerDto.getUsername(), passwordEncoder.encode(registerDto.getPassword()));
        user.setRoles(roles);
 
@@ -74,7 +77,7 @@ public class AuthController {
                 String token = jwtGenerator.generateToken(authentication);
                 return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
             } else {
-                throw new Exception("Failed");
+                return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
             }
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
