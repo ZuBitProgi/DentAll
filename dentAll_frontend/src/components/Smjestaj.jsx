@@ -5,7 +5,7 @@ const Smjestaj = ({id, adresa, tip, kategorija, dostupnost}) => {
 
 
   return (
-    <div className='smjestaj-container'>
+    <div className='smjestaj-container' onClick={onClick}>
         <div><span>adresa: </span>{adresa}</div>
         <div><span>tip: </span>{tip}</div>
         <div><span>kategorija: </span>{kategorija}</div>

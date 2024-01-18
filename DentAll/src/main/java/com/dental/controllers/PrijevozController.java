@@ -4,6 +4,7 @@ import com.dental.models.Prijevoznik;
 import com.dental.models.Smjestaj;
 import com.dental.service.PrijevoznikService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,17 +27,33 @@ public class PrijevozController  {
     }
 
     @PostMapping("/create")
-    public Prijevoznik createPrijevoznik(@RequestBody Prijevoznik prijevoznik){
-        return prijevozservis.createPrijevoznik(prijevoznik);
+    public HttpStatus createPrijevoznik(@RequestBody Prijevoznik prijevoznik){
+        try {
+            prijevozservis.createPrijevoznik(prijevoznik);
+            return HttpStatus.OK;
+        } catch (Exception e) {
+            return HttpStatus.BAD_REQUEST;
+        }
+
     }
 
     @PostMapping("/delete")
-    public void deletePrijevoznik(@RequestBody Integer id){
-        prijevozservis.deletePrijevoznik(id);
+    public HttpStatus deletePrijevoznik(@RequestBody Integer id){
+        try {
+            prijevozservis.deletePrijevoznik(id);
+            return HttpStatus.OK;
+        } catch (Exception e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
 
     @PostMapping("/update")
-    public void updatePrijevoznik(@RequestBody Prijevoznik prijevoznik) {
-        prijevozservis.updatePrijevoznik(prijevoznik);
+    public HttpStatus updatePrijevoznik(@RequestBody Prijevoznik prijevoznik) {
+        try {
+            prijevozservis.updatePrijevoznik(prijevoznik);
+            return HttpStatus.OK;
+        } catch (Exception e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
 }

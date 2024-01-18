@@ -100,8 +100,8 @@ const PrijevoznikList = ({ path }) => {
         {!showAdd && <div className='button-overlay'> <button onClick={() => setShowAdd(!showAdd)} className='addBtn'>Dodaj</button> </div>}
         </div>
         {data.map((prijevoznikObject, index) => (
-          <li className="list-element" key={index} onClick={() => handleItemClick(prijevoznikObject) }>
-            <Prijevoznik  {...prijevoznikObject} />
+          <li className="list-element" key={index} >
+            <Prijevoznik  {...prijevoznikObject} onClick={() => handleItemClick(prijevoznikObject) }/>
             <div className='delete-container'><button onClick={() => handleDeleteClick(prijevoznikObject.id) } className='delBtn'>Obriši</button></div>
           </li>
         ))}

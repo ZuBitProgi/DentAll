@@ -58,8 +58,8 @@ class LocalStorage:
         return self.items().__str__()
 
 print("[INFO] Testing successful login: ")
-print("    Username: admin")
-print("    password: admin")
+print("    Username: stela")
+print("    password: pass")
 print("    role: transport_admin")
 driver = webdriver.Firefox()
 driver.get("http://localhost:5173")
@@ -69,8 +69,8 @@ username_input = driver.find_element(By.ID, "username")
 password_input = driver.find_element(By.ID, "password")
 roles_input = driver.find_element(By.ID, "transport_admin")
 
-username_input.send_keys("admin2")
-password_input.send_keys("admin")
+username_input.send_keys("stela")
+password_input.send_keys("pass")
 roles_input.click()
 button.click()
 
@@ -123,6 +123,65 @@ model_input.send_keys("Opel Astra")
 
 submit_button = driver.find_element(By.CLASS_NAME, "btn")
 submit_button.click()
+
+print("    [TEST] Checking if the transported was added to the page")
+email = driver.find_element(By.CSS_SELECTOR, "ul.lista>li:last-child>div:first-child>div:first-child")
+if (not "transporter@transp.com" in email.text):
+    print("[-] Failed")
+    exit(1)
+
+print("[+] Success")
+print("-" * 20)
+
+# -----------------------------------------------
+print("[INFO] Testing adding a housing")
+
+driver.get("http://localhost:5173/")
+button = driver.find_element(By.CLASS_NAME, "btn")
+username_input = driver.find_element(By.ID, "username")
+password_input = driver.find_element(By.ID, "password")
+roles_input = driver.find_element(By.ID, "sleep_admin")
+
+username_input.send_keys("stela")
+password_input.send_keys("pass")
+roles_input.click()
+button.click()
+
+add_button = driver.find_element(By.CLASS_NAME, "addBtn")
+add_button.click()
+print("    [TEST] Checking if a menu popped up")
+try:
+    add_form = driver.find_element(By.CLASS_NAME, "add-form")
+except (e):
+    print("[-] Failed")
+    exit(1)
+
+print("    [INFO] Filling up form with values")
+print("        Adresa: 221B Baker Street")
+print("        Tip: stan")
+print("        Kategorija: 1")
+print("        Dostupnost: Dostupno")
+address_input = driver.find_element(By.ID, "1")
+type_input2 = driver.find_element(By.ID, "2")
+category_input = driver.find_element(By.ID, "3")
+available_input = driver.find_element(By.ID, "4")
+
+address_input.send_keys("221B Baker Street")
+type_input2.send_keys("stan")
+category_input.send_keys("1")
+available_input.click()
+
+submit_button = driver.find_element(By.CLASS_NAME, "btn")
+submit_button.click()
+
+print("    [TEST] Checking if the housing was added to the page")
+address = driver.find_element(By.CSS_SELECTOR, "ul.lista>li:last-child>div>div:last-child")
+if (not "221B Baker Street" in address.text):
+    print("[-] Failed")
+    exit(1)
+
+print("[+] Success")
+print("-" * 20)
 
 #driver.close()
 

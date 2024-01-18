@@ -101,8 +101,8 @@ const List = ({path, setParentData}) => {
        <div className='listFirstRow'>SMJESTAJ
        </div>
       {data.map((smjestajObject, index) => (
-        <li className="list-element" key={index} onClick={() => handleItemClick(smjestajObject)}>
-          <Smjestaj  {...smjestajObject}/>
+        <li className="list-element" key={index} >
+          <Smjestaj  {...smjestajObject} onClick={() => handleItemClick(smjestajObject)}/>
          {/* <div className='delete-container'><button onClick={() => handleDeleteClick(smjestajObject.id)} className='delBtn'>Delete</button></div> */}
          <div className='delete-container'><MdDelete onClick={() => {handleDeleteClick(smjestajObject.id)}}/></div>
         </li>

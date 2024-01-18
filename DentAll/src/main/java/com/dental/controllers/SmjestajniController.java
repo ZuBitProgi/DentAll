@@ -8,6 +8,7 @@ import com.dental.models.Smjestaj;
 import com.dental.service.KorisnikService;
 import com.dental.service.SmjestajService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -32,18 +33,33 @@ public class SmjestajniController {
     }
 
     @PostMapping("/create")
-    public Smjestaj createSmjestaj(@RequestBody Smjestaj smjestaj){
-        return smjestajservis.createSmjestaj(smjestaj);
+    public HttpStatus createSmjestaj(@RequestBody Smjestaj smjestaj){
+        try {
+            smjestajservis.createSmjestaj(smjestaj);
+            return HttpStatus.OK;
+        } catch (Exception e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
 
     @PostMapping("/update")
-    public void updateSmjestaj(@RequestBody Smjestaj smjestaj) {
-        smjestajservis.updateSmjestaj(smjestaj);
+    public HttpStatus updateSmjestaj(@RequestBody Smjestaj smjestaj) {
+        try {
+            smjestajservis.updateSmjestaj(smjestaj);
+            return HttpStatus.OK;
+        } catch (Exception e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
 
     @PostMapping("/delete")
-    public void deleteSmjestaj(@RequestBody Integer id){
-        smjestajservis.deleteSmjestaj(id);
+    public HttpStatus deleteSmjestaj(@RequestBody Integer id) {
+        try {
+            smjestajservis.deleteSmjestaj(id);
+            return HttpStatus.OK;
+        } catch (Exception e) {
+            return HttpStatus.BAD_REQUEST;
+        }
     }
 }
 

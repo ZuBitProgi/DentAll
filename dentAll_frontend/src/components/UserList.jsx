@@ -97,8 +97,8 @@ const UserList = ({path}) => {
       {<ul className='lista'>
         <div className='listFirstRow'><div className='korisnici'>KORISNICI</div></div>
       {data.map((korisnikObject, index) => (
-        <li className="list-element" key={index} onClick={() => handleItemClick(korisnikObject)}>
-          <Korisnik  {...korisnikObject}/>
+        <li className="list-element" key={index}>
+          <Korisnik  {...korisnikObject}  onClick={() => handleItemClick(korisnikObject)}/>
           <div className='delete-container'><button onClick={() => handleDeleteClick(korisnikObject.id)} className='delBtn'>Obriši</button></div>
         </li>
       ))}
