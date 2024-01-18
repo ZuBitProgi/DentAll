@@ -1,0 +1,8 @@
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}

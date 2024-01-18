@@ -5,7 +5,6 @@ import Smjestaj from './Smjestaj';
 import "../styles/List.css"
 import SmjestajAddForm from '../screens/Index/SmjestajAddForm';
 import SmjestajUpdateForm from '../screens/Index/SmjestajUpdateForm';
-import { MdDelete } from "react-icons/md";
 
 
 const List = ({path, setParentData}) => {
@@ -102,9 +101,8 @@ const List = ({path, setParentData}) => {
        </div>
       {data.map((smjestajObject, index) => (
         <li className="list-element" key={index} >
-          <Smjestaj  {...smjestajObject} onClick={() => handleItemClick(smjestajObject)}/>
-         {/* <div className='delete-container'><button onClick={() => handleDeleteClick(smjestajObject.id)} className='delBtn'>Delete</button></div> */}
-         <div className='delete-container'><MdDelete onClick={() => {handleDeleteClick(smjestajObject.id)}}/></div>
+          <Smjestaj {...smjestajObject} onClick={() => handleItemClick(smjestajObject)}/>
+         { <div className='delete-container'><button onClick={() => handleDeleteClick(smjestajObject.id)} className='delBtn'>Delete</button></div> }
         </li>
       ))}
       
