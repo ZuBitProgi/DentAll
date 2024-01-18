@@ -95,15 +95,15 @@ const UserList = ({path}) => {
   return (
     <div className='container'>
       {<ul className='lista'>
-        <div className='listFirstRow'><div>KORISNICI:</div>
-        {!showAdd && <div className='button-overlay'> <button className='addBtn' onClick={() => setShowAdd(!showAdd)}>dodaj</button> </div>}
-        </div>
+        <div className='listFirstRow'><div>KORISNICI:</div></div>
       {data.map((korisnikObject, index) => (
         <li className="list-element" key={index} onClick={() => handleItemClick(korisnikObject)}>
           <Korisnik  {...korisnikObject}/>
-          <div className='delete-container'><button onClick={() => handleDeleteClick(korisnikObject.id)} className='delBtn'>obriši</button></div>
+          <div className='delete-container'><button onClick={() => handleDeleteClick(korisnikObject.id)} className='delBtn'>Obriši</button></div>
         </li>
       ))}
+      {!showAdd && <div className='button-overlay'> <button className='addBtn' onClick={() => setShowAdd(!showAdd)}>Dodaj</button> </div>}
+
       </ul>}
       {selectedItem && (
         <KorisnikUpdateForm
