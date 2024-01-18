@@ -70,17 +70,17 @@ export const Index = () => {
               <input id="password" className="input" placeholder="Password..." type="password" required/>
             </div>
             <div className="radio">
-              <div>
-                <label htmlFor="user_admin">Korisnički Admin</label>
-                <input type="radio" name="user_admin" id="user_admin" checked={role === "user_admin"} onChange={() => setRole("user_admin")}/>
+              <div className='check-label-text'>
+                <label htmlFor="user_admin" className="label-text">Korisnički Admin</label>
+                <input type="radio" className="check-box-input" name="user_admin" id="user_admin" checked={role === "user_admin"} onChange={() => setRole("user_admin")}/>
               </div>
-              <div>
-                <label htmlFor="user_admin">Smještajni Admin</label>
-                <input type="radio" name="sleep_admin" id="sleep_admin" checked={role === "sleep_admin"} onChange={() => setRole("sleep_admin")}/>
+              <div className='check-label-text'>
+                <label htmlFor="user_admin" className="label-text">Smještajni Admin</label>
+                <input type="radio" className="check-box-input" name="sleep_admin" id="sleep_admin" checked={role === "sleep_admin"} onChange={() => setRole("sleep_admin")}/>
               </div>
-              <div>
-                <label htmlFor="user_admin">Prijevoznički Admin</label>
-                <input type="radio" name="transport_admin" id="transport_admin" checked={role === "transport_admin"} onChange={() => setRole("transport_admin")}/>
+              <div className='check-label-text'>
+                <label htmlFor="user_admin" className="label-text">Prijevoznički Admin</label>
+                <input type="radio" className="check-box-input" name="transport_admin" id="transport_admin" checked={role === "transport_admin"} onChange={() => setRole("transport_admin")}/>
               </div>
             </div>
             <div className="buttonContainer"><button type="submit" className="btn">Login</button></div>
