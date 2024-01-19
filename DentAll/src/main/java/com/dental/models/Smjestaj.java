@@ -1,20 +1,32 @@
 package com.dental.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Smjestaj {
     @Id
+    @GeneratedValue
     private Integer id;
-    private String tip;
-    private String kategorija;
+
     private String adresa;
     private Boolean dostupnost;
+    private String kategorija;
+
+    private String tip;
+
 
     public Smjestaj(){
 
     };
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="IDKlinika")
+    private Klinika klinika;
+
+    @OneToMany(mappedBy = "smjestaj",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Putovanje> putovanja=new ArrayList<>();
 
     public Smjestaj(String tip, String kategorija, String adresa, Boolean dostupnost){
         this.tip = tip;
@@ -61,5 +73,10 @@ public class Smjestaj {
 
     public void setDostupnost(Boolean dostupnost) {
         this.dostupnost = dostupnost;
+    }
+
+    @Override
+    public String toString(){
+        return "AccomodationEntity{" + "id=" + id + ", tip=" + tip + ", kategorija=" + kategorija + ", adresa=" + adresa + ", dostupnost=" + dostupnost + "}";
     }
 }

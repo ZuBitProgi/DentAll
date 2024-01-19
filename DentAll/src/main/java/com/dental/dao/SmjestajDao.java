@@ -1,22 +1,25 @@
 package com.dental.dao;
 
 import com.dental.models.Smjestaj;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
-@Component
-public class SmjestajDao {
-    @PersistenceContext
-    private EntityManager em;
 
-    public void persist(Smjestaj smjestaj){
-        em.persist(smjestaj);
-    }
+public interface SmjestajDao {
 
-    public List findAll(){
-        return em.createQuery("SELECT  s FROM Smjestaj s").getResultList();
-    }
+    List<Smjestaj> findAll();
+
+    Smjestaj findSmjestajById(Integer id);
+
+    Smjestaj findSmjestajByAdresa(String adresa);
+
+    Smjestaj findSmjestajByKategorijaTipDostupnost(String kategorija, String tip, Boolean dostupnost);
+    Smjestaj create(Smjestaj smjestaj);
+
+    void update(Smjestaj smjestaj);
+
+    void deleteSmjestaj(Integer id);
 }

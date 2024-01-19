@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /dokumentacija/*.aux
 /dokumentacija/*.lof
 /dokumentacija/*.log
@@ -5,3 +6,20 @@
 /dokumentacija/*.out
 /dokumentacija/*.synctex.gz
 /dokumentacija/*.toc
+=======
+*.aux
+
+*.lof
+*.log
+
+*.lot
+
+*.out
+
+*.synctex.gz
+
+*.toc
+
+dentAll_frontend/tests/venv/
+.idea/
+>>>>>>> dev

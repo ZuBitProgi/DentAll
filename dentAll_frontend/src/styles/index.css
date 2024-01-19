@@ -1,0 +1,17 @@
+body {
+    padding: 0px;
+    margin: 0px;
+
+    width: 100vw;
+    height: 100vh;
+
+}
+
+#root {
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'playfair';
+    src: "./fonts/PlayfairDisplay-VariableFont_wght.ttf"
+  }

@@ -1,0 +1,49 @@
+#admin {
+    font-family: "playfair";
+}
+
+.odjava {
+    font-family: "playfair";
+
+}
+
+.container2 {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.user-name {
+    font-family: "playfair";
+}
+
+.odjava {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #F6A192; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  transition: background-color 0.2s;
+}
+
+.odjava:hover {
+    background-color: #f5826e
+}
+
+.frame {
+    border: 1px solid black;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 150%;
+    padding: 20px;
+    margin-bottom: 70px;
+}
+
+.username {
+    font-style: italic;
+    font-family: "playfair";
+}

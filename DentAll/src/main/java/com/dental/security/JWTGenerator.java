@@ -1,16 +1,16 @@
 package com.dental.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.hibernate.annotations.Comment;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.core.Authentication;
 
+import java.security.SignatureException;
 import java.util.Date;
 
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
-import io.jsonwebtoken.Jwts;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -35,7 +35,7 @@ public class JWTGenerator {
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key)
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
 
         return ((Claims) claims).getSubject();
@@ -47,8 +47,27 @@ public class JWTGenerator {
             Jwts.parserBuilder()
                     .setSigningKey(key).build().parseClaimsJws(token);
             return true;
-        } catch (Exception ex) {
-            throw new AuthenticationCredentialsNotFoundException("JWT was exprired or incorrect",ex.fillInStackTrace());
+        } catch (MalformedJwtException ex) {
+            System.out.println("MalformedJWTException");
+        } catch (ExpiredJwtException ex) {
+            // log the exception - token expired
+            System.out.println("ExpiredJwtException");
+
+        } catch (UnsupportedJwtException ex) {
+            // log the exception - unsupported JWT
+            System.out.println("UnsupportedJWT");
+
+        } catch (IllegalArgumentException ex) {
+            System.out.println("IllegalArgumentException");
+
+            // log the exception - illegal argument
+        } catch (JwtException ex) {
+            System.out.println("JwtException");
+
+            // log the exception - generic JWT exception
         }
+
+        return false;
+
     }
 }

@@ -1,11 +1,14 @@
 package com.dental.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Korisnik {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String ime;
     private String prezime;
@@ -15,7 +18,8 @@ public class Korisnik {
     public Korisnik(){
 
     };
-
+    @OneToMany(mappedBy = "korisnik",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Putovanje> putovanja=new ArrayList<>();
     public Korisnik(String ime, String prezime, String preference, String kontakt){
         this.ime = ime;
         this.prezime = prezime;
@@ -61,5 +65,10 @@ public class Korisnik {
 
     public void setKontakt(String kontakt) {
         this.kontakt = kontakt;
+    }
+
+    @Override
+    public String toString(){
+        return "UserEntity{" + "id=" + id + ", ime=" + ime + ", prezime=" + prezime + ", preference=" + preference + ", kontakt=" + kontakt + "}";
     }
 }

@@ -1,134 +1,223 @@
 .index {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .index .overlap-group-wrapper {
-    height: 100vh;
-    width: 100vw;
-    background: linear-gradient(180deg, rgb(135.94, 177.53, 239.9) 0%, rgba(245, 245, 245, 0) 100%);
-    left: 0;
-    position: fixed;
-    top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+}
 
-  }
-
-
-  
-  .index .overlap-group {
-    background-color: #d9d9d9;
-    height: 650px;
-    left: 480px;
-    position: relative;
-    top: 113px;
-    width: 480px;
-    border-radius: 15px;
-    border-color: #000000;
-    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
-
-  
-    
-  }
-  
-  .index .overlap {
-    background-color: #ffffff;
-    border-radius: 5px;
-    height: 59px;
-    left: 62px;
-    position: absolute;
-    top: 152px;
-    width: 356px;
-  }
-  
-  .index .input {
-    background-color: transparent;
-    border: 0;
-    border-color: white;
-    color: black;
-    font-family: "Inter", Helvetica;
-    font-size: 26px;
-    font-weight: 300;
-    height: 31px;
-    left: 22px;
-    letter-spacing: 0;
-    line-height: normal;
-    padding: 0;
-    position: relative;
-    top: 13px;
-    width: 317px;
-  }
-  
-  .index .password-wrapper {
-    background-color: #ffffff;
-    border-radius: 5px;
-    height: 59px;
-    left: 62px;
-    position: absolute;
-    top: 239px;
-    width: 356px;
-  }
-  
-  .index .text-wrapper {
-    color: #000000;
-    font-family: "Inter", Helvetica;
-    font-size: 36px;
-    font-weight: 600;
-    left: 148px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 56px;
-  }
-  
-  .index .btn{
-
-    height: 67px;
-    left: 127px;
-    position: absolute;
-    top: 425px;
-    /*transition: all 0.2s ease;*/
-    width: 225px;
-    background-color: #297bf6;
-    font-family: "Inter",Arial, Helvetica, sans-serif;
-    font-size: 30px;
-    border-radius: 35px;
-    color: white;
-    font-weight: 600;
-    border: 0;
-    
-  }
-
- button.btn:hover, button.btn:active{
-  background-color: #6192dc;
-  transform: scale(1.1);
- }
-
-  ::placeholder{
-    color: #b1aeae;
-  }
-  
-.radio {
-  position: absolute;
-  top: 350px;
-  left: 175px;
-  /*transition: all 0.2s ease;*/
-  width: 275px;
+.overlap-group-wrapper {
+  flex: 1;
+  background: linear-gradient(180deg, rgb(135.94, 177.53, 239.9) 0%, rgba(245, 245, 245, 0) 100%);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
 
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.overlap-group {
+  background-color: #d9d9d9;
+  width: 480px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  box-sizing: border-box;
+}
+.index .overlap {
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.index .check-box-overlap{
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+}
+
+.index .input {
+  background-color: transparent;
+  border: 0;
+  border-color: white;
+  color: black;
+  font-family: "Inter", Helvetica;
+  font-size: 26px;
+  font-weight: 300;
+  height: 31px;
+  width: 100%;
+}
+
+.index .password-wrapper {
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.index .text-wrapper {
+  color: #000000;
+  font-family: "Inter", Helvetica;
+  font-size: 34px;
+  font-weight: 550;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.buttonContainer .btn {
+  height: 67px;
+  width: 225px;
+  background-color: #297bf6;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  border-radius: 35px;
+  color: white;
+  font-weight: 600;
+  border: 0;
+}
+
+button.btn:hover,
+button.btn:active {
+  background-color: #6192dc;
+  transform: scale(1.1);
+}
+
+::placeholder {
+  color: #b1aeae;
+}
+
+.radio {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .hidden {
   visibility: hidden;
 }
 
-.error-text {
+.index .error-text {
+  position: relative;
+  top: 0;
+  left: 0;
   color: red;
+}
+
+.index .error-text {
+  border: 1px solid red;
+}
+
+.index .label-text {
+  font-family: "Inter", Helvetica;
+  font-size: 125%;
+  padding-left: 5px;
+  padding-top: 6px;
+  color: #121212;
+
+}
+
+.index .check-label-text{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.index .check-box-input{
+  width: 50%;
+  height: 18px;
+  align-self: center;
+}
+
+.index .form-header {
+  text-align: end;
+  padding-bottom: 2%;
+}
+
+.index .form-group-wrapper {
+  backdrop-filter: blur(10px);
   position: absolute;
-  top: 100px;
-  left: 130px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.korisnik-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.header-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 30%;
+}
+
+.korisnik-overlay .logo-text{
+  font-size: 250%;
+  padding-left: 10px;
+}
+
+ .user-info{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: flex-end;
+  font-family: "Inter", Helvetica;
+  font-size: 100%;
+  color: #121212;
+  padding: 5px;
+  padding-right: 2%;
+}
+
+.form-group-wrapper .vrijeme-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.addButtonContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.addButtonContainer .btn {
+  height: 53px;
+  width: 185px;
+  background-color: #297bf6;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  border-radius: 35px;
+  color: white;
+  font-weight: 300;
+  border: 0;
 }
